@@ -1,0 +1,11 @@
+<svg width="800" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .logo-text { fill: #5f5f5f; font-family: 'Arial Black', sans-serif; font-weight: 900; font-size: 120px; letter-spacing: -2px; }
+      .accent { fill: #73013e; }
+    </style>
+  </defs>
+  <text x="10" y="150" class="logo-text">FRACTALBYTE</text>
+  <polygon class="accent" points="280,80 300,110 280,140" />
+  <polygon class="accent" points="490,80 510,110 490,140" />
+</svg>
