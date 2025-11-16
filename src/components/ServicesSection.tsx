@@ -1,19 +1,12 @@
 'use client';
 
-import { Box, Container, Typography, Paper, IconButton, Collapse, Button, Link } from '@mui/material';
-import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineDot from '@mui/lab/TimelineDot';
-import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
+import { Box, Container, Typography, Paper, IconButton, Collapse, Button, Link, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import CheckIcon from '@mui/icons-material/Check';
 import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { services, processSteps, pricingPackages, serviceIcons, timelineIcons } from '@/constants';
+import { services, processSteps, packages, serviceIcons, timelineIcons } from '@/constants';
 import { getIconComponent } from '@/utils/iconMapper';
 import { colors } from '@/constants/colors';
 
@@ -28,10 +21,6 @@ export default function ServicesSection({ onPackageSelect }: ServicesSectionProp
   const handleToggle = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
-
-  const currentServices = services[language];
-  const currentProcessSteps = processSteps[language];
-  const currentPricingPackages = pricingPackages[language];
 
   return (
     <Box
@@ -70,7 +59,7 @@ export default function ServicesSection({ onPackageSelect }: ServicesSectionProp
         </Typography>
 
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-          {currentServices.map((service, index) => (
+          {services.map((service, index) => (
             <Paper
               key={index}
               elevation={0}
@@ -185,7 +174,7 @@ export default function ServicesSection({ onPackageSelect }: ServicesSectionProp
           ))}
         </Box>
 
-        {/* Website Design Process Timeline */}
+        {/* Website Design Process */}
         <Box sx={{ mt: 12 }}>
           <Typography
             variant="h3"
@@ -200,45 +189,53 @@ export default function ServicesSection({ onPackageSelect }: ServicesSectionProp
             {translations('processTitle')}
           </Typography>
 
-          <Timeline position="alternate">
-            {currentProcessSteps.map((step, index) => (
-              <TimelineItem key={index}>
-                <TimelineOppositeContent
-                  sx={{ display: { xs: 'none', md: 'block' }, m: 'auto 0' }}
-                  variant="body2"
-                  color={colors.textSecondary}
+          <List
+            sx={{
+              maxWidth: 800,
+              mx: 'auto',
+              bgcolor: colors.backgroundPaper,
+              borderRadius: 3,
+              p: { xs: 2, md: 3 },
+            }}
+          >
+            {processSteps.map((step, index) => (
+              <ListItem
+                key={index}
+                alignItems="center"
+                sx={{
+                  py: 2,
+                  px: { xs: 1, md: 2 },
+                  borderBottom: index < processSteps.length - 1 ? `1px solid ${colors.borderLight}` : 'none',
+                  '&:hover': {
+                    bgcolor: colors.hoverPrimary,
+                    borderRadius: 2,
+                  },
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: { xs: 50, md: 60 },
+                  }}
                 >
-                  {/* Empty opposite content for cleaner look */}
-                </TimelineOppositeContent>
-                <TimelineSeparator>
-                  <TimelineConnector sx={{ bgcolor: colors.borderPrimary }} />
-                  <TimelineDot
+                  <Box
                     sx={{
+                      width: { xs: 40, md: 48 },
+                      height: { xs: 40, md: 48 },
+                      borderRadius: '50%',
                       bgcolor: colors.hoverPrimary,
                       border: `2px solid ${colors.primary}`,
-                      p: 1.5,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                     }}
                   >
-                    <Box sx={{ color: colors.primary, display: 'flex', fontSize: 32 }}>
-                      {getIconComponent(timelineIcons[index], { sx: { fontSize: 32 } })}
-                    </Box>
-                  </TimelineDot>
-                  <TimelineConnector sx={{ bgcolor: colors.borderPrimary }} />
-                </TimelineSeparator>
-                <TimelineContent sx={{ py: '12px', px: 2 }}>
-                  <Paper
-                    elevation={0}
-                    sx={{
-                      p: 2,
-                      bgcolor: colors.background,
-                      border: `1px solid ${colors.borderLight}`,
-                      borderRadius: 2,
-                      textAlign: 'center',
-                    }}
-                  >
+                    {getIconComponent(timelineIcons[index], { sx: { fontSize: { xs: 24, md: 28 }, color: colors.primary } })}
+                  </Box>
+                </ListItemIcon>
+                <ListItemText
+                  primary={
                     <Typography
                       variant="h6"
-                      component="span"
                       sx={{
                         color: colors.textPrimary,
                         fontWeight: 600,
@@ -247,11 +244,12 @@ export default function ServicesSection({ onPackageSelect }: ServicesSectionProp
                     >
                       {translations(step)}
                     </Typography>
-                  </Paper>
-                </TimelineContent>
-              </TimelineItem>
+                  }
+                  sx={{ m: 0 }}
+                />
+              </ListItem>
             ))}
-          </Timeline>
+          </List>
         </Box>
 
         {/* Pricing Packages */}
@@ -295,7 +293,7 @@ export default function ServicesSection({ onPackageSelect }: ServicesSectionProp
               mx: 'auto',
             }}
           >
-            {currentPricingPackages.map((pkg, index) => (
+            {packages.map((pkg, index) => (
               <Paper
                 key={index}
                 elevation={0}
@@ -324,7 +322,7 @@ export default function ServicesSection({ onPackageSelect }: ServicesSectionProp
                     fontSize: { xs: '1.5rem', md: '1.75rem' },
                   }}
                 >
-                  {pkg.displayName || pkg.name}
+                  {translations(pkg.displayNameKey)}
                 </Typography>
 
                 <Typography
@@ -337,7 +335,7 @@ export default function ServicesSection({ onPackageSelect }: ServicesSectionProp
                     fontSize: { xs: '1.75rem', md: '2rem' },
                   }}
                 >
-                  {pkg.priceRange}
+                  {pkg.priceRangeKey ? translations(pkg.priceRangeKey) : pkg.priceRange}
                   <Typography
                     component="span"
                     sx={{

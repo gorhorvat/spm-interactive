@@ -22,8 +22,6 @@ export default function ContactSection({ selectedPackage, onPackageChange }: Con
   const [loading, setLoading] = useState(false);
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' as 'success' | 'error' });
 
-  const currentPackages = packages[language];
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -134,9 +132,9 @@ export default function ContactSection({ selectedPackage, onPackageChange }: Con
             onChange={(e) => onPackageChange(e.target.value)}
           >
             <MenuItem value="">{translations('selectPackage')}</MenuItem>
-            {currentPackages.map((pkg) => (
+            {packages.map((pkg) => (
               <MenuItem key={pkg.name} value={pkg.name}>
-                {pkg.displayName || pkg.name}
+                {translations(pkg.displayNameKey)}
               </MenuItem>
             ))}
           </TextField>

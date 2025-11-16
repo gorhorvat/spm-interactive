@@ -131,6 +131,7 @@ export const translations = {
     packageProfessional: 'Professional',
     packageEnterprise: 'Enterprise',
     packageCustom: 'Custom',
+    contactUs: 'Contact us',
   },
   hr: {
     home: 'Početna',
@@ -264,5 +265,6 @@ export const translations = {
     packageProfessional: 'Profesionalno',
     packageEnterprise: 'Enterprise',
     packageCustom: 'Prilagođeno',
+    contactUs: 'Kontaktirajte nas',
   },
 };

@@ -7,8 +7,7 @@ import { getIconComponent } from '@/utils/iconMapper';
 import { colors } from '@/constants/colors';
 
 export default function AboutSection() {
-  const { language, translations } = useLanguage();
-  const currentValues = values[language];
+  const { translations } = useLanguage();
 
   return (
     <Box
@@ -48,7 +47,7 @@ export default function AboutSection() {
         </Typography>
 
         <Grid container spacing={4}>
-          {currentValues.map((value, index) => (
+          {values.map((value, index) => (
             <Grid item xs={12} sm={6} md={2.4} key={index}>
               <Paper
                 elevation={0}

@@ -7,8 +7,7 @@ import { faqs } from '@/constants';
 import { colors } from '@/constants/colors';
 
 export default function FAQSection() {
-  const { language, translations } = useLanguage();
-  const currentFaqs = faqs[language];
+  const { translations } = useLanguage();
 
   return (
     <Box
@@ -45,7 +44,7 @@ export default function FAQSection() {
         </Typography>
 
         <Box sx={{ mt: 4 }}>
-          {currentFaqs.map((faq, index) => (
+          {faqs.map((faq, index) => (
             <Accordion
               key={index}
               sx={{
