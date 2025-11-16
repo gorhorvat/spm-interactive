@@ -1,6 +1,6 @@
 'use client';
 
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import { ReactNode } from 'react';
 import { colors } from '@/constants/colors';
 
@@ -254,5 +254,10 @@ interface ThemeRegistryProps {
 }
 
 export default function ThemeRegistry({ children }: ThemeRegistryProps) {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
+  );
 }

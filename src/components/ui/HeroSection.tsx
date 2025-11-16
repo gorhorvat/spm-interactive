@@ -1,20 +1,14 @@
 'use client';
 
-import { Box, Container, Typography, Button } from '@mui/material';
+import { Box, Container, Typography, Link as MuiLink } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { colors } from '@/constants/colors';
 
 export default function HeroSection() {
-  const { translations } = useLanguage();
-  
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const { language, translations } = useLanguage();
 
   return (
     <Box
@@ -79,31 +73,37 @@ export default function HeroSection() {
             {translations('heroDescription')}
           </Typography>
 
-          <Button
-            variant="contained"
-            size="large"
-            onClick={scrollToContact}
-            endIcon={<ArrowDownwardIcon />}
-            sx={{
-              px: 4,
-              py: 1.5,
-              fontSize: '1.1rem',
-              fontWeight: 600,
-              borderRadius: 2,
-              textTransform: 'none',
-              bgcolor: colors.primary,
-              color: colors.textPrimary,
-              boxShadow: '0 4px 12px rgba(115, 1, 62, 0.3)',
-              '&:hover': {
-                bgcolor: colors.primaryLight,
-                boxShadow: '0 6px 20px rgba(115, 1, 62, 0.4)',
-                transform: 'translateY(-2px)',
-              },
-              transition: 'all 0.3s ease',
-            }}
+          <Link
+            href={language === 'hr' ? '/kontakt' : '/en/contact'}
+            style={{ textDecoration: 'none' }}
           >
-            {translations('getStarted')}
-          </Button>
+            <Box
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 1,
+                px: 4,
+                py: 1.5,
+                fontSize: '1.1rem',
+                fontWeight: 600,
+                borderRadius: 2,
+                textTransform: 'none',
+                bgcolor: colors.primary,
+                color: colors.textPrimary,
+                boxShadow: '0 4px 12px rgba(115, 1, 62, 0.3)',
+                cursor: 'pointer',
+                '&:hover': {
+                  bgcolor: colors.primaryLight,
+                  boxShadow: '0 6px 20px rgba(115, 1, 62, 0.4)',
+                  transform: 'translateY(-2px)',
+                },
+                transition: 'all 0.3s ease',
+              }}
+            >
+              {translations('getStarted')}
+              <ArrowDownwardIcon />
+            </Box>
+          </Link>
         </Box>
       </Container>
     </Box>

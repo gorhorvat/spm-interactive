@@ -8,11 +8,11 @@ import { packages } from '@/constants';
 import { colors } from '@/constants/colors';
 
 interface ContactSectionProps {
-  selectedPackage: string;
-  onPackageChange: (packageName: string) => void;
+  selectedPackage?: string;
+  onPackageChange?: (packageName: string) => void;
 }
 
-export default function ContactSection({ selectedPackage, onPackageChange }: ContactSectionProps) {
+export default function ContactSection({ selectedPackage = '', onPackageChange = () => {} }: ContactSectionProps) {
   const { language, translations } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
