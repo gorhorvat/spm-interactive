@@ -1,14 +1,17 @@
 'use client';
 
-import { AppBar, Toolbar, Container, Button, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import { AppBar, Toolbar, Container, Button, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { colors } from '@/constants/colors';
 
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { language, toggleLanguage, translations } = useLanguage();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -23,34 +26,58 @@ export default function Navigation() {
   };
 
   const navItems = [
-    { label: 'Home', id: 'home' },
-    { label: 'About Us', id: 'about' },
-    { label: 'Services', id: 'services' },
-    { label: 'FAQ', id: 'faq' },
-    { label: 'Contact', id: 'contact' },
+    { label: translations('home'), id: 'home' },
+    { label: translations('about'), id: 'about' },
+    { label: translations('services'), id: 'services' },
+    { label: translations('faq'), id: 'faq' },
+    { label: translations('contact'), id: 'contact' },
   ];
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', bgcolor: '#040404', height: '100%' }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', bgcolor: colors.background, height: '100%' }}>
       <List>
         {navItems.map((item) => (
           <ListItem key={item.id} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }} onClick={() => scrollToSection(item.id)}>
-              <ListItemText primary={item.label} sx={{ color: '#ffffff' }} />
+              <ListItemText primary={item.label} sx={{ color: colors.textPrimary }} />
             </ListItemButton>
           </ListItem>
         ))}
         <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: 'center' }} component="a" href="mailto:info@fractalbyte.com">
-            <EmailIcon sx={{ mr: 1, color: '#73013e' }} />
-            <ListItemText primary="info@fractalbyte.com" sx={{ color: '#ffffff' }} />
+          <ListItemButton sx={{ textAlign: 'center' }} component="a" href="mailto:info@fractalbyte.studio">
+            <EmailIcon sx={{ mr: 1, color: colors.primary }} />
+            <ListItemText primary="info@fractalbyte.studio" sx={{ color: colors.primary }} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: 'center' }} component="a" href="tel:+385123456789">
-            <PhoneIcon sx={{ mr: 1, color: '#73013e' }} />
-            <ListItemText primary="+385 12 345 6789" sx={{ color: '#ffffff' }} />
+            <PhoneIcon sx={{ mr: 1, color: colors.primary }} />
+            <ListItemText primary="+385 12 345 6789" sx={{ color: colors.primary }} />
           </ListItemButton>
+        </ListItem>
+        <ListItem sx={{ justifyContent: 'center', mt: 2 }}>
+          <ToggleButtonGroup
+            value={language}
+            exclusive
+            onChange={toggleLanguage}
+            size="small"
+            sx={{
+              '& .MuiToggleButton-root': {
+                color: colors.textPrimary,
+                borderColor: colors.primary,
+                '&.Mui-selected': {
+                  bgcolor: colors.primary,
+                  color: colors.textPrimary,
+                  '&:hover': {
+                    bgcolor: colors.primaryLight,
+                  },
+                },
+              },
+            }}
+          >
+            <ToggleButton value="hr">HR</ToggleButton>
+            <ToggleButton value="en">EN</ToggleButton>
+          </ToggleButtonGroup>
         </ListItem>
       </List>
     </Box>
@@ -67,6 +94,7 @@ export default function Navigation() {
                   src="/fractalbyte-logo.png"
                   alt="FRACTALBYTE"
                   fill
+                  sizes="200px"
                   style={{ objectFit: 'contain' }}
                   priority
                 />
@@ -80,8 +108,8 @@ export default function Navigation() {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   sx={{ 
-                    color: '#ffffff',
-                    '&:hover': { color: '#73013e' },
+                    color: colors.textPrimary,
+                    '&:hover': { color: colors.primary },
                     fontWeight: 500,
                   }}
                 >
@@ -91,26 +119,49 @@ export default function Navigation() {
               <Box sx={{ ml: 2, display: 'flex', gap: 2, alignItems: 'center' }}>
                 <Button
                   startIcon={<EmailIcon />}
-                  href="mailto:info@fractalbyte.com"
+                  href="mailto:info@fractalbyte.studio"
                   sx={{ 
-                    color: '#ffffff',
-                    '&:hover': { color: '#73013e' },
+                    color: colors.primary,
+                    '&:hover': { color: colors.primaryLight },
                     fontSize: '0.875rem',
                   }}
                 >
-                  info@fractalbyte.com
+                  info@fractalbyte.studio
                 </Button>
                 <Button
                   startIcon={<PhoneIcon />}
                   href="tel:+385123456789"
                   sx={{ 
-                    color: '#ffffff',
-                    '&:hover': { color: '#73013e' },
+                    color: colors.primary,
+                    '&:hover': { color: colors.primaryLight },
                     fontSize: '0.875rem',
                   }}
                 >
                   +385 12 345 6789
                 </Button>
+                <ToggleButtonGroup
+                  value={language}
+                  exclusive
+                  onChange={toggleLanguage}
+                  size="small"
+                  sx={{
+                    '& .MuiToggleButton-root': {
+                      color: colors.textPrimary,
+                      borderColor: colors.primary,
+                      px: 2,
+                      '&.Mui-selected': {
+                        bgcolor: colors.primary,
+                        color: colors.textPrimary,
+                        '&:hover': {
+                          bgcolor: colors.primaryLight,
+                        },
+                      },
+                    },
+                  }}
+                >
+                  <ToggleButton value="hr">HR</ToggleButton>
+                  <ToggleButton value="en">EN</ToggleButton>
+                </ToggleButtonGroup>
               </Box>
             </Box>
 
@@ -138,7 +189,7 @@ export default function Navigation() {
         }}
         sx={{
           display: { xs: 'block', md: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, bgcolor: '#040404' },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, bgcolor: colors.background },
         }}
       >
         {drawer}

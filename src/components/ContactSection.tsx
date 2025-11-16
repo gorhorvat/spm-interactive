@@ -1,19 +1,28 @@
 'use client';
 
-import { Box, Container, Typography, Grid, TextField, Button, Paper } from '@mui/material';
-import EmailIcon from '@mui/icons-material/Email';
-import PhoneIcon from '@mui/icons-material/Phone';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { Box, Container, Typography, TextField, Button, Snackbar, Alert, MenuItem } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { packages } from '@/constants';
+import { colors } from '@/constants/colors';
 
-export default function ContactSection() {
+interface ContactSectionProps {
+  selectedPackage: string;
+  onPackageChange: (packageName: string) => void;
+}
+
+export default function ContactSection({ selectedPackage, onPackageChange }: ContactSectionProps) {
+  const { language, translations } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
     message: '',
   });
+  const [loading, setLoading] = useState(false);
+  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' as 'success' | 'error' });
+
+  const currentPackages = packages[language];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -22,11 +31,41 @@ export default function ContactSection() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    // You can add email service integration here
+    setLoading(true);
+
+    try {
+      const subject = selectedPackage 
+        ? `${translations('inquiryAbout')} ${selectedPackage} ${translations('package')}`
+        : translations('generalInquiry');
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: subject,
+          message: formData.message,
+          package: selectedPackage || 'N/A',
+        }),
+      });
+
+      if (response.ok) {
+        setSnackbar({ open: true, message: translations('messageSent'), severity: 'success' });
+        setFormData({ name: '', email: '', message: '' });
+        onPackageChange('');
+      } else {
+        throw new Error('Failed to send');
+      }
+    } catch (error) {
+      setSnackbar({ open: true, message: translations('messageError'), severity: 'error' });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -34,21 +73,21 @@ export default function ContactSection() {
       id="contact"
       sx={{
         py: { xs: 8, md: 12 },
-        bgcolor: '#0d0d0d',
+        bgcolor: colors.backgroundPaper,
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="md">
         <Typography
           variant="h2"
           sx={{
             mb: 3,
             textAlign: 'center',
             fontWeight: 700,
-            color: '#ffffff',
+            color: colors.textPrimary,
             fontSize: { xs: '2rem', md: '2.5rem' },
           }}
         >
-          Get In Touch
+          {translations('contactTitle')}
         </Typography>
 
         <Typography
@@ -56,139 +95,93 @@ export default function ContactSection() {
           sx={{
             mb: 8,
             textAlign: 'center',
-            color: '#b0b0b0',
+            color: colors.textSecondary,
             maxWidth: 800,
             mx: 'auto',
             fontSize: { xs: '1rem', md: '1.1rem' },
           }}
         >
-          Have a project in mind? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+          {translations('contactDescription')}
         </Typography>
 
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={6}>
-            <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-              <TextField
-                fullWidth
-                label="Your Name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-              <TextField
-                fullWidth
-                label="Email Address"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-              <TextField
-                fullWidth
-                label="Subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-              />
-              <TextField
-                fullWidth
-                label="Message"
-                name="message"
-                multiline
-                rows={4}
-                value={formData.message}
-                onChange={handleChange}
-                required
-              />
-              <Button
-                type="submit"
-                variant="contained"
-                size="large"
-                endIcon={<SendIcon />}
-                sx={{
-                  py: 1.5,
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  textTransform: 'none',
-                }}
-              >
-                Send Message
-              </Button>
-            </Box>
-          </Grid>
+        <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+          <TextField
+            fullWidth
+            id="name"
+            label={translations('yourName')}
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            fullWidth
+            id="email"
+            label={translations('emailAddress')}
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            select
+            fullWidth
+            id="package"
+            label={translations('desiredPackage')}
+            name="package"
+            value={selectedPackage}
+            onChange={(e) => onPackageChange(e.target.value)}
+          >
+            <MenuItem value="">{translations('selectPackage')}</MenuItem>
+            {currentPackages.map((pkg) => (
+              <MenuItem key={pkg.name} value={pkg.name}>
+                {pkg.displayName || pkg.name}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
+            fullWidth
+            id="message"
+            label={translations('message')}
+            name="message"
+            multiline
+            rows={6}
+            value={formData.message}
+            onChange={handleChange}
+            required
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            endIcon={<SendIcon />}
+            disabled={loading}
+            sx={{
+              py: 1.5,
+              fontSize: '1rem',
+              fontWeight: 600,
+              textTransform: 'none',
+            }}
+          >
+            {loading ? translations('sending') : translations('sendMessage')}
+          </Button>
+        </Box>
 
-          <Grid item xs={12} md={6}>
-            <Paper
-              elevation={0}
-              sx={{
-                p: 4,
-                bgcolor: '#040404',
-                border: '1px solid rgba(95, 95, 95, 0.2)',
-                borderRadius: 3,
-                mb: 4,
-              }}
-            >
-              <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 3 }}>
-                <EmailIcon sx={{ color: '#73013e', fontSize: 28, mr: 2, mt: 0.5 }} />
-                <Box>
-                  <Typography variant="h6" sx={{ color: '#ffffff', mb: 0.5, fontWeight: 600 }}>
-                    Email
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: '#b0b0b0' }}>
-                    info@fractalbyte.com
-                  </Typography>
-                </Box>
-              </Box>
-
-              <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 3 }}>
-                <PhoneIcon sx={{ color: '#73013e', fontSize: 28, mr: 2, mt: 0.5 }} />
-                <Box>
-                  <Typography variant="h6" sx={{ color: '#ffffff', mb: 0.5, fontWeight: 600 }}>
-                    Phone
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: '#b0b0b0' }}>
-                    +385 12 345 6789
-                  </Typography>
-                </Box>
-              </Box>
-
-              <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
-                <LocationOnIcon sx={{ color: '#73013e', fontSize: 28, mr: 2, mt: 0.5 }} />
-                <Box>
-                  <Typography variant="h6" sx={{ color: '#ffffff', mb: 0.5, fontWeight: 600 }}>
-                    Address
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: '#b0b0b0' }}>
-                    Zagreb, Croatia
-                  </Typography>
-                </Box>
-              </Box>
-            </Paper>
-
-            <Box
-              sx={{
-                width: '100%',
-                height: 300,
-                borderRadius: 3,
-                overflow: 'hidden',
-                border: '1px solid rgba(95, 95, 95, 0.2)',
-              }}
-            >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89513.82768807214!2d15.87786!3d45.81444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d692c902cc39%3A0x3a45249628fbc28a!2sZagreb%2C%20Croatia!5e0!3m2!1sen!2s!4v1234567890123"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </Box>
-          </Grid>
-        </Grid>
+        <Snackbar
+          open={snackbar.open}
+          autoHideDuration={6000}
+          onClose={() => setSnackbar({ ...snackbar, open: false })}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        >
+          <Alert
+            onClose={() => setSnackbar({ ...snackbar, open: false })}
+            severity={snackbar.severity}
+            sx={{ width: '100%' }}
+          >
+            {snackbar.message}
+          </Alert>
+        </Snackbar>
       </Container>
     </Box>
   );

@@ -2,6 +2,8 @@
 
 import { Box, Container, Typography, Grid } from '@mui/material';
 import { useEffect, useState, useRef } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { colors } from '@/constants/colors';
 
 interface CounterItemProps {
   end: number;
@@ -63,7 +65,7 @@ function CounterItem({ end, label, suffix = '' }: CounterItemProps) {
         variant="h2"
         sx={{
           fontWeight: 700,
-          color: '#ffffff',
+          color: colors.textPrimary,
           mb: 1,
           fontSize: { xs: '2.5rem', md: '3.5rem' },
         }}
@@ -73,7 +75,7 @@ function CounterItem({ end, label, suffix = '' }: CounterItemProps) {
       <Typography
         variant="h6"
         sx={{
-          color: '#ffffff',
+          color: colors.textPrimary,
           opacity: 0.95,
           fontWeight: 400,
           fontSize: { xs: '1rem', md: '1.1rem' },
@@ -86,28 +88,30 @@ function CounterItem({ end, label, suffix = '' }: CounterItemProps) {
 }
 
 export default function Counter() {
+  const { translations } = useLanguage();
+  
   return (
     <Box
       sx={{
         py: { xs: 6, md: 8 },
-        background: 'linear-gradient(135deg, #73013e, #6c2049)',
-        boxShadow: '0 8px 30px rgba(115, 1, 62, 0.3)',
+        background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
+        boxShadow: `0 8px 30px ${colors.borderPrimary}`,
         my: { xs: 8, md: 12 },
       }}
     >
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           <Grid item xs={6} md={3}>
-            <CounterItem end={150} label="Projects Completed" suffix="+" />
+            <CounterItem end={25} label={translations('projectsCompleted')} suffix="+" />
           </Grid>
           <Grid item xs={6} md={3}>
-            <CounterItem end={120} label="Happy Clients" suffix="+" />
+            <CounterItem end={5} label={translations('happyClients')} suffix="+" />
           </Grid>
           <Grid item xs={6} md={3}>
-            <CounterItem end={5} label="Years of Experience" suffix="+" />
+            <CounterItem end={8} label={translations('yearsExperience')} suffix="+" />
           </Grid>
           <Grid item xs={6} md={3}>
-            <CounterItem end={98} label="Client Satisfaction" suffix="%" />
+            <CounterItem end={100} label={translations('satisfactionRate')} suffix="%" />
           </Grid>
         </Grid>
       </Container>

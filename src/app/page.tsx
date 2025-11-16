@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
@@ -8,15 +11,23 @@ import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
 export default function Home() {
+  const [selectedPackage, setSelectedPackage] = useState('');
+
+  const handlePackageSelect = (packageName: string) => {
+    setSelectedPackage(packageName);
+    // Scroll to contact section
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <main>
       <Navigation />
       <HeroSection />
       <AboutSection />
-      <ServicesSection />
+      <ServicesSection onPackageSelect={handlePackageSelect} />
       <Counter />
       <FAQSection />
-      <ContactSection />
+      <ContactSection selectedPackage={selectedPackage} onPackageChange={setSelectedPackage} />
       <Footer />
     </main>
   );

@@ -3,8 +3,12 @@
 import { Box, Container, Typography, Button } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { colors } from '@/constants/colors';
 
 export default function HeroSection() {
+  const { translations } = useLanguage();
+  
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     if (element) {
@@ -20,7 +24,7 @@ export default function HeroSection() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'linear-gradient(135deg, #040404 0%, #0d0d0d 50%, #040404 100%)',
+        background: `linear-gradient(135deg, ${colors.background} 0%, ${colors.backgroundPaper} 50%, ${colors.background} 100%)`,
         position: 'relative',
         pt: { xs: 12, md: 15 },
         pb: { xs: 8, md: 10 },
@@ -53,28 +57,26 @@ export default function HeroSection() {
             variant="h4"
             sx={{
               mb: 3,
-              color: '#b0b0b0',
+              color: colors.textSecondary,
               fontWeight: 300,
               fontSize: { xs: '1.25rem', md: '1.5rem' },
             }}
           >
-            Crafting Digital Excellence Through Code
+            {translations('heroTagline')}
           </Typography>
 
           <Typography
             variant="body1"
             sx={{
               mb: 5,
-              color: '#b0b0b0',
+              color: colors.textSecondary,
               maxWidth: 800,
               mx: 'auto',
               fontSize: { xs: '1rem', md: '1.1rem' },
               lineHeight: 1.7,
             }}
           >
-            We specialize in creating stunning, high-performance websites and web applications 
-            that transform your digital presence. From concept to deployment, we bring your vision to life 
-            with cutting-edge technology and creative excellence.
+            {translations('heroDescription')}
           </Typography>
 
           <Button
@@ -89,18 +91,18 @@ export default function HeroSection() {
               fontWeight: 600,
               borderRadius: 2,
               textTransform: 'none',
-              bgcolor: '#73013e',
-              color: '#ffffff',
+              bgcolor: colors.primary,
+              color: colors.textPrimary,
               boxShadow: '0 4px 12px rgba(115, 1, 62, 0.3)',
               '&:hover': {
-                bgcolor: '#8a2050',
+                bgcolor: colors.primaryLight,
                 boxShadow: '0 6px 20px rgba(115, 1, 62, 0.4)',
                 transform: 'translateY(-2px)',
               },
               transition: 'all 0.3s ease',
             }}
           >
-            Get Started
+            {translations('getStarted')}
           </Button>
         </Box>
       </Container>

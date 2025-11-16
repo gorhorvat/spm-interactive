@@ -1,20 +1,42 @@
 import type { Metadata, Viewport } from "next";
 import ThemeRegistry from "@/components/ThemeRegistry";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import "./globals.css";
+import { colors } from "@/constants/colors";
 
 export const metadata: Metadata = {
-  title: "FRACTALBYTE - Crafting Digital Excellence Through Code",
-  description: "FRACTALBYTE specializes in creating stunning, high-performance websites and web applications. Web design, development, and digital solutions.",
-  keywords: ["web development", "web design", "React", "Next.js", "digital solutions", "Croatia"],
+  metadataBase: new URL('https://fractalbyte.studio'),
+  title: "FRACTALBYTE - Crafting Digital Excellence Through Code | Web Development Croatia",
+  description: "FRACTALBYTE specializes in creating stunning, high-performance websites and web applications. Professional web design, development, SEO optimization, and digital solutions in Croatia.",
   authors: [{ name: "FRACTALBYTE" }],
   icons: {
-    icon: "/fractalbyte-avatar.jpg",
+    icon: "/favicon.ico",
+    apple: "/fractalbyte-avatar.jpg",
+  },
+  openGraph: {
+    title: "FRACTALBYTE - Web Development & Digital Solutions",
+    description: "Professional web development, design, and SEO services in Croatia",
+    type: "website",
+    locale: "hr_HR",
+    alternateLocale: ["en_US"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  themeColor: colors.primary,
 };
 
 export default function RootLayout({
@@ -23,16 +45,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="hr">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </head>
       <body>
         <ThemeRegistry>
-          {children}
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
         </ThemeRegistry>
       </body>
     </html>
