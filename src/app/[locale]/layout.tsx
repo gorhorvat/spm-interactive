@@ -27,7 +27,7 @@ export async function generateMetadata({
   const isHr = locale === 'hr';
   
   return {
-    metadataBase: new URL('https://fractalbyte.studio'),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://fractalbyte.studio'),
     title: isHr 
       ? "FRACTALBYTE - Sinonim za Digitalnu Izvrsnost | Web Razvoj Hrvatska"
       : "FRACTALBYTE - Synonym for Digital Excellence | Web Development Croatia",
@@ -41,9 +41,22 @@ export async function generateMetadata({
     creator: 'FRACTALBYTE',
     publisher: 'FRACTALBYTE',
     icons: {
-      icon: "/favicon.ico",
-      apple: "/fractalbyte-avatar.jpg",
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/favicon.ico', sizes: '16x16', type: 'image/x-icon' },
+        { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+      ],
+      apple: [
+        { url: '/fractalbyte-avatar.jpg', sizes: '180x180', type: 'image/jpeg' },
+      ],
+      other: [
+        {
+          rel: 'icon',
+          url: '/fractalbyte-avatar.jpg',
+        },
+      ],
     },
+    manifest: '/manifest.json',
     alternates: {
       canonical: locale === 'hr' ? 'https://fractalbyte.studio' : 'https://fractalbyte.studio/en',
       languages: {

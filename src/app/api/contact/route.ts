@@ -13,14 +13,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create transporter using PrivateEmail.com SMTP
+    // Create transporter using PrivateEmail.com SMTP with SSL
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: false, // Use TLS
+      port: parseInt(process.env.SMTP_PORT || '465'),
+      secure: true, // Use SSL
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASSWORD,
+      },
+      tls: {
+        rejectUnauthorized: true,
       },
     });
 

@@ -44,7 +44,6 @@ export default function Footer() {
                   alt="FRACTALBYTE"
                   width={60}
                   height={60}
-                  style={{ objectFit: 'contain' }}
                 />
               </Box>
               

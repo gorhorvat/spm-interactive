@@ -7,7 +7,10 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: [],
+    unoptimized: true, // Prevents hydration mismatch with browser extensions
   },
+  compress: true,
+  poweredByHeader: false,
 };
 
 module.exports = withNextIntl(nextConfig);

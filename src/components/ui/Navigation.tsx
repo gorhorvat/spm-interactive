@@ -97,7 +97,6 @@ export default function Navigation() {
                   alt={value === 'hr' ? 'Croatian' : 'English'}
                   width={24}
                   height={24}
-                  style={{ objectFit: 'contain' }}
                 />
               </Box>
             )}
@@ -124,7 +123,6 @@ export default function Navigation() {
                 alt="Croatian"
                 width={24}
                 height={24}
-                style={{ objectFit: 'contain' }}
               />
             </MenuItem>
             <MenuItem value="en" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -133,7 +131,6 @@ export default function Navigation() {
                 alt="English"
                 width={24}
                 height={24}
-                style={{ objectFit: 'contain' }}
               />
             </MenuItem>
           </Select>
@@ -149,16 +146,13 @@ export default function Navigation() {
           <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
             <Link href={language === 'hr' ? '/' : '/en'} style={{ textDecoration: 'none' }}>
               <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-                <Box sx={{ height: 40, position: 'relative', width: 200 }}>
-                  <Image
-                    src="/fractalbyte-logo.png"
-                    alt="FRACTALBYTE"
-                    fill
-                    sizes="200px"
-                    style={{ objectFit: 'contain' }}
-                    priority
-                  />
-                </Box>
+                <Image
+                  src="/fractalbyte-logo.png"
+                  alt="FRACTALBYTE"
+                  width={200}
+                  height={50}
+                  priority
+                />
               </Box>
             </Link>
 
@@ -245,7 +239,6 @@ export default function Navigation() {
                         alt={value === 'hr' ? 'Croatian' : 'English'}
                         width={24}
                         height={24}
-                        style={{ objectFit: 'contain' }}
                       />
                     </Box>
                   )}
@@ -272,7 +265,6 @@ export default function Navigation() {
                       alt="Croatian"
                       width={24}
                       height={24}
-                      style={{ objectFit: 'contain' }}
                     />
                   </MenuItem>
                   <MenuItem value="en" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -281,7 +273,6 @@ export default function Navigation() {
                       alt="English"
                       width={24}
                       height={24}
-                      style={{ objectFit: 'contain' }}
                     />
                   </MenuItem>
                 </Select>
