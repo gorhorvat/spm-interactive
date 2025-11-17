@@ -41,11 +41,20 @@ export async function generateMetadata({
     creator: 'FRACTALBYTE',
     publisher: 'FRACTALBYTE',
     icons: {
-      icon: '/favicon.ico',
+      icon: [
+        { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+        { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+        { url: '/favicon.ico', sizes: '48x48' },
+      ],
       shortcut: '/favicon.ico',
-      apple: '/fractalbyte-avatar.jpg',
+      apple: [
+        { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      ],
+      other: [
+        { rel: 'manifest', url: '/site.webmanifest' },
+      ],
     },
-    manifest: '/manifest.json',
+    manifest: '/site.webmanifest',
     alternates: {
       canonical: locale === 'hr' ? 'https://fractalbyte.studio' : 'https://fractalbyte.studio/en',
       languages: {
