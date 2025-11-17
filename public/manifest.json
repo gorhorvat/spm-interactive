@@ -8,15 +8,21 @@
   "theme_color": "#73013e",
   "icons": [
     {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/fractalbyte-avatar.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
       "src": "/fractalbyte-avatar.jpg",
       "sizes": "512x512",
       "type": "image/jpeg",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/fractalbyte-logo.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "purpose": "maskable"
     }
   ]
 }

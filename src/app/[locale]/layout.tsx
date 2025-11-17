@@ -41,20 +41,9 @@ export async function generateMetadata({
     creator: 'FRACTALBYTE',
     publisher: 'FRACTALBYTE',
     icons: {
-      icon: [
-        { url: '/favicon.ico', sizes: 'any' },
-        { url: '/favicon.ico', sizes: '16x16', type: 'image/x-icon' },
-        { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
-      ],
-      apple: [
-        { url: '/fractalbyte-avatar.jpg', sizes: '180x180', type: 'image/jpeg' },
-      ],
-      other: [
-        {
-          rel: 'icon',
-          url: '/fractalbyte-avatar.jpg',
-        },
-      ],
+      icon: '/favicon.ico',
+      shortcut: '/favicon.ico',
+      apple: '/fractalbyte-avatar.jpg',
     },
     manifest: '/manifest.json',
     alternates: {
