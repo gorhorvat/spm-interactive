@@ -76,9 +76,9 @@ export default function Navigation() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: 'center' }} component="a" href="tel:+385123456789">
+          <ListItemButton sx={{ textAlign: 'center' }} component="a" href="tel:+385998446978">
             <PhoneIcon sx={{ mr: 1, color: colors.primary }} />
-            <ListItemText primary="+385 12 345 6789" sx={{ color: colors.primary }} />
+            <ListItemText primary="+385 99 844 6978" sx={{ color: colors.primary }} />
           </ListItemButton>
         </ListItem>
         <ListItem sx={{ justifyContent: 'center', mt: 2 }}>
@@ -210,7 +210,7 @@ export default function Navigation() {
                     info@fractalbyte.studio
                   </Box>
                 </Link>
-                <Link href="tel:+385123456789" style={{ textDecoration: 'none' }}>
+                <Link href="tel:+385998446978" style={{ textDecoration: 'none' }}>
                   <Box sx={{ 
                     display: 'flex',
                     alignItems: 'center',
@@ -221,7 +221,7 @@ export default function Navigation() {
                     cursor: 'pointer',
                   }}>
                     <PhoneIcon sx={{ fontSize: 18 }} />
-                    +385 12 345 6789
+                    +385 99 844 6978
                   </Box>
                 </Link>
                 <Select

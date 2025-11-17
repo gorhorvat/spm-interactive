@@ -3,6 +3,7 @@
 import { Box, Container, Typography, IconButton, Grid, Divider } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import Image from 'next/image';
@@ -79,7 +80,7 @@ export default function Footer() {
                   <PhoneIcon sx={{ color: colors.primary, fontSize: 20 }} />
                   <Typography
                     component="a"
-                    href="tel:+385123456789"
+                    href="tel:+385998446978"
                     sx={{
                       color: colors.textSecondary,
                       textDecoration: 'none',
@@ -87,7 +88,7 @@ export default function Footer() {
                       '&:hover': { color: colors.primaryLight },
                     }}
                   >
-                    +385 12 345 6789
+                    +385 99 844 6978
                   </Typography>
                 </Box>
               </Box>
@@ -105,7 +106,7 @@ export default function Footer() {
                 <EmailIcon fontSize="large" />
               </IconButton>
               <IconButton
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/fractalbyte-studio/"
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
@@ -116,7 +117,7 @@ export default function Footer() {
                 <LinkedInIcon fontSize="large" />
               </IconButton>
               <IconButton
-                href="https://instagram.com"
+                href="https://www.instagram.com/fractalbyte.studio/"
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
@@ -125,6 +126,17 @@ export default function Footer() {
                 }}
               >
                 <InstagramIcon fontSize="large" />
+              </IconButton>
+              <IconButton
+                href="https://www.facebook.com/profile.php?id=61583592732443"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  color: colors.primary,
+                  '&:hover': { color: colors.primaryLight },
+                }}
+              >
+                <FacebookIcon fontSize="large" />
               </IconButton>
             </Box>
 

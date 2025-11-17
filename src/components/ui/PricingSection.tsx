@@ -2,9 +2,20 @@
 
 import { Box, Container, Typography, Paper, Link as MuiLink } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
+import WebIcon from '@mui/icons-material/Web';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import ApartmentIcon from '@mui/icons-material/Apartment';
+import TuneIcon from '@mui/icons-material/Tune';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { packages } from '@/constants';
 import { colors } from '@/constants/colors';
+
+const iconMap: { [key: string]: React.ElementType } = {
+  WebIcon,
+  BusinessCenterIcon,
+  ApartmentIcon,
+  TuneIcon,
+};
 
 interface PricingSectionProps {
   onPackageSelect: (packageName: string) => void;
@@ -58,7 +69,10 @@ export default function PricingSection({ onPackageSelect }: PricingSectionProps)
             mx: 'auto',
           }}
         >
-          {packages.map((pkg, index) => (
+          {packages.map((pkg, index) => {
+            const PackageIcon = pkg.icon ? iconMap[pkg.icon] : null;
+            
+            return (
             <Paper
               key={index}
               elevation={0}
@@ -77,6 +91,23 @@ export default function PricingSection({ onPackageSelect }: PricingSectionProps)
                 },
               }}
             >
+              {PackageIcon && (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    mb: 2,
+                  }}
+                >
+                  <PackageIcon
+                    sx={{
+                      fontSize: 48,
+                      color: colors.primary,
+                    }}
+                  />
+                </Box>
+              )}
+              
               <Typography
                 variant="h5"
                 sx={{
@@ -142,9 +173,7 @@ export default function PricingSection({ onPackageSelect }: PricingSectionProps)
                     </Typography>
                   </Box>
                 ))}
-              </Box>
-
-              <MuiLink
+              </Box>              <MuiLink
                 href={language === 'hr' ? '/kontakt' : '/en/contact'}
                 onClick={(e) => {
                   e.preventDefault();
@@ -188,7 +217,8 @@ export default function PricingSection({ onPackageSelect }: PricingSectionProps)
                 {translations('requestOffer')}
               </MuiLink>
             </Paper>
-          ))}
+            );
+          })}
         </Box>
       </Container>
     </Box>

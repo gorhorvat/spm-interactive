@@ -1,6 +1,6 @@
 # FRACTALBYTE Website
 
-A modern, high-performance multilingual website built with Next.js, React, and Material-UI.
+A modern, high-performant multilingual website built with Next.js, React, and Material-UI.
 
 ## Features
 

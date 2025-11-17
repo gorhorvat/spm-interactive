@@ -29,11 +29,11 @@ export async function generateMetadata({
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://fractalbyte.studio'),
     title: isHr 
-      ? "FRACTALBYTE - Sinonim za Digitalnu Izvrsnost | Web Razvoj Hrvatska"
-      : "FRACTALBYTE - Synonym for Digital Excellence | Web Development Croatia",
+      ? "FRACTALBYTE - Sinonim za digitalnu izvrsnost | Web Razvoj Hrvatska"
+      : "FRACTALBYTE - Synonym for digital excellence | Web Development Croatia",
     description: isHr
-      ? "FRACTALBYTE specijaliziran za stvaranje zadivljujućih, visoko performantnih web stranica i aplikacija. Profesionalni web dizajn, razvoj, SEO optimizacija i digitalna rješenja u Hrvatskoj."
-      : "FRACTALBYTE specializes in creating stunning, high-performance websites and web applications. Professional web design, development, SEO optimization, and digital solutions in Croatia.",
+      ? "FRACTALBYTE je specijaliziran za stvaranje zadivljujućih web stranica i aplikacija visokih performansi. Profesionalni web dizajn, razvoj, SEO optimizacija i digitalna rješenja u Hrvatskoj."
+      : "FRACTALBYTE specializes in creating stunning, high-performant websites and web applications. Professional web design, development, SEO optimization, and digital solutions in Croatia.",
     keywords: isHr
       ? ['web razvoj', 'izrada web stranica', 'web dizajn', 'SEO optimizacija', 'web aplikacije', 'e-commerce', 'cloud hosting', 'UI/UX dizajn', 'responsive design', 'React', 'Next.js', 'Hrvatska', 'Zagreb', 'digitalna rješenja', 'web shop', 'održavanje web stranica']
       : ['web development', 'website creation', 'web design', 'SEO optimization', 'web applications', 'e-commerce', 'cloud hosting', 'UI/UX design', 'responsive design', 'React', 'Next.js', 'Croatia', 'Zagreb', 'digital solutions', 'web shop', 'website maintenance'],
@@ -64,8 +64,8 @@ export async function generateMetadata({
     },
     openGraph: {
       title: isHr
-        ? "FRACTALBYTE - Web Razvoj & Digitalna Rješenja"
-        : "FRACTALBYTE - Web Development & Digital Solutions",
+        ? "FRACTALBYTE - Web razvoj & Digitalna rješenja"
+        : "FRACTALBYTE - Web development & Digital solutions",
       description: isHr
         ? "Profesionalni web razvoj, dizajn i SEO usluge u Hrvatskoj"
         : "Professional web development, design, and SEO services in Croatia",
@@ -86,8 +86,8 @@ export async function generateMetadata({
     twitter: {
       card: 'summary_large_image',
       title: isHr
-        ? "FRACTALBYTE - Web Razvoj & Digitalna Rješenja"
-        : "FRACTALBYTE - Web Development & Digital Solutions",
+        ? "FRACTALBYTE - Web razvoj & Digitalna rješenja"
+        : "FRACTALBYTE - Web development & Digital solutions",
       description: isHr
         ? "Profesionalni web razvoj, dizajn i SEO usluge u Hrvatskoj"
         : "Professional web development, design, and SEO services in Croatia",
@@ -128,6 +128,7 @@ export default async function LocaleLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="5af9bfe9-7c73-4477-a4bd-75464ad35b58" data-blockingmode="auto" type="text/javascript"></script>
       </head>
       <body>
         {gaId && (
