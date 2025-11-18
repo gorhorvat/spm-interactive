@@ -12,18 +12,20 @@ A modern, high-performant multilingual website built with Next.js, React, and Ma
 - 🌐 English routes with /en prefix (/en, /en/about-us, /en/services, /en/faq, /en/contact)
 - 🎯 Comprehensive SEO with meta tags, OpenGraph, and Twitter cards
 - 💼 Professional services showcase with expandable details
-- 📦 Pricing packages with feature comparison
+- 📦 Pricing packages with feature comparison and icons
 - 🗺️ Interactive grid for development process steps
-- 📧 Contact form with email integration
+- 📧 Contact form with email integration and notifications
 - ❓ FAQ section with accordions
 - 📊 Animated statistics counter
 - 🔍 Structured data for search engines
 - 🏠 Home page with content summaries and "Learn More" links
 - 🚩 Language selector with country flag icons
+- ⏳ Loading spinners with instant navigation feedback
+- 🔗 Social media integration (LinkedIn, Instagram, Facebook)
 
 ## Tech Stack
 
-- **Framework**: Next.js 14.1.0 (App Router)
+- **Framework**: Next.js 16.0.3 (App Router with Turbopack)
 - **UI Library**: Material-UI (MUI) v5
 - **Language**: TypeScript
 - **Styling**: Emotion CSS-in-JS
@@ -84,6 +86,7 @@ src/
 │       ├── Counter.tsx         # Animated statistics counter
 │       ├── FAQSection.tsx      # FAQ accordion section
 │       ├── ContactSection.tsx  # Contact form and info
+│       ├── LoadingSpinner.tsx  # Loading spinner component
 │       └── Footer.tsx          # Footer with social links
 ├── lib/
 │   └── metadata.ts             # SEO metadata helper functions
@@ -94,7 +97,7 @@ src/
 ├── utils/
 │   └── iconMapper.tsx          # Icon component mapper utility
 ├── i18n.ts                     # next-intl configuration
-└── middleware.ts               # URL rewriting for Croatian routes
+└── proxy.ts                    # URL rewriting for Croatian routes (Next.js 16)
 ```
 
 ## Color Palette

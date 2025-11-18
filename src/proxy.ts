@@ -8,7 +8,7 @@ const routeMap: Record<string, string> = {
   '/kontakt': '/contact',
 };
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Skip API routes, Next.js internals, and static files
