@@ -1,20 +1,23 @@
 'use client';
 
-import { AppBar, Toolbar, Container, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Select, MenuItem } from '@mui/material';
+import { AppBar, Toolbar, Container, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Select, MenuItem, CircularProgress, Backdrop } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useState, useTransition } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { colors } from '@/constants/colors';
 
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
   const { language, toggleLanguage, translations } = useLanguage();
   const pathname = usePathname();
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -48,9 +51,16 @@ export default function Navigation() {
     { label: translations('contact'), path: '/en/contact', id: 'contact' },
   ];
 
-  const handleNavClick = (item: typeof navItems[0]) => {
+  const handleNavClick = (item: typeof navItems[0], e?: React.MouseEvent) => {
     if (isHomepage && item.path === (language === 'hr' ? '/' : '/en')) {
       scrollToSection(item.id);
+    } else {
+      e?.preventDefault();
+      setIsNavigating(true);
+      setMobileOpen(false);
+      startTransition(() => {
+        router.push(item.path);
+      });
     }
   };
 
@@ -60,10 +70,9 @@ export default function Navigation() {
         {navItems.map((item) => (
           <ListItem key={item.id} disablePadding>
             <ListItemButton 
-              component={Link}
-              href={item.path}
+              component="div"
               sx={{ textAlign: 'center' }}
-              onClick={() => handleNavClick(item)}
+              onClick={(e) => handleNavClick(item, e)}
             >
               <ListItemText primary={item.label} sx={{ color: colors.textPrimary }} />
             </ListItemButton>
@@ -159,41 +168,37 @@ export default function Navigation() {
             {/* Desktop Navigation */}
             <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
               {navItems.map((item) => (
-                <Link
+                <Box
                   key={item.id}
-                  href={item.path}
-                  onClick={() => handleNavClick(item)}
-                  style={{ textDecoration: 'none' }}
+                  component="div"
+                  onClick={(e) => handleNavClick(item, e)}
+                  sx={{ 
+                    color: pathname === item.path ? colors.primary : colors.textPrimary,
+                    '&:hover': { color: colors.primary },
+                    fontWeight: pathname === item.path ? 600 : 500,
+                    fontSize: '0.875rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    px: 2,
+                    py: 1,
+                    borderRadius: 1,
+                    transition: 'all 0.2s ease',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    '&::after': pathname === item.path ? {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: 0,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: '70%',
+                      height: '2px',
+                      bgcolor: colors.primary,
+                    } : {},
+                  }}
                 >
-                  <Box
-                    sx={{ 
-                      color: pathname === item.path ? colors.primary : colors.textPrimary,
-                      '&:hover': { color: colors.primary },
-                      fontWeight: pathname === item.path ? 600 : 500,
-                      fontSize: '0.875rem',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.5px',
-                      px: 2,
-                      py: 1,
-                      borderRadius: 1,
-                      transition: 'all 0.2s ease',
-                      cursor: 'pointer',
-                      position: 'relative',
-                      '&::after': pathname === item.path ? {
-                        content: '""',
-                        position: 'absolute',
-                        bottom: 0,
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        width: '70%',
-                        height: '2px',
-                        bgcolor: colors.primary,
-                      } : {},
-                    }}
-                  >
-                    {item.label}
-                  </Box>
-                </Link>
+                  {item.label}
+                </Box>
               ))}
               <Box sx={{ ml: 2, display: 'flex', gap: 2, alignItems: 'center' }}>
                 <Link href="mailto:info@fractalbyte.studio" style={{ textDecoration: 'none' }}>
@@ -308,6 +313,27 @@ export default function Navigation() {
       >
         {drawer}
       </Drawer>
+
+      {/* Loading Overlay */}
+      <Backdrop
+        open={isNavigating || isPending}
+        sx={{
+          color: colors.primary,
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+          bgcolor: 'rgba(4, 4, 4, 0.9)',
+        }}
+      >
+        <CircularProgress
+          size={60}
+          thickness={4}
+          sx={{
+            color: colors.primary,
+            '& .MuiCircularProgress-circle': {
+              strokeLinecap: 'round',
+            },
+          }}
+        />
+      </Backdrop>
     </>
   );
 }
