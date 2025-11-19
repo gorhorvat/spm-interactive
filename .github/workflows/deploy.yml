@@ -1,0 +1,39 @@
+name: Deploy to Namecheap
+
+on:
+  push:
+    branches:
+      - main  # Deploy on push to main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/goranhorvat_ssh_key
+          chmod 600 ~/.ssh/goranhorvat_ssh_key
+          ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      
+      - name: Deploy via SSH
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+        run: |
+          ssh -i ~/.ssh/goranhorvat_ssh_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
+          cd ~/fractalbyte.studio/fractalbyte_website
+          git fetch --prune
+          git reset --hard origin/main
+          git clean -fd
+          npm install
+          npm run build
+          pm2 restart ecosystem.config.js --env production
+          pm2 save
+          EOF
