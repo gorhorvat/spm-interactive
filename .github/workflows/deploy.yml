@@ -32,23 +32,27 @@ jobs:
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           nvm use 20
 
+          npm install -g pm2
+
           cd ~/fractalbyte.studio/fractalbyte-website
 
-          git fetch --prune
-          git reset --hard origin/main
-          git clean -fd
-
-          # Make sure your SMTP vars are picked up by Next.js at build/start
+          # Make sure your SMTP vars available during build and runtime
           export SMTP_HOST="$SMTP_HOST"
           export SMTP_PORT="$SMTP_PORT"
           export SMTP_USER="$SMTP_USER"
           export SMTP_PASSWORD="$SMTP_PASSWORD"
           export SMTP_FROM="$SMTP_FROM"
 
+          # Set memory limit to avoid killed npm install/build
+          export NODE_OPTIONS="--max_old_space_size=256"
+
+          git fetch --prune
+          git reset --hard origin/main
+          git clean -fd
+
           npm install
           npm run build
 
-          # Start or restart with PM2
           pm2 start npm --name "fractalbyte-website" -- run start || pm2 restart "fractalbyte-website"
           pm2 save
           EOF
