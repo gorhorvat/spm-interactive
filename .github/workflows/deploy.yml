@@ -15,8 +15,8 @@ jobs:
       - name: Install SSH Key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/goranhorvat_ssh_key
-          chmod 600 ~/.ssh/goranhorvat_ssh_key
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_dsa
+          chmod 600 ~/.ssh/id_dsa
           ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       
       - name: Deploy via SSH
@@ -27,7 +27,7 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           SMTP_FROM: ${{ secrets.SMTP_FROM }}
         run: |
-          ssh -i ~/.ssh/goranhorvat_ssh_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
+          ssh -i ~/.ssh/id_dsa -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
           cd ~/fractalbyte.studio/fractalbyte_website
           git fetch --prune
           git reset --hard origin/main
