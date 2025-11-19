@@ -28,6 +28,7 @@ jobs:
           SMTP_FROM: ${{ secrets.SMTP_FROM }}
         run: |
           ssh -i ~/.ssh/id_dsa -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
+          export PATH=$PATH:~/.nvm/versions/node/v18.20.8/bin
           cd ~/fractalbyte.studio/fractalbyte-website
           git fetch --prune
           git reset --hard origin/main
