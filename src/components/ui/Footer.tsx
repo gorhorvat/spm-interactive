@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Container, Typography, IconButton, Grid, Divider } from '@mui/material';
+import { Box, Container, Typography, IconButton, Grid, Divider, Link } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -11,8 +11,8 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { colors } from '@/constants/colors';
 
 export default function Footer() {
-  const { translations } = useLanguage();
-  
+  const { translations, language } = useLanguage();
+
   return (
     <Box
       component="footer"
@@ -53,13 +53,13 @@ export default function Footer() {
                 flexItem 
                 sx={{ 
                   borderColor: colors.primary,
-                  height: 80,
+                  height: 100,
                   alignSelf: 'center',
                   mx: 2,
                 }} 
               />
               
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, pl: 1 }}>              
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, pl: 1 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <EmailIcon sx={{ color: colors.primary, fontSize: 20 }} />
                   <Typography
@@ -75,7 +75,7 @@ export default function Footer() {
                     info@fractalbyte.studio
                   </Typography>
                 </Box>
-                
+
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <PhoneIcon sx={{ color: colors.primary, fontSize: 20 }} />
                   <Typography
@@ -91,6 +91,53 @@ export default function Footer() {
                     +385 99 844 6978
                   </Typography>
                 </Box>
+              </Box>
+
+              <Divider
+                orientation="vertical"
+                flexItem
+                sx={{
+                  borderColor: colors.primary,
+                  height: 100,
+                  alignSelf: 'center',
+                  mx: 2,
+                }}
+              />
+
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, pl: 1 }}>
+                <Typography
+                  sx={{
+                    color: colors.textSecondary,
+                    fontSize: '0.9rem',
+                    fontWeight: 500,
+                  }}
+                >
+                  {translations('companyName')}
+                </Typography>
+                <Typography
+                  sx={{
+                    color: colors.textSecondary,
+                    fontSize: '0.85rem',
+                  }}
+                >
+                  {translations('companyAddress')}
+                </Typography>
+                <Typography
+                  sx={{
+                    color: colors.textSecondary,
+                    fontSize: '0.85rem',
+                  }}
+                >
+                  {translations('companyCity')}
+                </Typography>
+                <Typography
+                  sx={{
+                    color: colors.textSecondary,
+                    fontSize: '0.85rem',
+                  }}
+                >
+                  {translations('companyOIB')}
+                </Typography>
               </Box>
             </Box>
 
@@ -140,16 +187,33 @@ export default function Footer() {
               </IconButton>
             </Box>
 
-            <Typography
-              variant="body2"
-              sx={{
-                color: colors.textTertiary,
-                fontSize: '0.9rem',
-                textAlign: 'center',
-              }}
-            >
-              © {new Date().getFullYear()} FRACTALBYTE. {translations('allRightsReserved')}.
-            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
+              <Link
+                href={language === 'hr' ? '/politika-privatnosti' : '/en/privacy-policy'}
+                sx={{
+                  color: colors.textSecondary,
+                  fontSize: '0.9rem',
+                  textDecoration: 'none',
+                  '&:hover': {
+                    color: colors.primary,
+                    textDecoration: 'underline',
+                  },
+                }}
+              >
+                {translations('privacyPolicy')}
+              </Link>
+
+              <Typography
+                variant="body2"
+                sx={{
+                  color: colors.textTertiary,
+                  fontSize: '0.9rem',
+                  textAlign: 'center',
+                }}
+              >
+                © {new Date().getFullYear()} FRACTALBYTE. {translations('allRightsReserved')}.
+              </Typography>
+            </Box>
           </Grid>
         </Grid>
       </Container>

@@ -10,7 +10,7 @@ const COOKIE_CONSENT_KEY = 'fractalbyte-cookie-consent';
 
 export default function CookieConsent() {
   const [open, setOpen] = useState(false);
-  const { translations } = useLanguage();
+  const { translations, language } = useLanguage();
 
   useEffect(() => {
     // Check if user has already made a choice
@@ -93,6 +93,20 @@ export default function CookieConsent() {
             >
               {translations('cookieConsentMessage')}
             </Typography>
+            <Link
+              href={language === 'hr' ? '/politika-privatnosti' : '/en/privacy-policy'}
+              sx={{
+                color: colors.primary,
+                fontSize: { xs: '0.85rem', sm: '0.9rem' },
+                textDecoration: 'none',
+                '&:hover': {
+                  textDecoration: 'underline',
+                  color: colors.primaryLight,
+                },
+              }}
+            >
+              {translations('cookieLearnMore')}
+            </Link>
           </Box>
         </Box>
 

@@ -36,6 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/politika-privatnosti`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
     // English routes (with /en prefix)
     {
       url: `${baseUrl}/en`,
@@ -66,6 +72,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/en/privacy-policy`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.5,
     },
   ];
 }

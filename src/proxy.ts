@@ -6,6 +6,7 @@ const routeMap: Record<string, string> = {
   '/usluge': '/services',
   '/cesta-pitanja': '/faq',
   '/kontakt': '/contact',
+  '/politika-privatnosti': '/privacy-policy',
 };
 
 export function proxy(request: NextRequest) {
