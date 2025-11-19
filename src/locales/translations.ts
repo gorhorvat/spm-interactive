@@ -155,6 +155,10 @@ export const translations = {
     packageEnterprise: 'Enterprise',
     packageCustom: 'Custom',
     contactUs: 'Contact us',
+    // Cookie Consent
+    cookieConsentMessage: 'We use cookies to enhance your browsing experience and analyze our traffic. By clicking "Accept", you consent to our use of cookies.',
+    cookieAccept: 'Accept',
+    cookieDecline: 'Decline',
   },
   hr: {
     home: 'Početna',
@@ -312,5 +316,9 @@ export const translations = {
     packageEnterprise: 'Enterprise',
     packageCustom: 'Custom',
     contactUs: 'Kontaktirajte nas',
+    // Cookie Consent
+    cookieConsentMessage: 'Koristimo kolačiće kako bismo poboljšali vaše iskustvo pregledavanja i analizirali naš promet. Klikom na "Prihvati" pristajete na našu upotrebu kolačića.',
+    cookieAccept: 'Prihvati',
+    cookieDecline: 'Odbij',
   },
 };

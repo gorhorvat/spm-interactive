@@ -5,6 +5,7 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import ThemeRegistry from "@/components/system/ThemeRegistry";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import CookieConsent from "@/components/ui/CookieConsent";
 import { locales } from '@/i18n';
 import "../globals.css";
 import { colors } from "@/constants/colors";
@@ -131,7 +132,6 @@ export default async function LocaleLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-        <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="5af9bfe9-7c73-4477-a4bd-75464ad35b58" data-blockingmode="auto" type="text/javascript"></script>
       </head>
       <body>
         {gaId && (
@@ -154,6 +154,7 @@ export default async function LocaleLayout({
           <LanguageProvider>
             <ThemeRegistry>
               {children}
+              <CookieConsent />
             </ThemeRegistry>
           </LanguageProvider>
         </NextIntlClientProvider>
