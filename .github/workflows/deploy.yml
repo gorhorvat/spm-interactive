@@ -30,7 +30,7 @@ jobs:
           ssh -i ~/.ssh/id_dsa -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
           export NVM_DIR="$HOME/.nvm"
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          nvm use 18
+          nvm use 20
 
           cd ~/fractalbyte.studio/fractalbyte-website
 
