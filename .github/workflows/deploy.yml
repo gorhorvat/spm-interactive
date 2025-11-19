@@ -6,11 +6,31 @@ on:
       - main
 
 jobs:
-  deploy:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+
+      - name: Archive artifacts (build + node_modules)
+        run: |
+          tar -czf deploy-package.tar.gz .next node_modules package.json package-lock.json ecosystem.config.js
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: deploy-package
+          path: deploy-package.tar.gz
 
       - name: Install SSH Key
         run: |
@@ -18,6 +38,11 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_dsa
           chmod 600 ~/.ssh/id_dsa
           ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Download artifact and deploy
+        run: |
+          mkdir deploy
+          unzip -o deploy-package.tar.gz -d ./deploy
 
       - name: Deploy via SSH
         env:
@@ -27,6 +52,8 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           SMTP_FROM: ${{ secrets.SMTP_FROM }}
         run: |
+          scp -P ${{ secrets.SSH_PORT }} deploy/deploy-package.tar.gz ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/fractalbyte.studio/fractalbyte-website/
+
           ssh -i ~/.ssh/id_dsa -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
           export NVM_DIR="$HOME/.nvm"
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -36,23 +63,19 @@ jobs:
 
           cd ~/fractalbyte.studio/fractalbyte-website
 
-          # Make sure your SMTP vars available during build and runtime
+          # Remove old files, extract new build + node_modules
+          rm -rf .next node_modules package.json package-lock.json ecosystem.config.js
+          tar -xzf deploy-package.tar.gz
+          rm deploy-package.tar.gz
+
+          # Export SMTP env vars
           export SMTP_HOST="$SMTP_HOST"
           export SMTP_PORT="$SMTP_PORT"
           export SMTP_USER="$SMTP_USER"
           export SMTP_PASSWORD="$SMTP_PASSWORD"
           export SMTP_FROM="$SMTP_FROM"
 
-          # Set memory limit to avoid killed npm install/build
-          export NODE_OPTIONS="--max_old_space_size=512"
-
-          git fetch --prune
-          git reset --hard origin/main
-          git clean -fd
-
-          npm install
-          npm run build
-
+          # Start or restart app without build
           pm2 start npm --name "fractalbyte-website" -- run start || pm2 restart "fractalbyte-website"
           pm2 save
           EOF
