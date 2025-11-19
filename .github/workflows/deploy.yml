@@ -17,20 +17,24 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Cache node_modules and Next.js cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            .next/cache
+          key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+
       - name: Install dependencies and build
         run: |
           npm install
           npm run build
 
-      - name: Archive artifacts (build + node_modules)
+      - name: Archive build and dependencies
         run: |
           tar -czf deploy-package.tar.gz .next node_modules package.json package-lock.json ecosystem.config.js
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: deploy-package
-          path: deploy-package.tar.gz
 
       - name: Install SSH Key
         run: |
@@ -39,12 +43,7 @@ jobs:
           chmod 600 ~/.ssh/id_dsa
           ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Download artifact and deploy
-        run: |
-          mkdir deploy
-          unzip -o deploy-package.tar.gz -d ./deploy
-
-      - name: Deploy via SSH
+      - name: Copy artifact to server and deploy
         env:
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
@@ -52,30 +51,27 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           SMTP_FROM: ${{ secrets.SMTP_FROM }}
         run: |
-          scp -P ${{ secrets.SSH_PORT }} deploy/deploy-package.tar.gz ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/fractalbyte.studio/fractalbyte-website/
+          scp -P ${{ secrets.SSH_PORT }} deploy-package.tar.gz ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/fractalbyte.studio/fractalbyte-website/
 
           ssh -i ~/.ssh/id_dsa -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
           export NVM_DIR="$HOME/.nvm"
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           nvm use 20
-
+          
           npm install -g pm2
 
           cd ~/fractalbyte.studio/fractalbyte-website
 
-          # Remove old files, extract new build + node_modules
           rm -rf .next node_modules package.json package-lock.json ecosystem.config.js
           tar -xzf deploy-package.tar.gz
           rm deploy-package.tar.gz
 
-          # Export SMTP env vars
           export SMTP_HOST="$SMTP_HOST"
           export SMTP_PORT="$SMTP_PORT"
           export SMTP_USER="$SMTP_USER"
           export SMTP_PASSWORD="$SMTP_PASSWORD"
           export SMTP_FROM="$SMTP_FROM"
 
-          # Start or restart app without build
           pm2 start npm --name "fractalbyte-website" -- run start || pm2 restart "fractalbyte-website"
           pm2 save
           EOF
