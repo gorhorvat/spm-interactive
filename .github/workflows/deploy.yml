@@ -3,22 +3,22 @@ name: Deploy to Namecheap
 on:
   push:
     branches:
-      - main  # Deploy on push to main
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Install SSH Key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_dsa
           chmod 600 ~/.ssh/id_dsa
           ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-      
+
       - name: Deploy via SSH
         env:
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
@@ -28,13 +28,27 @@ jobs:
           SMTP_FROM: ${{ secrets.SMTP_FROM }}
         run: |
           ssh -i ~/.ssh/id_dsa -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-          export PATH=$PATH:~/.nvm/versions/node/v18.20.8/bin
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          nvm use 18
+
           cd ~/fractalbyte.studio/fractalbyte-website
+
           git fetch --prune
           git reset --hard origin/main
           git clean -fd
+
+          # Make sure your SMTP vars are picked up by Next.js at build/start
+          export SMTP_HOST="$SMTP_HOST"
+          export SMTP_PORT="$SMTP_PORT"
+          export SMTP_USER="$SMTP_USER"
+          export SMTP_PASSWORD="$SMTP_PASSWORD"
+          export SMTP_FROM="$SMTP_FROM"
+
           npm install
           npm run build
-          pm2 restart ecosystem.config.js --env production
+
+          # Start or restart with PM2
+          pm2 start npm --name "fractalbyte-website" -- run start || pm2 restart "fractalbyte-website"
           pm2 save
           EOF
