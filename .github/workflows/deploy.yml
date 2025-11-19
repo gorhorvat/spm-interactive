@@ -44,7 +44,7 @@ jobs:
           export SMTP_FROM="$SMTP_FROM"
 
           # Set memory limit to avoid killed npm install/build
-          export NODE_OPTIONS="--max_old_space_size=256"
+          export NODE_OPTIONS="--max_old_space_size=128"
 
           git fetch --prune
           git reset --hard origin/main
