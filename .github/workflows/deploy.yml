@@ -79,26 +79,27 @@ jobs:
             exit 2
           fi
 
-          # Clean up previous builds and inode-heavy folders
+          # DO NOT REMOVE *.tar.gz HERE - Remove everything else, but not the tarball!
           rm -rf .next \
-                 node_modules \
-                 package.json \
-                 package-lock.json \
-                 ecosystem.config.js \
-                 .next/cache \
-                 logs \
-                 tmp \
-                 *.bak \
-                 *.tar.gz \
-                 *~ \
-                 .npm/_logs \
-                 old_builds
+                node_modules \
+                package.json \
+                package-lock.json \
+                ecosystem.config.js \
+                .next/cache \
+                logs \
+                tmp \
+                *.bak \
+                *~ \
+                .npm/_logs \
+                old_builds
 
-          # Optionally remove files older than 30 days
           find . -type f -mtime +30 -delete
 
+          # Now extract (the tarball still exists)
           tar -xzf deploy-package.tar.gz
           echo "=== Extraction complete ==="
+
+          # Now remove the archive
           rm -f deploy-package.tar.gz
 
           export SMTP_HOST="$SMTP_HOST"
