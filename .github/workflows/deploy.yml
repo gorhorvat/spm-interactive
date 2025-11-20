@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Cache node_modules and Next.js cache
+      - name: Cache dependencies and Next.js cache
         uses: actions/cache@v3
         with:
           path: |
@@ -51,39 +51,41 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           SMTP_FROM: ${{ secrets.SMTP_FROM }}
         run: |
+          # Upload the build artifact via SCP
           scp -P ${{ secrets.SSH_PORT }} deploy-package.tar.gz ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/fractalbyte.studio/fractalbyte-website/
 
+          # SSH and run the deploy/cleanup script
           ssh -i ~/.ssh/id_dsa -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          nvm use 20
-          
-          npm install -g pm2
+          set -e
 
           cd ~/fractalbyte.studio/fractalbyte-website
 
-          # Remove old builds, dependencies, failed artifacts, backups, temp files, logs, caches
-          rm -rf .next \
-                node_modules \
-                package.json \
-                package-lock.json \
-                ecosystem.config.js \
-                .next/cache \
-                logs \
-                tmp \
-                *.bak \
-                *.tar.gz \
-                *~ \
-                .npm/_logs \
-                old_builds
+          # Check if the deploy artifact exists
+          if [ ! -f deploy-package.tar.gz ]; then
+            echo "ERROR: deploy-package.tar.gz NOT FOUND. Aborting deploy!"
+            exit 1
+          fi
 
-          # Optionally: Remove any files older than 30 days to keep inode usage low
+          # Clean up previous builds and related inode-heavy folders
+          rm -rf .next \
+                 node_modules \
+                 package.json \
+                 package-lock.json \
+                 ecosystem.config.js \
+                 .next/cache \
+                 logs \
+                 tmp \
+                 *.bak \
+                 *.tar.gz \
+                 *~ \
+                 .npm/_logs \
+                 old_builds
+
+          # Optionally remove any files older than 30 days (reduce inode usage)
           find . -type f -mtime +30 -delete
 
-          # Extract the new build artifact
+          # Extract new build artifact
           tar -xzf deploy-package.tar.gz
-
-          # Remove the artifact after successful extraction
           rm -f deploy-package.tar.gz
 
           export SMTP_HOST="$SMTP_HOST"
@@ -91,6 +93,8 @@ jobs:
           export SMTP_USER="$SMTP_USER"
           export SMTP_PASSWORD="$SMTP_PASSWORD"
           export SMTP_FROM="$SMTP_FROM"
+
+          npm install -g pm2
 
           pm2 start npm --name "fractalbyte-website" -- run start || pm2 restart "fractalbyte-website"
           pm2 save
