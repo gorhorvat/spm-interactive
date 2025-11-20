@@ -35,6 +35,14 @@ jobs:
       - name: Archive build and dependencies
         run: |
           tar -czf deploy-package.tar.gz .next node_modules package.json package-lock.json ecosystem.config.js
+          ls -lh deploy-package.tar.gz
+          pwd
+
+      - name: Confirm artifact before upload
+        run: |
+          echo "=== Runner working dir before SCP ==="
+          pwd
+          ls -lh deploy-package.tar.gz
 
       - name: Install SSH Key
         run: |
@@ -51,22 +59,27 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           SMTP_FROM: ${{ secrets.SMTP_FROM }}
         run: |
-          # Upload the build artifact via SCP
+          # Upload the build artifact via SCP and confirm upload
           scp -P ${{ secrets.SSH_PORT }} deploy-package.tar.gz ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/fractalbyte.studio/fractalbyte-website/
+          echo "=== SCP Done ==="
 
-          # SSH and run the deploy/cleanup script
+          # SSH and run the deploy/cleanup script with file checks
           ssh -i ~/.ssh/id_dsa -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
           set -e
 
           cd ~/fractalbyte.studio/fractalbyte-website
 
-          # Check if the deploy artifact exists
+          echo "=== Server dir after SCP ==="
+          pwd
+          ls -lh
+          ls -lh deploy-package.tar.gz
+
           if [ ! -f deploy-package.tar.gz ]; then
-            echo "ERROR: deploy-package.tar.gz NOT FOUND. Aborting deploy!"
-            exit 1
+            echo "ERROR: deploy-package.tar.gz NOT FOUND! Aborting."
+            exit 2
           fi
 
-          # Clean up previous builds and related inode-heavy folders
+          # Clean up previous builds and inode-heavy folders
           rm -rf .next \
                  node_modules \
                  package.json \
@@ -81,11 +94,11 @@ jobs:
                  .npm/_logs \
                  old_builds
 
-          # Optionally remove any files older than 30 days (reduce inode usage)
+          # Optionally remove files older than 30 days
           find . -type f -mtime +30 -delete
 
-          # Extract new build artifact
           tar -xzf deploy-package.tar.gz
+          echo "=== Extraction complete ==="
           rm -f deploy-package.tar.gz
 
           export SMTP_HOST="$SMTP_HOST"
