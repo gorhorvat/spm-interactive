@@ -62,9 +62,29 @@ jobs:
 
           cd ~/fractalbyte.studio/fractalbyte-website
 
-          rm -rf .next node_modules package.json package-lock.json ecosystem.config.js
+          # Remove old builds, dependencies, failed artifacts, backups, temp files, logs, caches
+          rm -rf .next \
+                node_modules \
+                package.json \
+                package-lock.json \
+                ecosystem.config.js \
+                .next/cache \
+                logs \
+                tmp \
+                *.bak \
+                *.tar.gz \
+                *~ \
+                .npm/_logs \
+                old_builds
+
+          # Optionally: Remove any files older than 30 days to keep inode usage low
+          find . -type f -mtime +30 -delete
+
+          # Extract the new build artifact
           tar -xzf deploy-package.tar.gz
-          rm deploy-package.tar.gz
+
+          # Remove the artifact after successful extraction
+          rm -f deploy-package.tar.gz
 
           export SMTP_HOST="$SMTP_HOST"
           export SMTP_PORT="$SMTP_PORT"

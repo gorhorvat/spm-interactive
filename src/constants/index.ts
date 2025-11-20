@@ -73,7 +73,7 @@ export const packages = [
   {
     name: 'Basic',
     displayNameKey: 'packageBasic',
-    priceRange: '150€ - 200€',
+    priceRange: '200€ - 250€',
     icon: 'WebIcon',
     features: [
       'basicFeature1',
@@ -93,7 +93,7 @@ export const packages = [
   {
     name: 'Professional',
     displayNameKey: 'packageProfessional',
-    priceRange: '350€ - 500€',
+    priceRange: '400€ - 600€',
     icon: 'BusinessCenterIcon',
     features: [
       'professionalFeature1',
@@ -117,7 +117,7 @@ export const packages = [
   {
     name: 'Enterprise',
     displayNameKey: 'packageEnterprise',
-    priceRange: '700€ - 1000€',
+    priceRange: '800€ - 1200€',
     icon: 'ApartmentIcon',
     features: [
       'enterpriseFeature1',
