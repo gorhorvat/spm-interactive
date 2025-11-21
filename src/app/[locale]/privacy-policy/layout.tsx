@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 
+// Enable ISR with revalidation every 24 hours
+export const revalidate = 86400; // 24 hours in seconds
+
 export async function generateMetadata({
   params,
 }: {

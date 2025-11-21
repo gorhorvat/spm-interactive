@@ -201,7 +201,18 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 - Structured data for search engines
 
 ### Performance Optimizations
-- Server-side rendering (SSR) with Next.js App Router
+- **Incremental Static Regeneration (ISR)** with 24-hour revalidation
+  - All layouts configured with `export const revalidate = 86400` (24 hours)
+  - Reduces server CPU usage by serving cached static pages
+  - Automatically regenerates pages every 24 hours
+  - Provides near-instant page loads for users
+  - Significantly reduces server load compared to pure SSR
+  - **Note**: Pages show as dynamic (ƒ) in build output because they use client components (`'use client'`), but ISR still applies at the layout level
+- **On-Demand Revalidation API** at `/api/revalidate`
+  - Allows manual cache invalidation when content changes
+  - Supports revalidating specific paths, tags, or all pages
+  - Secured with `REVALIDATE_SECRET` environment variable
+  - Usage: `POST /api/revalidate` with `{ secret, path?, tag? }`
 - Static page generation for optimal performance
 - Optimized images with Next.js Image component
 - Code splitting and lazy loading
@@ -241,6 +252,64 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 - **CSS Reduction**: 96% (removed 425 lines of unused CSS)
 - **Build Time**: ~3-4 seconds with Turbopack
 - **Bundle Size**: Optimized with code splitting
+
+## API Routes
+
+### On-Demand Revalidation API
+
+The website includes an API endpoint for manually revalidating cached pages when content changes.
+
+**Endpoint**: `POST /api/revalidate`
+
+**Authentication**: Requires `REVALIDATE_SECRET` environment variable
+
+**Request Body**:
+```json
+{
+  "secret": "your-secret-token",
+  "path": "/specific/path",  // Optional: revalidate specific path
+  "tag": "tag-name"          // Optional: revalidate by tag
+}
+```
+
+**Examples**:
+
+1. **Revalidate all pages**:
+```bash
+curl -X POST https://fractalbyte.com/api/revalidate \
+  -H "Content-Type: application/json" \
+  -d '{"secret":"your-secret-token"}'
+```
+
+2. **Revalidate specific path**:
+```bash
+curl -X POST https://fractalbyte.com/api/revalidate \
+  -H "Content-Type: application/json" \
+  -d '{"secret":"your-secret-token","path":"/en/services/web-development"}'
+```
+
+3. **Revalidate by tag**:
+```bash
+curl -X POST https://fractalbyte.com/api/revalidate \
+  -H "Content-Type: application/json" \
+  -d '{"secret":"your-secret-token","tag":"services"}'
+```
+
+**Response**:
+```json
+{
+  "revalidated": true,
+  "type": "all",
+  "count": 38,
+  "now": 1234567890
+}
+```
+
+**Use Cases**:
+- After updating service information in the database
+- After changing pricing or package details
+- After modifying translations
+- When you need immediate cache refresh instead of waiting for the 24-hour revalidation
 
 ## License
 

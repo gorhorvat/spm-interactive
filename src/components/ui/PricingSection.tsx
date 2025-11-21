@@ -86,166 +86,166 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
         >
           {packages.map((pkg, index) => {
             const PackageIcon = pkg.icon ? iconMap[pkg.icon] : null;
-            
+
             return (
-            <Paper
-              key={index}
-              elevation={0}
-              sx={{
-                bgcolor: pkg.highlight ? colors.backgroundPaper : colors.background,
-                border: pkg.highlight ? `2px solid ${colors.primary}` : `1px solid ${colors.borderLight}`,
-                borderRadius: 0,
-                p: 3,
-                display: 'flex',
-                flexDirection: 'column',
-                position: 'relative',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  borderColor: colors.primary,
-                  transform: 'translateY(-4px)',
-                },
-              }}
-            >
-              {PackageIcon && (
+              <Paper
+                key={index}
+                elevation={0}
+                sx={{
+                  bgcolor: pkg.highlight ? colors.backgroundPaper : colors.background,
+                  border: pkg.highlight ? `2px solid ${colors.primary}` : `1px solid ${colors.borderLight}`,
+                  borderRadius: 0,
+                  p: 3,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  position: 'relative',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    borderColor: colors.primary,
+                    transform: 'translateY(-4px)',
+                  },
+                }}
+              >
+                {PackageIcon && (
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      mb: 2,
+                    }}
+                  >
+                    <PackageIcon
+                      sx={{
+                        fontSize: 48,
+                        color: colors.primary,
+                      }}
+                    />
+                  </Box>
+                )}
+
                 <Box
                   sx={{
                     display: 'flex',
                     justifyContent: 'center',
-                    mb: 2,
+                    mb: 1,
                   }}
                 >
-                  <PackageIcon
+                  <Chip
+                    label={translations(pkg.displayNameKey)}
                     sx={{
-                      fontSize: 48,
-                      color: colors.primary,
+                      bgcolor: 'transparent',
+                      border: `2px solid ${getTierColor(pkg.tier)}`,
+                      borderRadius: 0,
+                      color: getTierColor(pkg.tier),
+                      fontWeight: 700,
+                      fontSize: '1.1rem',
+                      height: 'auto',
+                      py: 1,
+                      px: 2,
+                      '& .MuiChip-label': {
+                        px: 1,
+                      },
                     }}
                   />
                 </Box>
-              )}
 
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  mb: 1,
-                }}
-              >
-                <Chip
-                  label={translations(pkg.displayNameKey)}
+                <Box
                   sx={{
-                    bgcolor: 'transparent',
-                    border: `2px solid ${getTierColor(pkg.tier)}`,
-                    borderRadius: 0,
-                    color: getTierColor(pkg.tier),
-                    fontWeight: 700,
-                    fontSize: '1.1rem',
-                    height: 'auto',
-                    py: 1,
-                    px: 2,
-                    '& .MuiChip-label': {
-                      px: 1,
-                    },
-                  }}
-                />
-              </Box>
-
-              <Box
-                sx={{
-                  minHeight: { xs: '48px', md: '52px' },
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  mb: 2,
-                }}
-              >
-                {pkg.descriptionKey && (
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      textAlign: 'center',
-                      color: colors.textSecondary,
-                      fontStyle: 'italic',
-                      fontSize: { xs: '0.875rem', md: '0.95rem' },
-                    }}
-                  >
-                    {translations(pkg.descriptionKey)}
-                  </Typography>
-                )}
-              </Box>
-
-              <Box
-                sx={{
-                  minHeight: { xs: '60px', md: '70px' },
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  mb: 3,
-                }}
-              >
-                <Typography
-                  variant="h4"
-                  sx={{
-                    textAlign: 'center',
-                    fontWeight: 700,
-                    color: colors.primary,
-                    fontSize: { xs: '1.75rem', md: '2rem' },
+                    minHeight: { xs: '48px', md: '52px' },
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    mb: 2,
                   }}
                 >
-                  {translations(pkg.priceRangeKey)}
-                </Typography>
-              </Box>
-
-              <Box sx={{ flex: 1, mb: 3 }}>
-                {pkg.features.map((feature, fIndex) => (
-                  <Box
-                    key={fIndex}
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: 1,
-                      mb: 1.5,
-                    }}
-                  >
-                    <CheckIcon
-                      sx={{
-                        color: colors.primary,
-                        fontSize: 20,
-                        mt: 0.25,
-                        flexShrink: 0,
-                      }}
-                    />
+                  {pkg.descriptionKey && (
                     <Typography
                       variant="body2"
                       sx={{
+                        textAlign: 'center',
                         color: colors.textSecondary,
-                        fontSize: '0.85rem',
-                        lineHeight: 1.5,
+                        fontStyle: 'italic',
+                        fontSize: { xs: '0.875rem', md: '0.95rem' },
                       }}
                     >
-                      {translations(feature)}
+                      {translations(pkg.descriptionKey)}
                     </Typography>
-                  </Box>
-                ))}
-              </Box>              <MuiLink
-                href={language === 'hr' ? '/kontakt' : '/en/contact'}
-                onClick={(e) => {
-                  e.preventDefault();
-                  onServiceSelect(pkg.name);
-                }}
-                sx={{
-                  display: 'block',
-                  width: '100%',
-                  py: 1.5,
-                  px: 2,
-                  fontSize: '0.9rem',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  textDecoration: 'none',
-                  textAlign: 'center',
-                  borderRadius: 0,
-                  transition: 'all 0.3s ease',
-                  ...(pkg.highlight
-                    ? {
+                  )}
+                </Box>
+
+                <Box
+                  sx={{
+                    minHeight: { xs: '60px', md: '70px' },
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    mb: 3,
+                  }}
+                >
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      textAlign: 'center',
+                      fontWeight: 700,
+                      color: colors.primary,
+                      fontSize: { xs: '1.75rem', md: '2rem' },
+                    }}
+                  >
+                    {translations(pkg.priceRangeKey)}
+                  </Typography>
+                </Box>
+
+                <Box sx={{ flex: 1, mb: 3 }}>
+                  {pkg.features.map((feature, fIndex) => (
+                    <Box
+                      key={fIndex}
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: 1,
+                        mb: 1.5,
+                      }}
+                    >
+                      <CheckIcon
+                        sx={{
+                          color: colors.primary,
+                          fontSize: 20,
+                          mt: 0.25,
+                          flexShrink: 0,
+                        }}
+                      />
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: colors.textSecondary,
+                          fontSize: '0.85rem',
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        {translations(feature)}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>              <MuiLink
+                  href={language === 'hr' ? '/kontakt' : '/en/contact'}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onServiceSelect(pkg.name);
+                  }}
+                  sx={{
+                    display: 'block',
+                    width: '100%',
+                    py: 1.5,
+                    px: 2,
+                    fontSize: '0.9rem',
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    textAlign: 'center',
+                    borderRadius: 0,
+                    transition: 'all 0.3s ease',
+                    ...(pkg.highlight
+                      ? {
                         bgcolor: colors.primary,
                         color: colors.textPrimary,
                         '&:hover': {
@@ -254,7 +254,7 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
                           boxShadow: `0 8px 24px ${colors.shadowPrimary}`,
                         },
                       }
-                    : {
+                      : {
                         border: `1px solid ${colors.primary}`,
                         color: colors.primary,
                         '&:hover': {
@@ -265,11 +265,11 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
                           boxShadow: `0 4px 12px ${colors.shadowPrimary}`,
                         },
                       }),
-                }}
-              >
-                {translations('requestOffer')}
-              </MuiLink>
-            </Paper>
+                  }}
+                >
+                  {translations('requestOffer')}
+                </MuiLink>
+              </Paper>
             );
           })}
         </Box>

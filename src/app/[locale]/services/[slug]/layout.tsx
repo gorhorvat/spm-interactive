@@ -2,6 +2,9 @@ import { Metadata } from 'next';
 import { services } from '@/constants';
 import { getTranslation } from '@/utils/serverTranslations';
 
+// Enable ISR with revalidation every 24 hours
+export const revalidate = 86400; // 24 hours in seconds
+
 interface ServiceLayoutProps {
   children: React.ReactNode;
   params: Promise<{

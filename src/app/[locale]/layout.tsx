@@ -10,6 +10,9 @@ import { locales } from '@/i18n';
 import "../globals.css";
 import { colors } from "@/constants/colors";
 
+// Enable ISR with revalidation every 24 hours for all pages
+export const revalidate = 86400; // 24 hours in seconds
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,

@@ -123,8 +123,8 @@ export const translations = {
     serviceMigrationDesc: 'Seamless migration from outdated platforms (WordPress, Joomla, legacy systems) to modern frameworks like Next.js, React, or Nuxt.js.',
     serviceMigrationExpanded: 'We specialize in migrating websites and applications from legacy platforms to modern, high-performance frameworks. Our migration services include: compatibility and migration assessment, content and data migration planning, legacy system modernization and refactoring, SEO preservation during migration, zero-downtime deployment strategies, post-migration testing and validation, and comprehensive documentation. Whether you\'re moving from WordPress, Joomla, or custom legacy systems, we ensure a smooth transition with minimal disruption.',
     serviceSecurity: 'Web security & compliance services',
-    serviceSecurityDesc: 'Security audits, OWASP/WCAG compliance, vulnerability assessment, and ongoing security monitoring.',
-    serviceSecurityExpanded: 'We provide comprehensive security services to protect your web applications and ensure compliance with industry standards. Our services include: OWASP Top 10 vulnerability assessment, WCAG accessibility compliance audits, SSL/TLS configuration and certificate management, security headers and CSP implementation, regular security updates and patch management, penetration testing coordination, GDPR/CCPA compliance consulting, and ongoing security monitoring. We help you build and maintain secure, compliant web applications that protect your users and your business.',
+    serviceSecurityDesc: 'Security audits, compliances, vulnerability assessment, and ongoing security monitoring.',
+    serviceSecurityExpanded: 'We provide comprehensive security services to protect your web applications and ensure compliance with industry standards. Our services include: vulnerability assessments, SSL/TLS configuration and certificate management, security headers and CSP implementation, regular security updates and patch management, penetration testing coordination, GDPR/CCPA compliance consulting, and ongoing security monitoring. We help you build and maintain secure, compliant web applications that protect your users and your business.',
     serviceMaintenance: 'Maintenance & support plans',
     serviceMaintenanceDesc: 'Structured maintenance and support tiers for post-launch ongoing management. Choose from Essential, Professional, or Premium support.',
     serviceMaintenanceExpanded: 'Our formalized maintenance and support plans provide peace of mind with structured, predictable support for your web applications. We offer three tiers: Essential (monthly framework and dependency updates, quarterly performance reviews, bug fix priority queue, 24/7 uptime monitoring), Professional (all Essential features plus bi-weekly content updates, monthly performance profiling, advanced security monitoring, priority support response), and Premium (all Professional features plus weekly content updates, dedicated account manager, custom feature development hours, proactive optimization recommendations). All plans include regular backups, security updates, and technical support.',
@@ -133,7 +133,7 @@ export const translations = {
     serviceAnalyticsExpanded: 'We help you understand your users and optimize for conversions through comprehensive analytics and testing services. Our offerings include: Google Analytics 4 setup and configuration, custom event tracking and goal setup, conversion funnel analysis and optimization, A/B testing strategy and implementation, heatmap and user behavior analysis, custom dashboard creation, data visualization and reporting, and actionable insights and recommendations. We turn data into decisions that drive growth and improve user experience.',
     service3D: '3D & interactive web experiences',
     service3DDesc: 'Immersive 3D experiences using Three.js, WebGL, and modern animation libraries for engaging user interactions.',
-    service3DExpanded: 'We create stunning, immersive web experiences that captivate users and set your brand apart. Our 3D and interactive services include: Three.js and WebGL development, 3D product visualizations and configurators, interactive animations and transitions, scroll-based storytelling experiences, WebXR and AR experiences, performance-optimized 3D rendering, custom shader development, and responsive 3D design. We combine technical expertise with creative vision to deliver memorable digital experiences that engage and convert.',
+    service3DExpanded: 'We create stunning, immersive web experiences that captivate users and set your brand apart. Our 3D and interactive services include: Three.js and WebGL development, 3D product visualizations and configurators, interactive animations and transitions, WebXR and AR experiences, performance-optimized 3D rendering and responsive 3D design. We combine technical expertise with creative vision to deliver memorable digital experiences that engage and convert.',
     serviceAI: 'AI integration and consultation',
     serviceAIDesc: 'Integrate AI capabilities into your web applications: chatbots, content generation, personalization, and intelligent automation.',
     serviceAIExpanded: 'We help you leverage the power of AI to enhance your web applications and automate processes. Our AI integration services include: custom AI chatbot development and integration, content generation and optimization tools, personalized user experience implementation, intelligent search and recommendation systems, natural language processing integration, computer vision and image analysis, AI-powered analytics and insights, and API integration with leading AI platforms (OpenAI, Anthropic, Google AI). We design AI solutions that are practical, scalable, and aligned with your business goals.',
@@ -143,9 +143,6 @@ export const translations = {
     // Service Pricing & Features
     startingFrom: 'From',
     perMonth: '/month',
-    oneTimePrice: 'One-time',
-    recurringPrice: 'Recurring',
-    contactForPricing: 'Contact for pricing',
     features: 'Features',
     deliverables: 'Deliverables',
     fullSpectrumSolutions: 'Full-spectrum web solutions',
@@ -190,9 +187,9 @@ export const translations = {
     // Pricing Package Descriptions
     essentialPackagePrice: 'From 200€',
     essentialPackageDesc: 'Perfect for startups and small projects',
-    professionalPackagePrice: 'From 400€',
+    professionalPackagePrice: 'From 600€',
     professionalPackageDesc: 'Recommended for growing businesses with ongoing support needs',
-    premiumPackagePrice: 'From 800€',
+    premiumPackagePrice: 'From 1000€',
     premiumPackageDesc: 'Complete solutions with premium features and unlimited support',
     customPackageDesc: 'Specialized services tailored to unique requirements',
     // Process Steps
@@ -217,7 +214,7 @@ export const translations = {
     faqQ5: 'Can you help with SEO?',
     faqA5: 'Yes, we implement SEO best practices in all our projects, including optimized code, fast loading times, proper meta tags, and structured data. We can also provide ongoing SEO services to improve your search rankings.',
     faqQ6: 'What is your pricing structure?',
-    faqA6: 'Our pricing depends on project scope, complexity, and specific requirements. We offer both fixed-price projects and hourly rates. Contact us for a free consultation and personalized quote.',
+    faqA6: 'Our pricing depends on project scope, complexity, and specific requirements. We offer both fixed-price projects. Contact us for a free consultation and personalized quote.',
     faqQ7: 'Do you offer hosting services?',
     faqA7: 'Yes, we can provide hosting solutions or help you deploy to your preferred hosting provider. We work with various cloud platforms including Vercel, AWS, and others to ensure optimal performance.',
     faqQ8: 'Can you redesign my existing website?',
@@ -328,13 +325,13 @@ export const translations = {
     webDevDeliverable1: 'Fully functional website',
     webDevDeliverable2: 'Source code',
     webDevDeliverable3: 'Documentation',
-    webDevDeliverable4: '3 months support',
+    webDevDeliverable4: 'Customer support',
 
     // Service Features - Hosting
-    hostingFeature1: 'Cloud hosting (AWS/Vercel)',
+    hostingFeature1: 'Cloud hosting',
     hostingFeature2: 'SSL certificate',
-    hostingFeature3: 'Daily backups',
-    hostingFeature4: 'CDN integration',
+    hostingFeature3: 'Regular service backups',
+    hostingFeature4: 'Web domain',
     hostingFeature5: '99.9% uptime',
     hostingFeature6: '24/7 monitoring',
 
@@ -389,8 +386,8 @@ export const translations = {
     migrationDeliverable4: 'Post-migration support',
 
     // Service Features - Security
-    securityFeature1: 'OWASP vulnerability assessment',
-    securityFeature2: 'WCAG compliance audit',
+    securityFeature1: 'Vulnerability assessments',
+    securityFeature2: 'Compliance audits',
     securityFeature3: 'SSL/TLS configuration',
     securityFeature4: 'Security headers',
     securityFeature5: 'GDPR/CCPA consulting',
@@ -434,9 +431,8 @@ export const translations = {
     threeDFeature1: 'Three.js & WebGL development',
     threeDFeature2: '3D product visualizations',
     threeDFeature3: 'Interactive animations',
-    threeDFeature4: 'Scroll-based storytelling',
-    threeDFeature5: 'WebXR & AR experiences',
-    threeDFeature6: 'Performance-optimized rendering',
+    threeDFeature4: 'WebXR & AR experiences',
+    threeDFeature5: 'Performance-optimized rendering',
 
     // Service Deliverables - 3D Interactive
     threeDDeliverable1: '3D web experience',
@@ -596,17 +592,17 @@ export const translations = {
     serviceMigrationDesc: 'Besprijekorna migracija sa zastarjelih platformi (WordPress, Joomla, legacy sustavi) na moderne frameworke poput Next.js, React ili Nuxt.js.',
     serviceMigrationExpanded: 'Specijalizirani smo za migraciju web stranica i aplikacija sa legacy platformi na moderne, visoko-performantne frameworke. Naše usluge migracije uključuju: procjenu kompatibilnosti i migracije, planiranje migracije sadržaja i podataka, modernizaciju i refaktoriranje legacy sustava, očuvanje SEO-a tijekom migracije, strategije implementacije bez prekida rada, testiranje i validaciju nakon migracije, te sveobuhvatnu dokumentaciju. Bilo da prelazite s WordPressa, Joomle ili prilagođenih legacy sustava, osiguravamo glatku tranziciju s minimalnim prekidima.',
     serviceSecurity: 'Usluge web sigurnosti i usklađenosti',
-    serviceSecurityDesc: 'Sigurnosne revizije, OWASP/WCAG usklađenost, procjena ranjivosti i kontinuirano praćenje sigurnosti.',
-    serviceSecurityExpanded: 'Pružamo sveobuhvatne sigurnosne usluge za zaštitu vaših web aplikacija i osiguravanje usklađenosti s industrijskim standardima. Naše usluge uključuju: procjenu ranjivosti OWASP Top 10, revizije usklađenosti pristupačnosti WCAG, konfiguraciju SSL/TLS i upravljanje certifikatima, implementaciju sigurnosnih zaglavlja i CSP-a, redovite sigurnosne ažuriranja i upravljanje zakrpama, koordinaciju penetracijskih testiranja, GDPR/CCPA savjetovanje o usklađenosti, te kontinuirano praćenje sigurnosti. Pomažemo vam graditi i održavati sigurne, usklađene web aplikacije koje štite vaše korisnike i vaše poslovanje.',
+    serviceSecurityDesc: 'Sigurnosne revizije, usklađenost s standardima, procjena ranjivosti i kontinuirano praćenje sigurnosti.',
+    serviceSecurityExpanded: 'Pružamo sveobuhvatne sigurnosne usluge za zaštitu vaših web aplikacija i osiguravanje usklađenosti s industrijskim standardima. Naše usluge uključuju: procjenu ranjivosti, konfiguraciju SSL/TLS i upravljanje certifikatima, implementaciju sigurnosnih zaglavlja i CSP-a, redovite sigurnosne ažuriranja i upravljanje zakrpama, koordinaciju penetracijskih testiranja, GDPR/CCPA savjetovanje o usklađenosti, te kontinuirano praćenje sigurnosti. Pomažemo vam graditi i održavati sigurne, usklađene web aplikacije koje štite vaše korisnike i vaše poslovanje.',
     serviceMaintenance: 'Planovi održavanja i podrške',
     serviceMaintenanceDesc: 'Strukturirani nivoi održavanja i podrške za kontinuirano upravljanje nakon lansiranja. Odaberite između Essential, Professional ili Premium podrške.',
-    serviceMaintenanceExpanded: 'Naši formalizirani planovi održavanja i podrške pružaju mir s strukturiranom, predvidljivom podrškom za vaše web aplikacije. Nudimo tri nivoa: Essential (mjesečna ažuriranja frameworka i ovisnosti, kvartalne revizije performansi, prioritetni red za ispravke grešaka, 24/7 praćenje dostupnosti), Professional (sve Essential značajke plus dvotjedna ažuriranja sadržaja, mjesečno profiliranje performansi, napredno praćenje sigurnosti, prioritetni odgovor podrške), i Premium (sve Professional značajke plus tjedna ažuriranja sadržaja, posvećeni account manager, sati razvoja prilagođenih značajki, proaktivne preporuke za optimizaciju). Svi planovi uključuju redovite sigurnosne kopije, sigurnosna ažuriranja i tehničku podršku.',
+    serviceMaintenanceExpanded: 'Naši formalizirani planovi održavanja i podrške osiguravaju strukturiranu, predvidljivu podršku za vaše web aplikacije. Nudimo tri nivoa: Essential (mjesečna ažuriranja frameworka i ovisnosti, standardni red za ispravke grešaka, 24/7 praćenje dostupnosti), Professional (sve Essential značajke plus dvotjedna ažuriranja sadržaja, mjesečno profiliranje performansi, napredno praćenje sigurnosti, prioritetni odgovor podrške), i Premium (sve Professional značajke plus tjedna ažuriranja sadržaja, mogućnost razvoja prilagođenih značajki, proaktivne preporuke za optimizaciju). Svi planovi uključuju redovite sigurnosne kopije, sigurnosna ažuriranja i tehničku podršku.',
     serviceAnalytics: 'Analitika i optimizacija konverzije',
     serviceAnalyticsDesc: 'Napredno postavljanje analitike, praćenje konverzija, A/B testiranje i usluge optimizacije temeljene na podacima.',
     serviceAnalyticsExpanded: 'Pomažemo vam razumjeti vaše korisnike i optimizirati za konverzije kroz sveobuhvatne analitičke i testne usluge. Naša ponuda uključuje: postavljanje i konfiguraciju Google Analytics 4, prilagođeno praćenje događaja i postavljanje ciljeva, analizu i optimizaciju konverzijskog lijevka, strategiju i implementaciju A/B testiranja, analizu heatmap-a i ponašanja korisnika, izradu prilagođenih nadzornih ploča, vizualizaciju podataka i izvješćivanje, te konkretne uvide i preporuke. Pretvaramo podatke u odluke koje pokreću rast i poboljšavaju korisničko iskustvo.',
     service3D: '3D i interaktivna web iskustva',
     service3DDesc: 'Impresivna 3D iskustva koristeći Three.js, WebGL i moderne biblioteke za animaciju za angažirajuće korisničke interakcije.',
-    service3DExpanded: 'Stvaramo zadivljujuća, impresivna web iskustva koja očaravaju korisnike i ističu vašu marku. Naše 3D i interaktivne usluge uključuju: razvoj Three.js i WebGL-a, 3D vizualizacije proizvoda i konfiguratore, interaktivne animacije i prijelaze, iskustva pripovijedanja temeljenog na scrollanju, WebXR i AR iskustva, performansno optimizirano 3D renderiranje, razvoj prilagođenih shadera, i responzivni 3D dizajn. Kombiniramo tehničku stručnost s kreativnom vizijom kako bismo isporučili nezaboravna digitalna iskustva koja angažiraju i konvertiraju.',
+    service3DExpanded: 'Izrađujemo 3D interaktivne web sadržaje koji će privući pažnju i isticati vaš proizvod/uslugu. Naše 3D i interaktivne usluge uključuju: razvoj Three.js i WebGL-a, 3D vizualizacije proizvoda i konfiguratore, interaktivne animacije i prijelaze, WebXR i AR iskustva, performansno optimizirano 3D renderiranje i responzivni 3D dizajn. Kombiniramo tehničku stručnost s kreativnom vizijom kako bismo isporučili nezaboravna digitalna iskustva koja angažiraju i konvertiraju.',
     serviceAI: 'AI integracija i savjetovanje',
     serviceAIDesc: 'Integrirajte AI mogućnosti u vaše web aplikacije: chatbotove, generiranje sadržaja, personalizaciju i inteligentnu automatizaciju.',
     serviceAIExpanded: 'Pomažemo vam iskoristiti moć AI-a za poboljšanje vaših web aplikacija i automatizaciju procesa. Naše usluge AI integracije uključuju: razvoj i integraciju prilagođenih AI chatbotova, alate za generiranje i optimizaciju sadržaja, implementaciju personaliziranog korisničkog iskustva, inteligentne sustave pretraživanja i preporuka, integraciju obrade prirodnog jezika, računalni vid i analizu slika, analitiku i uvide pokretane AI-em, te integraciju API-ja s vodećim AI platformama (OpenAI, Anthropic, Google AI). Dizajniramo AI rješenja koja su praktična, skalabilna i usklađena s vašim poslovnim ciljevima.',
@@ -616,9 +612,6 @@ export const translations = {
     // Service Pricing & Features
     startingFrom: 'Od',
     perMonth: '/mjesec',
-    oneTimePrice: 'Jednokratno',
-    recurringPrice: 'Ponavljajuće',
-    contactForPricing: 'Kontaktirajte za cijenu',
     features: 'Značajke',
     deliverables: 'Rezultati',
     fullSpectrumSolutions: 'Sveobuhvatna web rješenja',
@@ -663,9 +656,9 @@ export const translations = {
     // Pricing Package Descriptions
     essentialPackagePrice: 'Od 200€',
     essentialPackageDesc: 'Savršeno za startupe i male projekte',
-    professionalPackagePrice: 'Od 400€',
+    professionalPackagePrice: 'Od 600€',
     professionalPackageDesc: 'Preporučeno za rastuća poduzeća s potrebama za kontinuiranom podrškom',
-    premiumPackagePrice: 'Od 800€',
+    premiumPackagePrice: 'Od 1000€',
     premiumPackageDesc: 'Kompletna rješenja s premium značajkama i neograničenom podrškom',
     customPackageDesc: 'Specijalizirane usluge prilagođene jedinstvenim zahtjevima',
     // Process Steps
@@ -690,7 +683,7 @@ export const translations = {
     faqQ5: 'Možete li pomoći sa SEO-om?',
     faqA5: 'Da, implementiramo SEO najbolje prakse u svim našim projektima, uključujući optimizirani kod, brza vremena učitavanja, odgovarajuće meta oznake i strukturirane podatke. Također možemo pružiti kontinuirane SEO usluge za poboljšanje vašeg rangiranja u pretraživačima.',
     faqQ6: 'Koja je vaša struktura cijena?',
-    faqA6: 'Naše cijene ovise o opsegu projekta, složenosti i specifičnim zahtjevima. Nudimo i projekte s fiksnom cijenom i satne tarife. Kontaktirajte nas za besplatnu konzultaciju i personaliziranu ponudu.',
+    faqA6: 'Naše cijene ovise o opsegu projekta, složenosti i specifičnim zahtjevima. Nudimo i projekte s fiksnom cijenom. Kontaktirajte nas za besplatnu konzultaciju i personaliziranu ponudu.',
     faqQ7: 'Nudite li hosting usluge?',
     faqA7: 'Da, možemo pružiti hosting rješenja ili pomoći pri implementaciji na vašeg omiljenog hosting pružatelja. Radimo s raznim cloud platformama uključujući Vercel, AWS i druge kako bismo osigurali optimalnu performansu.',
     faqQ8: 'Možete li redizajnirati moju postojeću web stranicu?',
@@ -801,13 +794,13 @@ export const translations = {
     webDevDeliverable1: 'Potpuno funkcionalna web stranica',
     webDevDeliverable2: 'Izvorni kod',
     webDevDeliverable3: 'Dokumentacija',
-    webDevDeliverable4: '3 mjeseca podrške',
+    webDevDeliverable4: 'Korisnička podrška',
 
     // Service Features - Hosting
-    hostingFeature1: 'Cloud hosting (AWS/Vercel)',
+    hostingFeature1: 'Cloud hosting',
     hostingFeature2: 'SSL certifikat',
-    hostingFeature3: 'Dnevne sigurnosne kopije',
-    hostingFeature4: 'CDN integracija',
+    hostingFeature3: 'Česte sigurnosne kopije',
+    hostingFeature4: 'Web domena',
     hostingFeature5: '99.9% dostupnost',
     hostingFeature6: '24/7 nadzor',
 
@@ -832,7 +825,7 @@ export const translations = {
     performanceDeliverable4: 'Vodič za najbolje prakse',
 
     // Service Features - SEO Consulting
-    seoFeature1: 'Sveobuhvatni SEO audit',
+    seoFeature1: 'Sveobuhvatna SEO revizija',
     seoFeature2: 'Istraživanje ključnih riječi i strategija',
     seoFeature3: 'Analiza konkurencije',
     seoFeature4: 'AI optimizacija sadržaja',
@@ -862,8 +855,8 @@ export const translations = {
     migrationDeliverable4: 'Podrška nakon migracije',
 
     // Service Features - Security
-    securityFeature1: 'OWASP procjena ranjivosti',
-    securityFeature2: 'WCAG audit usklađenosti',
+    securityFeature1: 'Procjene ranjivosti',
+    securityFeature2: 'Usklađenost sa standardima',
     securityFeature3: 'SSL/TLS konfiguracija',
     securityFeature4: 'Sigurnosna zaglavlja',
     securityFeature5: 'GDPR/CCPA savjetovanje',
@@ -907,9 +900,8 @@ export const translations = {
     threeDFeature1: 'Three.js i WebGL razvoj',
     threeDFeature2: '3D vizualizacije proizvoda',
     threeDFeature3: 'Interaktivne animacije',
-    threeDFeature4: 'Scroll-based storytelling',
-    threeDFeature5: 'WebXR i AR iskustva',
-    threeDFeature6: 'Optimizirano renderiranje',
+    threeDFeature4: 'WebXR i AR iskustva',
+    threeDFeature5: 'Optimizirano renderiranje',
 
     // Service Deliverables - 3D Interactive
     threeDDeliverable1: '3D web iskustvo',
@@ -926,7 +918,7 @@ export const translations = {
     auditFeature6: 'Usporedba s konkurencijom',
 
     // Service Deliverables - Website Audit
-    auditDeliverable1: 'Sveobuhvatni izvještaj audita',
+    auditDeliverable1: 'Sveobuhvatni izvještaj revizije',
     auditDeliverable2: 'Prioritizirane preporuke',
     auditDeliverable3: 'Plan implementacije',
     auditDeliverable4: 'Konzultacijska sesija',
@@ -940,7 +932,7 @@ export const translations = {
     b2bFeature6: 'Agile metodologije',
 
     // Service Deliverables - B2B Consulting
-    b2bDeliverable1: 'Prilagođeni rezultati prema dogovoru',
+    b2bDeliverable1: 'Prilagođeni rezultati temeljeni na angažmana',
     b2bDeliverable2: 'Redoviti izvještaji o napretku',
     b2bDeliverable3: 'Prijenos znanja',
   },

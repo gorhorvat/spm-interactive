@@ -22,7 +22,6 @@ jobs:
         with:
           path: |
             node_modules
-            .next/cache
           key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-
@@ -61,6 +60,7 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
         run: |
           # Upload the build artifact via SCP and confirm upload
           scp -P ${{ secrets.SSH_PORT }} deploy-package.tar.gz ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/fractalbyte.studio/fractalbyte-website/
@@ -102,6 +102,7 @@ jobs:
           export SMTP_USER="$SMTP_USER"
           export SMTP_PASSWORD="$SMTP_PASSWORD"
           export SMTP_FROM="$SMTP_FROM"
+          export REVALIDATE_SECRET="$REVALIDATE_SECRET"
 
           npm install -g pm2
 

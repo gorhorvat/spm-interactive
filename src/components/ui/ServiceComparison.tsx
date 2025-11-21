@@ -162,16 +162,16 @@ export default function ServiceComparison({ showDescriptions = false }: ServiceC
           overflowX: { xs: 'auto', md: 'hidden' },
         }}
       >
-        <Table sx={{ minWidth: { xs: 650, md: 'auto' }, tableLayout: 'fixed' }}>
+        <Table sx={{ minWidth: { xs: 650, md: 'auto', tableLayout: 'fixed' } }}>
           <colgroup>
-            <col style={{ width: '40%' }} />
+            <col style={{ width: '20%' }} />
             <col style={{ width: '20%' }} />
             <col style={{ width: '20%' }} />
             <col style={{ width: '20%' }} />
           </colgroup>
           <TableHead>
             <TableRow sx={{ bgcolor: colors.hoverPrimary }}>
-              <TableCell sx={{ fontWeight: 700, color: colors.textSecondary, fontSize: '1rem', py: 2 }} />
+              <TableCell />
               <TableCell align="center" sx={{ py: 2 }}>
                 <Chip
                   label="Essential"

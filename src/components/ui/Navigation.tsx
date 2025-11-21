@@ -17,6 +17,7 @@ export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
   const [servicesAnchorEl, setServicesAnchorEl] = useState<null | HTMLElement>(null);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const { language, toggleLanguage, translations } = useLanguage();
   const pathname = usePathname();
   const router = useRouter();
@@ -28,6 +29,14 @@ export default function Navigation() {
 
   const handleServicesMenuClose = () => {
     setServicesAnchorEl(null);
+  };
+
+  const handleMobileServicesToggle = () => {
+    setMobileServicesOpen(!mobileServicesOpen);
+  };
+
+  const handleMobileServicesClose = () => {
+    setMobileServicesOpen(false);
   };
 
   const isServicesActive = pathname.includes('/services') || pathname.includes('/usluge');
@@ -42,6 +51,10 @@ export default function Navigation() {
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+    // Close mobile services menu when drawer closes
+    if (mobileOpen) {
+      handleMobileServicesClose();
+    }
   };
 
   // Determine if we're on homepage to enable section scrolling
@@ -86,19 +99,75 @@ export default function Navigation() {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', bgcolor: colors.background, height: '100%' }}>
+    <Box sx={{ textAlign: 'center', bgcolor: colors.background, height: '100%' }}>
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item.id} disablePadding>
-            <ListItemButton 
-              component="div"
-              sx={{ textAlign: 'center' }}
-              onClick={(e) => handleNavClick(item, e)}
-            >
-              <ListItemText primary={item.label} sx={{ color: colors.textPrimary }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {navItems.map((item) => {
+          // Special handling for services dropdown in mobile
+          if (item.id === 'services') {
+            return (
+              <Box key={item.id}>
+                <ListItem disablePadding>
+                  <ListItemButton
+                    component="div"
+                    sx={{ textAlign: 'center' }}
+                    onClick={handleMobileServicesToggle}
+                  >
+                    <ListItemText primary={item.label} sx={{ color: colors.textPrimary }} />
+                    <KeyboardArrowDownIcon
+                      sx={{
+                        fontSize: 18,
+                        transform: mobileServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                        transition: 'transform 0.3s ease',
+                      }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+                {/* Mobile Services Submenu */}
+                {mobileServicesOpen && (
+                  <List sx={{
+                    pl: 2,
+                    bgcolor: colors.backgroundElevated,
+                  }}>
+                    {services.filter(s => s.slug).map((service) => (
+                      <ListItem key={service.slug} disablePadding>
+                        <ListItemButton
+                          component={Link}
+                          href={getServiceUrl(service.slug!)}
+                          onClick={() => {
+                            handleMobileServicesClose();
+                            handleDrawerToggle();
+                          }}
+                          sx={{
+                            textAlign: 'left',
+                            color: colors.textSecondary,
+                            '&:hover': { color: colors.primary }
+                          }}
+                        >
+                          <ListItemText
+                            primary={translations(service.name)}
+                            primaryTypographyProps={{ fontSize: '0.9rem' }}
+                          />
+                        </ListItemButton>
+                      </ListItem>
+                    ))}
+                  </List>
+                )}
+              </Box>
+            );
+          }
+
+          return (
+            <ListItem key={item.id} disablePadding>
+              <ListItemButton
+                component="div"
+                sx={{ textAlign: 'center' }}
+                onClick={(e) => handleNavClick(item, e)}
+              >
+                <ListItemText primary={item.label} sx={{ color: colors.textPrimary }} />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: 'center' }} component="a" href="mailto:info@fractalbyte.studio">
             <EmailIcon sx={{ mr: 1, color: colors.primary }} />
@@ -416,13 +485,20 @@ export default function Navigation() {
       <Drawer
         anchor="right"
         open={mobileOpen}
-        onClose={handleDrawerToggle}
+        onClose={() => {
+          handleDrawerToggle();
+          handleMobileServicesClose();
+        }}
         ModalProps={{
           keepMounted: true,
         }}
         sx={{
           display: { xs: 'block', md: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, bgcolor: colors.background },
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
+            width: 240,
+            bgcolor: colors.background,
+          },
         }}
       >
         {drawer}
@@ -433,7 +509,7 @@ export default function Navigation() {
         open={isNavigating || isPending}
         sx={{
           color: colors.primary,
-          zIndex: (theme) => theme.zIndex.drawer + 1,
+          zIndex: (theme) => theme.zIndex.modal + 1,
           bgcolor: 'rgba(4, 4, 4, 0.9)',
         }}
       >
