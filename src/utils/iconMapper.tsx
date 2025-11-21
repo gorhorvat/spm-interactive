@@ -13,24 +13,59 @@ import {
   Settings as SettingsIcon,
   Campaign as CampaignIcon,
   Update as UpdateIcon,
+  TrendingUp as TrendingUpIcon,
+  Sync as SyncIcon,
+  Security as SecurityIcon,
+  Analytics as AnalyticsIcon,
+  ViewInAr as ViewInArIcon,
+  SportsEsports as SportsEsportsIcon,
+  Assessment as AssessmentIcon,
 } from '@mui/icons-material';
 
 export function getIconComponent(iconName: string, props?: any) {
   const iconMap: { [key: string]: any } = {
+    Code: CodeIcon,
     CodeIcon: CodeIcon,
+    Speed: SpeedIcon,
     SpeedIcon: SpeedIcon,
+    DesignServices: DesignServicesIcon,
     DesignServicesIcon: DesignServicesIcon,
+    SupportAgent: SupportAgentIcon,
     SupportAgentIcon: SupportAgentIcon,
+    Devices: DevicesIcon,
     DevicesIcon: DevicesIcon,
+    Search: SearchIcon,
     SearchIcon: SearchIcon,
+    Cloud: CloudIcon,
     CloudIcon: CloudIcon,
+    Business: BusinessIcon,
     BusinessIcon: BusinessIcon,
+    Psychology: PsychologyIcon,
     PsychologyIcon: PsychologyIcon,
+    DashboardCustomize: DashboardCustomizeIcon,
     DashboardCustomizeIcon: DashboardCustomizeIcon,
+    RocketLaunch: RocketLaunchIcon,
     RocketLaunchIcon: RocketLaunchIcon,
+    Settings: SettingsIcon,
     SettingsIcon: SettingsIcon,
+    Campaign: CampaignIcon,
     CampaignIcon: CampaignIcon,
+    Update: UpdateIcon,
     UpdateIcon: UpdateIcon,
+    TrendingUp: TrendingUpIcon,
+    TrendingUpIcon: TrendingUpIcon,
+    Sync: SyncIcon,
+    SyncIcon: SyncIcon,
+    Security: SecurityIcon,
+    SecurityIcon: SecurityIcon,
+    Analytics: AnalyticsIcon,
+    AnalyticsIcon: AnalyticsIcon,
+    ViewInAr: ViewInArIcon,
+    ViewInArIcon: ViewInArIcon,
+    SportsEsports: SportsEsportsIcon,
+    SportsEsportsIcon: SportsEsportsIcon,
+    Assessment: AssessmentIcon,
+    AssessmentIcon: AssessmentIcon,
   };
 
   const IconComponent = iconMap[iconName];
@@ -38,3 +73,18 @@ export function getIconComponent(iconName: string, props?: any) {
 
   return <IconComponent {...props} />;
 }
+
+// Service name to icon mapping (translation keys)
+export const serviceIcons: { [key: string]: string } = {
+  serviceWebDev: 'CodeIcon',
+  serviceHosting: 'CloudIcon',
+  serviceB2B: 'BusinessIcon',
+  servicePerformance: 'SpeedIcon',
+  serviceSEOConsulting: 'TrendingUpIcon',
+  serviceMigration: 'SyncIcon',
+  serviceSecurity: 'SecurityIcon',
+  serviceMaintenance: 'SettingsIcon',
+  service3D: 'ViewInArIcon',
+  serviceAI: 'PsychologyIcon',
+  serviceAudit: 'AssessmentIcon',
+};

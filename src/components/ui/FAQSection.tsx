@@ -50,7 +50,7 @@ export default function FAQSection() {
               sx={{
                 bgcolor: colors.backgroundPaper,
                 border: '1px solid rgba(95, 95, 95, 0.2)',
-                borderRadius: '8px !important',
+                borderRadius: '0 !important',
                 mb: 2,
                 '&:before': { display: 'none' },
                 '&:hover': {

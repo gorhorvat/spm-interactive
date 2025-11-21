@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Container, Typography, Paper, Link as MuiLink } from '@mui/material';
+import { Box, Container, Typography, Paper, Link as MuiLink, Chip } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import WebIcon from '@mui/icons-material/Web';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
@@ -18,11 +18,26 @@ const iconMap: { [key: string]: React.ElementType } = {
 };
 
 interface PricingSectionProps {
-  onPackageSelect: (packageName: string) => void;
+  onServiceSelect: (serviceName: string) => void;
 }
 
-export default function PricingSection({ onPackageSelect }: PricingSectionProps) {
+export default function PricingSection({ onServiceSelect: onServiceSelect }: PricingSectionProps) {
   const { language, translations } = useLanguage();
+
+  const getTierColor = (tier?: string) => {
+    switch (tier) {
+      case 'Essential':
+        return colors.textSecondary;
+      case 'Professional':
+        return colors.primary;
+      case 'Premium':
+        return '#FFD700'; // Gold color
+      case 'Custom':
+        return '#9C27B0'; // Purple color
+      default:
+        return colors.textSecondary;
+    }
+  };
 
   return (
     <Box
@@ -43,7 +58,7 @@ export default function PricingSection({ onPackageSelect }: PricingSectionProps)
             fontSize: { xs: '1.75rem', md: '2.25rem' },
           }}
         >
-          {translations('packagesTitle')}
+          {translations('tierTitle')}
         </Typography>
 
         <Typography
@@ -55,7 +70,7 @@ export default function PricingSection({ onPackageSelect }: PricingSectionProps)
             fontSize: { xs: '1rem', md: '1.1rem' },
           }}
         >
-          {translations('packagesDescription')}
+          {translations('tierDescription')}
         </Typography>
       </Container>
 
@@ -79,7 +94,7 @@ export default function PricingSection({ onPackageSelect }: PricingSectionProps)
               sx={{
                 bgcolor: pkg.highlight ? colors.backgroundPaper : colors.background,
                 border: pkg.highlight ? `2px solid ${colors.primary}` : `1px solid ${colors.borderLight}`,
-                borderRadius: 3,
+                borderRadius: 0,
                 p: 3,
                 display: 'flex',
                 flexDirection: 'column',
@@ -107,40 +122,78 @@ export default function PricingSection({ onPackageSelect }: PricingSectionProps)
                   />
                 </Box>
               )}
-              
-              <Typography
-                variant="h5"
-                sx={{
-                  mb: 2,
-                  textAlign: 'center',
-                  fontWeight: 700,
-                  color: colors.textPrimary,
-                  fontSize: { xs: '1.5rem', md: '1.75rem' },
-                }}
-              >
-                {translations(pkg.displayNameKey)}
-              </Typography>
 
-              <Typography
-                variant="h4"
+              <Box
                 sx={{
-                  mb: 3,
-                  textAlign: 'center',
-                  fontWeight: 700,
-                  color: colors.primary,
-                  fontSize: { xs: '1.75rem', md: '2rem' },
+                  display: 'flex',
+                  justifyContent: 'center',
+                  mb: 1,
                 }}
               >
-                {pkg.priceRangeKey ? translations(pkg.priceRangeKey) : pkg.priceRange}
-                <Typography
-                  component="span"
+                <Chip
+                  label={translations(pkg.displayNameKey)}
                   sx={{
-                    fontSize: '0.875rem',
-                    color: colors.textSecondary,
-                    ml: 1,
+                    bgcolor: 'transparent',
+                    border: `2px solid ${getTierColor(pkg.tier)}`,
+                    borderRadius: 0,
+                    color: getTierColor(pkg.tier),
+                    fontWeight: 700,
+                    fontSize: '1.1rem',
+                    height: 'auto',
+                    py: 1,
+                    px: 2,
+                    '& .MuiChip-label': {
+                      px: 1,
+                    },
                   }}
                 />
-              </Typography>
+              </Box>
+
+              <Box
+                sx={{
+                  minHeight: { xs: '48px', md: '52px' },
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  mb: 2,
+                }}
+              >
+                {pkg.descriptionKey && (
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      textAlign: 'center',
+                      color: colors.textSecondary,
+                      fontStyle: 'italic',
+                      fontSize: { xs: '0.875rem', md: '0.95rem' },
+                    }}
+                  >
+                    {translations(pkg.descriptionKey)}
+                  </Typography>
+                )}
+              </Box>
+
+              <Box
+                sx={{
+                  minHeight: { xs: '60px', md: '70px' },
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  mb: 3,
+                }}
+              >
+                <Typography
+                  variant="h4"
+                  sx={{
+                    textAlign: 'center',
+                    fontWeight: 700,
+                    color: colors.primary,
+                    fontSize: { xs: '1.75rem', md: '2rem' },
+                  }}
+                >
+                  {translations(pkg.priceRangeKey)}
+                </Typography>
+              </Box>
 
               <Box sx={{ flex: 1, mb: 3 }}>
                 {pkg.features.map((feature, fIndex) => (
@@ -177,7 +230,7 @@ export default function PricingSection({ onPackageSelect }: PricingSectionProps)
                 href={language === 'hr' ? '/kontakt' : '/en/contact'}
                 onClick={(e) => {
                   e.preventDefault();
-                  onPackageSelect(pkg.name);
+                  onServiceSelect(pkg.name);
                 }}
                 sx={{
                   display: 'block',
@@ -189,7 +242,7 @@ export default function PricingSection({ onPackageSelect }: PricingSectionProps)
                   textTransform: 'uppercase',
                   textDecoration: 'none',
                   textAlign: 'center',
-                  borderRadius: 1,
+                  borderRadius: 0,
                   transition: 'all 0.3s ease',
                   ...(pkg.highlight
                     ? {

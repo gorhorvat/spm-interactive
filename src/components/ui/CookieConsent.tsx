@@ -63,7 +63,7 @@ export default function CookieConsent() {
         sx={{
           backgroundColor: colors.backgroundPaper,
           border: `1px solid ${colors.borderPrimaryLight}`,
-          borderRadius: 2,
+          borderRadius: 0,
           boxShadow: `0 8px 32px ${colors.shadowPrimary}`,
           maxWidth: { xs: '90vw', sm: 600, md: 700 },
           p: { xs: 2, sm: 3 },

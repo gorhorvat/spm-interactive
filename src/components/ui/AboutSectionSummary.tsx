@@ -60,7 +60,7 @@ export default function AboutSectionSummary() {
                 py: 1.5,
                 fontSize: '1rem',
                 fontWeight: 600,
-                borderRadius: 2,
+                borderRadius: 0,
                 border: `2px solid ${colors.primary}`,
                 color: colors.primary,
                 cursor: 'pointer',

@@ -5,22 +5,30 @@ import { useSearchParams } from 'next/navigation';
 import Navigation from '@/components/ui/Navigation';
 import ContactSection from '@/components/ui/ContactSection';
 import Footer from '@/components/ui/Footer';
+import { packages } from '@/constants';
 
 export default function ContactPage() {
   const searchParams = useSearchParams();
-  const [selectedPackage, setSelectedPackage] = useState('');
+  const [selectedService, setSelectedService] = useState('');
 
   useEffect(() => {
-    const packageParam = searchParams.get('package');
-    if (packageParam) {
-      setSelectedPackage(packageParam);
+    const serviceParam = searchParams.get('service');
+    if (serviceParam) {
+      // Check if it's a package name (Essential, Professional, Premium, Custom)
+      const isPackage = packages.some(pkg => pkg.name === serviceParam);
+      if (isPackage) {
+        // Format as "Web Design [PackageName]"
+        setSelectedService(`Web Design [${serviceParam}]`);
+      } else {
+        setSelectedService(serviceParam);
+      }
     }
   }, [searchParams]);
 
   return (
     <main>
       <Navigation />
-      <ContactSection selectedPackage={selectedPackage} onPackageChange={setSelectedPackage} />
+      <ContactSection selectedService={selectedService} onServiceChange={setSelectedService} />
       <Footer />
     </main>
   );

@@ -1,7 +1,11 @@
 'use client';
 
-import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
-import { ReactNode } from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ReactNode, useState } from 'react';
+import { useServerInsertedHTML } from 'next/navigation';
+import createCache from '@emotion/cache';
+import { CacheProvider } from '@emotion/react';
 import { colors } from '@/constants/colors';
 
 const theme = createTheme({
@@ -110,14 +114,14 @@ const theme = createTheme({
     },
   },
   shape: {
-    borderRadius: 8,
+    borderRadius: 0,
   },
   spacing: 8,
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
+          borderRadius: 0,
           padding: '12px 24px',
           fontSize: '1rem',
           fontWeight: 500,
@@ -155,7 +159,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: colors.backgroundPaper,
-          borderRadius: 12,
+          borderRadius: 0,
           border: `1px solid ${colors.borderLight}`,
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
           '&:hover': {
@@ -169,7 +173,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
-            borderRadius: 8,
+            borderRadius: 0,
             backgroundColor: colors.backgroundPaper,
             '& fieldset': {
               borderColor: colors.divider,
@@ -195,7 +199,7 @@ const theme = createTheme({
         root: {
           backgroundColor: colors.backgroundPaper,
           border: `1px solid ${colors.borderLight}`,
-          borderRadius: 8,
+          borderRadius: 0,
           marginBottom: 16,
           '&:before': {
             display: 'none',
@@ -238,6 +242,7 @@ const theme = createTheme({
           backgroundColor: colors.backgroundElevated,
           color: colors.textPrimary,
           border: `1px solid ${colors.borderLight}`,
+          borderRadius: 0,
           '&.MuiChip-colorPrimary': {
             backgroundColor: colors.primary,
             color: colors.textPrimary,
@@ -253,11 +258,55 @@ interface ThemeRegistryProps {
   children: ReactNode;
 }
 
+// This implementation of the MUI Emotion cache is taken from
+// https://github.com/mui/material-ui/tree/master/examples/material-ui-nextjs-ts
 export default function ThemeRegistry({ children }: ThemeRegistryProps) {
+  const [{ cache, flush }] = useState(() => {
+    const cache = createCache({ key: 'mui' });
+    cache.compat = true;
+    const prevInsert = cache.insert;
+    let inserted: string[] = [];
+    cache.insert = (...args) => {
+      const serialized = args[1];
+      if (cache.inserted[serialized.name] === undefined) {
+        inserted.push(serialized.name);
+      }
+      return prevInsert(...args);
+    };
+    const flush = () => {
+      const prevInserted = inserted;
+      inserted = [];
+      return prevInserted;
+    };
+    return { cache, flush };
+  });
+
+  useServerInsertedHTML(() => {
+    const names = flush();
+    if (names.length === 0) {
+      return null;
+    }
+    let styles = '';
+    for (const name of names) {
+      styles += cache.inserted[name];
+    }
+    return (
+      <style
+        key={cache.key}
+        data-emotion={`${cache.key} ${names.join(' ')}`}
+        dangerouslySetInnerHTML={{
+          __html: styles,
+        }}
+      />
+    );
+  });
+
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      {children}
-    </ThemeProvider>
+    <CacheProvider value={cache}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
+    </CacheProvider>
   );
 }

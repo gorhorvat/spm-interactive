@@ -57,7 +57,7 @@ export default function AboutSection() {
                   height: '100%',
                   bgcolor: colors.backgroundPaper,
                   border: '1px solid rgba(95, 95, 95, 0.2)',
-                  borderRadius: 3,
+                  borderRadius: 0,
                   transition: 'all 0.3s ease',
                   '&:hover': {
                     transform: 'translateY(-8px)',

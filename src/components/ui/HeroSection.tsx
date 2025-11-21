@@ -86,7 +86,7 @@ export default function HeroSection() {
                 py: 1.5,
                 fontSize: '1.1rem',
                 fontWeight: 600,
-                borderRadius: 2,
+                borderRadius: 0,
                 textTransform: 'none',
                 bgcolor: colors.primary,
                 color: colors.textPrimary,

@@ -6,19 +6,20 @@ import HeroSection from '@/components/ui/HeroSection';
 import AboutSectionSummary from '@/components/ui/AboutSectionSummary';
 import ServicesSectionSummary from '@/components/ui/ServicesSectionSummary';
 import PricingSection from '@/components/ui/PricingSection';
+import ServiceComparison from '@/components/ui/ServiceComparison';
 import Counter from '@/components/ui/Counter';
 import ContactSection from '@/components/ui/ContactSection';
 import Footer from '@/components/ui/Footer';
 
 export default function Home() {
-  const [selectedPackage, setSelectedPackage] = useState('');
+  const [selectedService, setSelectedService] = useState('');
 
-  const handlePackageSelect = (packageName: string) => {
-    setSelectedPackage(packageName);
+  const handleServiceSelect = (serviceName: string) => {
+    setSelectedService(serviceName);
     // Navigate to contact page
     const locale = window.location.pathname.startsWith('/en') ? 'en' : 'hr';
     const contactPath = locale === 'hr' ? '/kontakt' : '/en/contact';
-    window.location.href = contactPath + `?package=${packageName}`;
+    window.location.href = contactPath + `?service=${serviceName}`;
   };
 
   return (
@@ -27,9 +28,10 @@ export default function Home() {
       <HeroSection />
       <AboutSectionSummary />
       <ServicesSectionSummary />
-      <PricingSection onPackageSelect={handlePackageSelect} />
+      <PricingSection onServiceSelect={handleServiceSelect} />
+      <ServiceComparison />
       <Counter />
-      <ContactSection />
+      <ContactSection selectedService={selectedService} onServiceChange={setSelectedService} />
       <Footer />
     </main>
   );

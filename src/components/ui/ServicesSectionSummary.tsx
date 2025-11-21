@@ -1,15 +1,26 @@
 'use client';
 
-import { Box, Container, Typography, Grid, Paper, Link as MuiLink } from '@mui/material';
+import { Box, Container, Typography, Grid, Paper, Button } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { services, serviceIcons } from '@/constants';
-import { getIconComponent } from '@/utils/iconMapper';
+import { services, serviceSlugMap } from '@/constants';
+import { getIconComponent, serviceIcons } from '@/utils/iconMapper';
 import { colors } from '@/constants/colors';
 
 export default function ServicesSectionSummary() {
   const { language, translations } = useLanguage();
+
+  const getServiceUrl = (serviceSlug?: string) => {
+    if (!serviceSlug) return '#';
+
+    if (language === 'hr') {
+      const hrSlug = serviceSlugMap[serviceSlug] || serviceSlug;
+      return `/usluge/${hrSlug}`;
+    }
+
+    return `/en/services/${serviceSlug}`;
+  };
 
   return (
     <Box
@@ -48,84 +59,89 @@ export default function ServicesSectionSummary() {
         </Typography>
 
         <Grid container spacing={3} sx={{ mb: 4 }}>
-          {services.slice(0, 6).map((service, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Paper
-                elevation={0}
-                sx={{
-                  p: 3,
-                  textAlign: 'center',
-                  height: '100%',
-                  bgcolor: colors.background,
-                  border: `1px solid ${colors.borderLight}`,
-                  borderRadius: 3,
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    borderColor: colors.primary,
-                    boxShadow: `0 4px 12px ${colors.shadowPrimary}`,
-                  },
-                }}
-              >
-                {getIconComponent(serviceIcons[translations(service.name)], { 
-                  sx: { fontSize: 48, color: colors.primary, mb: 2 } 
-                })}
-                <Typography
-                  variant="h6"
+          {services.map((service, index) => {
+            const icon = serviceIcons[service.name] || 'CodeIcon';
+            return (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <Paper
+                  elevation={0}
                   sx={{
-                    mb: 1.5,
-                    fontWeight: 600,
-                    color: colors.textPrimary,
-                    fontSize: { xs: '1.1rem', md: '1.25rem' },
+                    p: 3,
+                    textAlign: 'center',
+                    height: '100%',
+                    bgcolor: colors.background,
+                    border: `1px solid ${colors.borderLight}`,
+                    borderRadius: 0,
+                    transition: 'all 0.3s ease',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    '&:hover': {
+                      borderColor: colors.primary,
+                      boxShadow: `0 4px 12px ${colors.shadowPrimary}`,
+                    },
                   }}
                 >
-                  {translations(service.name)}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: colors.textSecondary,
-                    lineHeight: 1.6,
-                    fontSize: { xs: '0.875rem', md: '0.95rem' },
-                  }}
-                >
-                  {translations(service.description)}
-                </Typography>
-              </Paper>
-            </Grid>
-          ))}
-        </Grid>
+                  <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
+                    {getIconComponent(icon, {
+                      sx: { fontSize: 48, color: colors.primary }
+                    })}
+                  </Box>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      mb: 1.5,
+                      fontWeight: 600,
+                      color: colors.textPrimary,
+                      fontSize: { xs: '1.1rem', md: '1.25rem' },
+                    }}
+                  >
+                    {translations(service.name)}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: colors.textSecondary,
+                      lineHeight: 1.6,
+                      fontSize: { xs: '0.875rem', md: '0.95rem' },
+                      mb: 2,
+                      flexGrow: 1,
+                    }}
+                  >
+                    {translations(service.description)}
+                  </Typography>
 
-        <Box sx={{ textAlign: 'center' }}>
-          <Link
-            href={language === 'hr' ? '/usluge' : '/en/services'}
-            style={{ textDecoration: 'none' }}
-          >
-            <Box
-              sx={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 1,
-                px: 3,
-                py: 1.5,
-                fontSize: '1rem',
-                fontWeight: 600,
-                borderRadius: 2,
-                border: `2px solid ${colors.primary}`,
-                color: colors.primary,
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  bgcolor: colors.primary,
-                  color: colors.textPrimary,
-                  transform: 'translateX(4px)',
-                },
-              }}
-            >
-              {translations('learnMore')}
-              <ArrowForwardIcon sx={{ fontSize: 20 }} />
-            </Box>
-          </Link>
-        </Box>
+                  {/* Learn More button for each service */}
+                  {service.slug && (
+                    <Link href={getServiceUrl(service.slug)} passHref style={{ textDecoration: 'none' }}>
+                      <Button
+                        variant="outlined"
+                        endIcon={<ArrowForwardIcon />}
+                        fullWidth
+                        sx={{
+                          borderColor: colors.primary,
+                          color: colors.primary,
+                          fontWeight: 600,
+                          py: 1,
+                          borderRadius: 0,
+                          textTransform: 'none',
+                          fontSize: '0.9rem',
+                          '&:hover': {
+                            borderColor: colors.primary,
+                            bgcolor: colors.primary,
+                            color: '#fff',
+                          },
+                        }}
+                      >
+                        {translations('learnMore')}
+                      </Button>
+                    </Link>
+                  )}
+                </Paper>
+              </Grid>
+            );
+          })}
+        </Grid>
       </Container>
     </Box>
   );

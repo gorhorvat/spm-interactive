@@ -25,16 +25,17 @@ export default function Footer() {
       <Container maxWidth="lg">
         <Grid container spacing={4} justifyContent="center">
           <Grid item xs={12}>
-            <Box sx={{ 
-              display: 'flex', 
-              justifyContent: 'center', 
+            <Box sx={{
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              justifyContent: 'center',
               alignItems: 'center',
               mb: 3,
-              gap: 3,
+              gap: { xs: 2, md: 3 },
             }}>
-              <Box sx={{ 
-                height: 60, 
-                width: 60, 
+              <Box sx={{
+                height: 60,
+                width: 60,
                 flexShrink: 0,
                 display: 'flex',
                 alignItems: 'center',
@@ -47,19 +48,20 @@ export default function Footer() {
                   height={60}
                 />
               </Box>
-              
-              <Divider 
-                orientation="vertical" 
-                flexItem 
-                sx={{ 
+
+              <Divider
+                orientation="vertical"
+                flexItem
+                sx={{
+                  display: { xs: 'none', md: 'block' },
                   borderColor: colors.primary,
                   height: 100,
                   alignSelf: 'center',
                   mx: 2,
-                }} 
+                }}
               />
-              
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, pl: 1 }}>
+
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, pl: { xs: 0, md: 1 }, alignItems: { xs: 'center', md: 'flex-start' } }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <EmailIcon sx={{ color: colors.primary, fontSize: 20 }} />
                   <Typography
@@ -68,7 +70,7 @@ export default function Footer() {
                     sx={{
                       color: colors.textSecondary,
                       textDecoration: 'none',
-                      fontSize: '0.95rem',
+                      fontSize: { xs: '0.85rem', md: '0.95rem' },
                       '&:hover': { color: colors.primaryLight },
                     }}
                   >
@@ -84,7 +86,7 @@ export default function Footer() {
                     sx={{
                       color: colors.textSecondary,
                       textDecoration: 'none',
-                      fontSize: '0.95rem',
+                      fontSize: { xs: '0.85rem', md: '0.95rem' },
                       '&:hover': { color: colors.primaryLight },
                     }}
                   >
@@ -97,6 +99,7 @@ export default function Footer() {
                 orientation="vertical"
                 flexItem
                 sx={{
+                  display: { xs: 'none', md: 'block' },
                   borderColor: colors.primary,
                   height: 100,
                   alignSelf: 'center',
@@ -104,11 +107,11 @@ export default function Footer() {
                 }}
               />
 
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, pl: 1 }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, pl: { xs: 0, md: 1 }, alignItems: { xs: 'center', md: 'flex-start' }, textAlign: { xs: 'center', md: 'left' } }}>
                 <Typography
                   sx={{
                     color: colors.textSecondary,
-                    fontSize: '0.9rem',
+                    fontSize: { xs: '0.85rem', md: '0.9rem' },
                     fontWeight: 500,
                   }}
                 >
@@ -117,7 +120,7 @@ export default function Footer() {
                 <Typography
                   sx={{
                     color: colors.textSecondary,
-                    fontSize: '0.85rem',
+                    fontSize: { xs: '0.8rem', md: '0.85rem' },
                   }}
                 >
                   {translations('companyAddress')}
@@ -125,7 +128,7 @@ export default function Footer() {
                 <Typography
                   sx={{
                     color: colors.textSecondary,
-                    fontSize: '0.85rem',
+                    fontSize: { xs: '0.8rem', md: '0.85rem' },
                   }}
                 >
                   {translations('companyCity')}
@@ -133,7 +136,7 @@ export default function Footer() {
                 <Typography
                   sx={{
                     color: colors.textSecondary,
-                    fontSize: '0.85rem',
+                    fontSize: { xs: '0.8rem', md: '0.85rem' },
                   }}
                 >
                   {translations('companyOIB')}
@@ -147,7 +150,7 @@ export default function Footer() {
                 href="mailto:info@fractalbyte.studio"
                 sx={{
                   color: colors.primary,
-                  '&:hover': { color: colors.primaryLight },
+                  '&:hover': { color: colors.primaryLight, borderRadius: 0 },
                 }}
               >
                 <EmailIcon fontSize="large" />
@@ -158,7 +161,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 sx={{
                   color: colors.primary,
-                  '&:hover': { color: colors.primaryLight },
+                  '&:hover': { color: colors.primaryLight, borderRadius: 0 },
                 }}
               >
                 <LinkedInIcon fontSize="large" />
@@ -169,7 +172,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 sx={{
                   color: colors.primary,
-                  '&:hover': { color: colors.primaryLight },
+                  '&:hover': { color: colors.primaryLight, borderRadius: 0 },
                 }}
               >
                 <InstagramIcon fontSize="large" />
@@ -180,7 +183,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 sx={{
                   color: colors.primary,
-                  '&:hover': { color: colors.primaryLight },
+                  '&:hover': { color: colors.primaryLight, borderRadius: 0 },
                 }}
               >
                 <FacebookIcon fontSize="large" />

@@ -1,3 +1,23 @@
+// Service slug mappings (English to Croatian)
+export const serviceSlugMap: Record<string, string> = {
+  'web-development': 'web-razvoj',
+  'hosting': 'hosting',
+  'b2b-consulting': 'b2b-savjetovanje',
+  'performance-optimization': 'optimizacija-performansi',
+  'seo-consulting': 'seo-savjetovanje',
+  'migration-modernization': 'migracija-modernizacija',
+  'security-compliance': 'sigurnost-uskladenost',
+  'maintenance-support': 'odrzavanje-podrska',
+  'ai-integration': 'ai-integracija',
+  'website-audit': 'revizija-web-stranice',
+  '3d-interactive': '3d-interaktivno',
+};
+
+// Reverse mapping (Croatian to English) for proxy
+export const serviceSlugMapReverse: Record<string, string> = Object.fromEntries(
+  Object.entries(serviceSlugMap).map(([en, hr]) => [hr, en])
+);
+
 // Icon name mappings - maps translation keys to icon components
 export const valueIcons: { [key: string]: string } = {
   // English values
@@ -21,6 +41,16 @@ export const serviceIcons: { [key: string]: string } = {
   'Responsive design': 'DevicesIcon',
   'SEO and AI SEO optimization': 'SearchIcon',
   'Domain & Cloud hosting': 'CloudIcon',
+  'Performance Audits & Optimization': 'SpeedIcon',
+  'SEO Audit & Strategy Consulting': 'TrendingUpIcon',
+  'Migration & Modernization Services': 'SyncIcon',
+  'Web Security & Compliance Services': 'SecurityIcon',
+  'Maintenance & Support Plans': 'SettingsIcon',
+  'Analytics & Conversion Optimization': 'AnalyticsIcon',
+  '3D & Interactive Web Experiences': 'ViewInArIcon',
+  'AI Integration and Consultation': 'PsychologyIcon',
+  'Interactive & Gamified Experiences': 'SportsEsportsIcon',
+  'Comprehensive Website Audit & Consulting': 'AssessmentIcon',
   'B2B contracting & consulting': 'BusinessIcon',
   // Croatian services
   'Web razvoj': 'CodeIcon',
@@ -28,9 +58,145 @@ export const serviceIcons: { [key: string]: string } = {
   'Responzivni dizajn': 'DevicesIcon',
   'SEO i AI SEO optimizacija': 'SearchIcon',
   'Domena i Cloud hosting': 'CloudIcon',
+  'Revizija i optimizacija performansi': 'SpeedIcon',
+  'SEO revizija i strateško savjetovanje': 'TrendingUpIcon',
+  'Usluge migracije i modernizacije': 'SyncIcon',
+  'Usluge web sigurnosti i usklađenosti': 'SecurityIcon',
+  'Planovi održavanja i podrške': 'SettingsIcon',
+  'Analitika i optimizacija konverzije': 'AnalyticsIcon',
+  '3D i interaktivna web iskustva': 'ViewInArIcon',
+  'AI integracija i savjetovanje': 'PsychologyIcon',
+  'Interaktivna i gamificirana iskustva': 'SportsEsportsIcon',
+  'Sveobuhvatna revizija web stranice i savjetovanje': 'AssessmentIcon',
   'B2B suradnja i savjetovanje': 'BusinessIcon',
 };
 
+// FAQs - translation keys only
+export const faqs = [
+  { question: 'faqQ1', answer: 'faqA1' },
+  { question: 'faqQ2', answer: 'faqA2' },
+  { question: 'faqQ3', answer: 'faqA3' },
+  { question: 'faqQ4', answer: 'faqA4' },
+  { question: 'faqQ5', answer: 'faqA5' },
+  { question: 'faqQ6', answer: 'faqA6' },
+  { question: 'faqQ7', answer: 'faqA7' },
+  { question: 'faqQ8', answer: 'faqA8' },
+  { question: 'faqQ9', answer: 'faqA9' },
+  { question: 'faqQ10', answer: 'faqA10' },
+  { question: 'faqQ11', answer: 'faqA11' },
+  { question: 'faqQ12', answer: 'faqA12' },
+  { question: 'faqQ13', answer: 'faqA13' },
+  { question: 'faqQ14', answer: 'faqA14' },
+];
+
+// Pricing packages
+export const packages = [
+  {
+    name: 'Essential',
+    displayNameKey: 'packageEssential',
+    descriptionKey: 'essentialPackageDesc',
+    priceRangeKey: 'essentialPackagePrice',
+    icon: 'WebIcon',
+    tier: 'Essential',
+    features: [
+      'essentialFeature1',
+      'essentialFeature2',
+      'essentialFeature3',
+      'essentialFeature4',
+      'essentialFeature5',
+      'essentialFeature6',
+      'essentialFeature7',
+      'essentialFeature8',
+      'essentialFeature9',
+      'essentialFeature10',
+      'essentialFeature11',
+    ],
+    highlight: false,
+  },
+  {
+    name: 'Professional',
+    displayNameKey: 'packageProfessional',
+    descriptionKey: 'professionalPackageDesc',
+    priceRangeKey: 'professionalPackagePrice',
+    icon: 'BusinessCenterIcon',
+    tier: 'Professional',
+    features: [
+      'professionalFeature1',
+      'professionalFeature2',
+      'professionalFeature3',
+      'professionalFeature4',
+      'professionalFeature5',
+      'professionalFeature6',
+      'professionalFeature7',
+      'professionalFeature8',
+      'professionalFeature9',
+      'professionalFeature10',
+      'professionalFeature11',
+      'professionalFeature12',
+      'professionalFeature13',
+      'professionalFeature14',
+      'professionalFeature15',
+    ],
+    highlight: false,
+  },
+  {
+    name: 'Premium',
+    displayNameKey: 'packagePremium',
+    descriptionKey: 'premiumPackageDesc',
+    priceRangeKey: 'premiumPackagePrice',
+    icon: 'ApartmentIcon',
+    tier: 'Premium',
+    features: [
+      'premiumFeature1',
+      'premiumFeature2',
+      'premiumFeature3',
+      'premiumFeature4',
+      'premiumFeature5',
+      'premiumFeature6',
+      'premiumFeature7',
+      'premiumFeature8',
+      'premiumFeature9',
+      'premiumFeature10',
+      'premiumFeature11',
+      'premiumFeature12',
+      'premiumFeature13',
+      'premiumFeature14',
+      'premiumFeature15',
+      'premiumFeature16',
+      'premiumFeature17',
+    ],
+    highlight: false,
+  },
+  {
+    name: 'Custom',
+    displayNameKey: 'packageCustom',
+    descriptionKey: 'customPackageDesc',
+    priceRangeKey: 'contactUs',
+    icon: 'TuneIcon',
+    tier: 'Custom',
+    features: [
+      'customFeature1',
+      'customFeature2',
+      'customFeature3',
+      'customFeature4',
+      'customFeature5',
+    ],
+    highlight: false,
+  },
+];
+
+
+
+// Values data for About section
+export const values = [
+  { title: 'valueCleanCode', description: 'valueCleanCodeDesc' },
+  { title: 'valuePerformance', description: 'valuePerformanceDesc' },
+  { title: 'valueCreativeDesign', description: 'valueCreativeDesignDesc' },
+  { title: 'valueQuickDelivery', description: 'valueQuickDeliveryDesc' },
+  { title: 'valueDedicatedSupport', description: 'valueDedicatedSupportDesc' },
+];
+
+// Timeline icons for process steps
 export const timelineIcons: { [key: number]: string } = {
   0: 'PsychologyIcon',
   1: 'DashboardCustomizeIcon',
@@ -53,153 +219,113 @@ export const processSteps = [
   'processStep6',
   'processStep7',
   'processStep8',
-  'processStep9'
 ];
 
-// FAQs - translation keys only
-export const faqs = [
-  { question: 'faqQ1', answer: 'faqA1' },
-  { question: 'faqQ2', answer: 'faqA2' },
-  { question: 'faqQ3', answer: 'faqA3' },
-  { question: 'faqQ4', answer: 'faqA4' },
-  { question: 'faqQ5', answer: 'faqA5' },
-  { question: 'faqQ6', answer: 'faqA6' },
-  { question: 'faqQ7', answer: 'faqA7' },
-  { question: 'faqQ8', answer: 'faqA8' },
-];
-
-// Pricing packages
-export const packages = [
-  {
-    name: 'Basic',
-    displayNameKey: 'packageBasic',
-    priceRange: '200€ - 250€',
-    icon: 'WebIcon',
-    features: [
-      'basicFeature1',
-      'basicFeature2',
-      'basicFeature3',
-      'basicFeature4',
-      'basicFeature5',
-      'basicFeature6',
-      'basicFeature7',
-      'basicFeature8',
-      'basicFeature9',
-      'basicFeature10',
-      'basicFeature11',
-    ],
-    highlight: false,
-  },
-  {
-    name: 'Professional',
-    displayNameKey: 'packageProfessional',
-    priceRange: '400€ - 600€',
-    icon: 'BusinessCenterIcon',
-    features: [
-      'professionalFeature1',
-      'professionalFeature2',
-      'professionalFeature3',
-      'professionalFeature4',
-      'professionalFeature5',
-      'professionalFeature6',
-      'professionalFeature7',
-      'professionalFeature8',
-      'professionalFeature9',
-      'professionalFeature10',
-      'professionalFeature11',
-      'professionalFeature12',
-      'professionalFeature13',
-      'professionalFeature14',
-      'professionalFeature15',
-    ],
-    highlight: false,
-  },
-  {
-    name: 'Enterprise',
-    displayNameKey: 'packageEnterprise',
-    priceRange: '800€ - 1200€',
-    icon: 'ApartmentIcon',
-    features: [
-      'enterpriseFeature1',
-      'enterpriseFeature2',
-      'enterpriseFeature3',
-      'enterpriseFeature4',
-      'enterpriseFeature5',
-      'enterpriseFeature6',
-      'enterpriseFeature7',
-      'enterpriseFeature8',
-      'enterpriseFeature9',
-      'enterpriseFeature10',
-      'enterpriseFeature11',
-      'enterpriseFeature12',
-      'enterpriseFeature13',
-      'enterpriseFeature14',
-      'enterpriseFeature15',
-      'enterpriseFeature16',
-      'enterpriseFeature17',
-    ],
-    highlight: false,
-  },
-  {
-    name: 'Custom',
-    displayNameKey: 'packageCustom',
-    priceRangeKey: 'contactUs',
-    icon: 'TuneIcon',
-    features: [
-      'customFeature1',
-      'customFeature2',
-      'customFeature3',
-      'customFeature4',
-      'customFeature5',
-    ],
-    highlight: false,
-  },
-];
-
-// Alias for compatibility
-export const pricingPackages = packages;
-
-// Values data for About section
-export const values = [
-  { title: 'valueCleanCode', description: 'valueCleanCodeDesc' },
-  { title: 'valuePerformance', description: 'valuePerformanceDesc' },
-  { title: 'valueCreativeDesign', description: 'valueCreativeDesignDesc' },
-  { title: 'valueQuickDelivery', description: 'valueQuickDeliveryDesc' },
-  { title: 'valueDedicatedSupport', description: 'valueDedicatedSupportDesc' },
-];
-
-// Services data
+// Services data - Prices adjusted for Croatian market (in EUR)
 export const services = [
   {
     name: 'serviceWebDev',
     description: 'serviceWebDevDesc',
     expandedContent: 'serviceWebDevExpanded',
-  },
-  {
-    name: 'serviceUIUX',
-    description: 'serviceUIUXDesc',
-    expandedContent: 'serviceUIUXExpanded',
-  },
-  {
-    name: 'serviceResponsive',
-    description: 'serviceResponsiveDesc',
-    expandedContent: 'serviceResponsiveExpanded',
-  },
-  {
-    name: 'serviceSEO',
-    description: 'serviceSEODesc',
-    expandedContent: 'serviceSEOExpanded',
+    startingPrice: 'TBD',
+    recurringPrice: 'TBD',
+    slug: 'web-development',
+    features: ['webDevFeature1', 'webDevFeature2', 'webDevFeature3', 'webDevFeature4', 'webDevFeature5', 'webDevFeature6'],
+    deliverables: ['webDevDeliverable1', 'webDevDeliverable2', 'webDevDeliverable3', 'webDevDeliverable4'],
   },
   {
     name: 'serviceHosting',
     description: 'serviceHostingDesc',
     expandedContent: 'serviceHostingExpanded',
+    recurringPrice: 'TBD',
+    slug: 'hosting',
+    features: ['hostingFeature1', 'hostingFeature2', 'hostingFeature3', 'hostingFeature4', 'hostingFeature5', 'hostingFeature6'],
+    deliverables: ['hostingDeliverable1', 'hostingDeliverable2', 'hostingDeliverable3', 'hostingDeliverable4'],
   },
   {
+    name: 'servicePerformance',
+    description: 'servicePerformanceDesc',
+    expandedContent: 'servicePerformanceExpanded',
+    startingPrice: 'TBD',
+    recurringPrice: 'TBD',
+    slug: 'performance-optimization',
+    features: ['performanceFeature1', 'performanceFeature2', 'performanceFeature3', 'performanceFeature4', 'performanceFeature5', 'performanceFeature6'],
+    deliverables: ['performanceDeliverable1', 'performanceDeliverable2', 'performanceDeliverable3', 'performanceDeliverable4'],
+  },
+  {
+    name: 'serviceSEOConsulting',
+    description: 'serviceSEOConsultingDesc',
+    expandedContent: 'serviceSEOConsultingExpanded',
+    startingPrice: 'TBD',
+    recurringPrice: 'TBD',
+    slug: 'seo-consulting',
+    features: ['seoFeature1', 'seoFeature2', 'seoFeature3', 'seoFeature4', 'seoFeature5', 'seoFeature6', 'seoFeature7'],
+    deliverables: ['seoDeliverable1', 'seoDeliverable2', 'seoDeliverable3', 'seoDeliverable4', 'seoDeliverable5'],
+  },
+  {
+    name: 'serviceMigration',
+    description: 'serviceMigrationDesc',
+    expandedContent: 'serviceMigrationExpanded',
+    startingPrice: 'TBD',
+    slug: 'migration-modernization',
+    features: ['migrationFeature1', 'migrationFeature2', 'migrationFeature3', 'migrationFeature4', 'migrationFeature5', 'migrationFeature6'],
+    deliverables: ['migrationDeliverable1', 'migrationDeliverable2', 'migrationDeliverable3', 'migrationDeliverable4'],
+  },
+  {
+    name: 'serviceSecurity',
+    description: 'serviceSecurityDesc',
+    expandedContent: 'serviceSecurityExpanded',
+    startingPrice: 'TBD',
+    recurringPrice: 'TBD',
+    slug: 'security-compliance',
+    features: ['securityFeature1', 'securityFeature2', 'securityFeature3', 'securityFeature4', 'securityFeature5', 'securityFeature6'],
+    deliverables: ['securityDeliverable1', 'securityDeliverable2', 'securityDeliverable3', 'securityDeliverable4'],
+  },
+  {
+    name: 'serviceMaintenance',
+    description: 'serviceMaintenanceDesc',
+    expandedContent: 'serviceMaintenanceExpanded',
+    recurringPrice: 'TBD',
+    slug: 'maintenance-support',
+    features: ['maintenanceFeatureItem1', 'maintenanceFeatureItem2', 'maintenanceFeatureItem3', 'maintenanceFeatureItem4', 'maintenanceFeatureItem5', 'maintenanceFeatureItem6'],
+    deliverables: ['maintenanceDeliverable1', 'maintenanceDeliverable2', 'maintenanceDeliverable3', 'maintenanceDeliverable4'],
+  },
+  {
+    name: 'serviceAI',
+    description: 'serviceAIDesc',
+    expandedContent: 'serviceAIExpanded',
+    startingPrice: 'TBD',
+    recurringPrice: 'TBD',
+    slug: 'ai-integration',
+    features: ['aiFeature1', 'aiFeature2', 'aiFeature3', 'aiFeature4', 'aiFeature5', 'aiFeature6'],
+    deliverables: ['aiDeliverable1', 'aiDeliverable2', 'aiDeliverable3', 'aiDeliverable4'],
+  },
+  {
+    name: 'service3D',
+    description: 'service3DDesc',
+    expandedContent: 'service3DExpanded',
+    startingPrice: 'TBD',
+    recurringPrice: 'TBD',
+    slug: '3d-interactive',
+    features: ['threeDFeature1', 'threeDFeature2', 'threeDFeature3', 'threeDFeature4', 'threeDFeature5', 'threeDFeature6'],
+    deliverables: ['threeDDeliverable1', 'threeDDeliverable2', 'threeDDeliverable3', 'threeDDeliverable4'],
+  },
+  {
+    name: 'serviceAudit',
+    description: 'serviceAuditDesc',
+    expandedContent: 'serviceAuditExpanded',
+    startingPrice: 'TBD',
+    slug: 'website-audit',
+    features: ['auditFeature1', 'auditFeature2', 'auditFeature3', 'auditFeature4', 'auditFeature5', 'auditFeature6'],
+    deliverables: ['auditDeliverable1', 'auditDeliverable2', 'auditDeliverable3', 'auditDeliverable4'],
+  },
+   {
     name: 'serviceB2B',
     description: 'serviceB2BDesc',
     expandedContent: 'serviceB2BExpanded',
-    link: { text: 'goranhorvat.dev', url: 'https://goranhorvat.dev/' },
-  },
+    contactForPricing: true,
+    slug: 'b2b-consulting',
+    features: ['b2bFeature1', 'b2bFeature2', 'b2bFeature3', 'b2bFeature4', 'b2bFeature5', 'b2bFeature6'],
+    deliverables: ['b2bDeliverable1', 'b2bDeliverable2', 'b2bDeliverable3'],
+  }
 ];
-

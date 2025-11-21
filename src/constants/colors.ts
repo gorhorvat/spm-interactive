@@ -38,6 +38,8 @@ export const colors = {
   success: '#66bb6a',
   successLight: '#81c784',
   successDark: '#388e3c',
+
+  gold: '#FFD700',
   
   // UI elements
   divider: 'rgba(95, 95, 95, 0.3)',

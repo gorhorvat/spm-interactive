@@ -1,23 +1,44 @@
 'use client';
 
-import { AppBar, Toolbar, Container, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Select, MenuItem, CircularProgress, Backdrop } from '@mui/material';
+import { AppBar, Toolbar, Container, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Select, MenuItem, CircularProgress, Backdrop, Menu } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useTransition } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { colors } from '@/constants/colors';
+import { services, serviceSlugMap } from '@/constants';
 
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [servicesAnchorEl, setServicesAnchorEl] = useState<null | HTMLElement>(null);
   const { language, toggleLanguage, translations } = useLanguage();
   const pathname = usePathname();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+
+  const handleServicesMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setServicesAnchorEl(event.currentTarget);
+  };
+
+  const handleServicesMenuClose = () => {
+    setServicesAnchorEl(null);
+  };
+
+  const isServicesActive = pathname.includes('/services') || pathname.includes('/usluge');
+
+  const getServiceUrl = (serviceSlug: string) => {
+    if (language === 'hr') {
+      const hrSlug = serviceSlugMap[serviceSlug] || serviceSlug;
+      return `/usluge/${hrSlug}`;
+    }
+    return `/en/services/${serviceSlug}`;
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -125,6 +146,15 @@ export default function Navigation() {
                 color: colors.primary,
               },
             }}
+            MenuProps={{
+              PaperProps: {
+                sx: {
+                  bgcolor: 'transparent',
+                  backdropFilter: 'blur(10px)',
+                  border: `1px solid ${colors.borderLight}`,
+                },
+              },
+            }}
           >
             <MenuItem value="hr" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <Image
@@ -167,39 +197,123 @@ export default function Navigation() {
 
             {/* Desktop Navigation */}
             <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
-              {navItems.map((item) => (
-                <Box
-                  key={item.id}
-                  component="div"
-                  onClick={(e) => handleNavClick(item, e)}
-                  sx={{ 
-                    color: pathname === item.path ? colors.primary : colors.textPrimary,
-                    '&:hover': { color: colors.primary },
-                    fontWeight: pathname === item.path ? 600 : 500,
-                    fontSize: '0.875rem',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                    px: 2,
-                    py: 1,
-                    borderRadius: 1,
-                    transition: 'all 0.2s ease',
-                    cursor: 'pointer',
-                    position: 'relative',
-                    '&::after': pathname === item.path ? {
-                      content: '""',
-                      position: 'absolute',
-                      bottom: 0,
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      width: '70%',
-                      height: '2px',
-                      bgcolor: colors.primary,
-                    } : {},
-                  }}
-                >
-                  {item.label}
-                </Box>
-              ))}
+              {navItems.map((item) => {
+                // Special handling for services dropdown
+                if (item.id === 'services') {
+                  return (
+                    <Box
+                      key={item.id}
+                      sx={{ position: 'relative' }}
+                      onMouseEnter={handleServicesMenuOpen}
+                      onMouseLeave={handleServicesMenuClose}
+                    >
+                      <Box
+                        component="div"
+                        className="services-link"
+                        sx={{
+                          color: isServicesActive || Boolean(servicesAnchorEl) ? colors.primary : colors.textPrimary,
+                          fontWeight: isServicesActive ? 600 : 500,
+                          fontSize: '0.875rem',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.5px',
+                          px: 2,
+                          py: 1,
+                          borderRadius: 0,
+                          transition: 'all 0.2s ease',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 0.5,
+                          '&::after': isServicesActive ? {
+                            content: '""',
+                            position: 'absolute',
+                            bottom: 0,
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            width: '70%',
+                            height: '2px',
+                            bgcolor: colors.primary,
+                          } : {},
+                        }}
+                      >
+                        {item.label}
+                        <KeyboardArrowDownIcon sx={{ fontSize: 18 }} />
+                      </Box>
+                      <Menu
+                        anchorEl={servicesAnchorEl}
+                        open={Boolean(servicesAnchorEl)}
+                        onClose={handleServicesMenuClose}
+                        MenuListProps={{
+                          onMouseLeave: handleServicesMenuClose,
+                        }}
+                        slotProps={{
+                          paper: {
+                            onMouseLeave: handleServicesMenuClose,
+                          },
+                        }}
+                        sx={{
+                          '& .MuiPaper-root': {
+                            bgcolor: 'transparent',
+                            backdropFilter: 'blur(10px)',
+                            border: `1px solid ${colors.borderLight}`,
+                            mt: 1,
+                          },
+                        }}
+                      >
+                        {services.filter(s => s.slug).map((service) => (
+                          <MenuItem
+                            key={service.slug}
+                            component={Link}
+                            href={getServiceUrl(service.slug!)}
+                            onClick={handleServicesMenuClose}
+                            sx={{
+                              color: colors.textPrimary,
+                              '&:hover': { bgcolor: colors.hoverPrimary, color: colors.primary },
+                            }}
+                          >
+                            {translations(service.name)}
+                          </MenuItem>
+                        ))}
+                      </Menu>
+                    </Box>
+                  );
+                }
+
+                // Regular nav items
+                return (
+                  <Box
+                    key={item.id}
+                    component="div"
+                    onClick={(e) => handleNavClick(item, e)}
+                    sx={{
+                      color: pathname === item.path ? colors.primary : colors.textPrimary,
+                      '&:hover': { color: colors.primary },
+                      fontWeight: pathname === item.path ? 600 : 500,
+                      fontSize: '0.875rem',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.5px',
+                      px: 2,
+                      py: 1,
+                      borderRadius: 0,
+                      transition: 'all 0.2s ease',
+                      cursor: 'pointer',
+                      position: 'relative',
+                      '&::after': pathname === item.path ? {
+                        content: '""',
+                        position: 'absolute',
+                        bottom: 0,
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: '70%',
+                        height: '2px',
+                        bgcolor: colors.primary,
+                      } : {},
+                    }}
+                  >
+                    {item.label}
+                  </Box>
+                );
+              })}
               <Box sx={{ ml: 2, display: 'flex', gap: 2, alignItems: 'center' }}>
                 <Link href="mailto:info@fractalbyte.studio" style={{ textDecoration: 'none' }}>
                   <Box sx={{ 

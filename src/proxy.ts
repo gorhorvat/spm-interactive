@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { serviceSlugMapReverse } from '@/constants';
 
 // Croatian routes to English folder mappings
 const routeMap: Record<string, string> = {
@@ -27,11 +28,28 @@ export function proxy(request: NextRequest) {
     const cleanPath = pathname.replace(/^\/en/, '') || '/';
     const url = request.nextUrl.clone();
     url.pathname = `/en${cleanPath}`;
-    
+
     // Set locale header for next-intl
     const response = NextResponse.rewrite(url);
     response.headers.set('x-locale', 'en');
     return response;
+  }
+
+  // Handle Croatian service detail pages
+  const serviceMatch = pathname.match(/^\/usluge\/(.+)$/);
+  if (serviceMatch) {
+    const hrSlug = serviceMatch[1];
+
+    // Check if it's a service detail page
+    if (serviceSlugMapReverse[hrSlug]) {
+      const enSlug = serviceSlugMapReverse[hrSlug];
+      const url = request.nextUrl.clone();
+      url.pathname = `/hr/services/${enSlug}`;
+
+      const response = NextResponse.rewrite(url);
+      response.headers.set('x-locale', 'hr');
+      return response;
+    }
   }
 
   // Handle Croatian translated routes (root level)
@@ -39,7 +57,7 @@ export function proxy(request: NextRequest) {
     if (pathname === hrPath) {
       const url = request.nextUrl.clone();
       url.pathname = `/hr${enFolder}`;
-      
+
       // Set locale header for next-intl
       const response = NextResponse.rewrite(url);
       response.headers.set('x-locale', 'hr');

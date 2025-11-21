@@ -1,27 +1,57 @@
 # FRACTALBYTE Website
 
-A modern, high-performant multilingual website built with Next.js, React, and Material-UI.
+A modern, high-performant multilingual website built with Next.js, React, and Material-UI. It offers a range of services and features for web development, SEO, hosting, and maintenance.
 
 ## Features
 
+### Core Features
 - 🎨 Modern dark theme with custom color palette
 - 📱 Fully responsive design (mobile-first approach)
-- ⚡ Optimized for performance with Next.js App Router
+- ⚡ Optimized for performance with Next.js App Router & Turbopack
 - 🌍 Bilingual support (English/Croatian) with next-intl
-- 🔗 SEO-friendly URLs (Croatian: /, /o-nama, /usluge, /cesta-pitanja, /kontakt)
+- 🔗 SEO-friendly URLs with Croatian slugs (/, /o-nama, /usluge, /cesta-pitanja, /kontakt)
 - 🌐 English routes with /en prefix (/en, /en/about-us, /en/services, /en/faq, /en/contact)
 - 🎯 Comprehensive SEO with meta tags, OpenGraph, and Twitter cards
-- 💼 Professional services showcase with expandable details
-- 📦 Pricing packages with feature comparison and icons
-- 🗺️ Interactive grid for development process steps
-- 📧 Contact form with email integration and notifications
-- ❓ FAQ section with accordions
-- 📊 Animated statistics counter
-- 🔍 Structured data for search engines
 - 🏠 Home page with content summaries and "Learn More" links
 - 🚩 Language selector with country flag icons
 - ⏳ Loading spinners with instant navigation feedback
 - 🔗 Social media integration (LinkedIn, Instagram, Facebook)
+
+### Service Pages
+- 📄 Individual service detail pages with dynamic routing (/services/[slug])
+- 🔄 Bilingual service slugs (e.g., /web-development & /web-razvoj)
+- 📋 Service features and deliverables with icons
+- 💰 Pricing display (one-time and recurring)
+- 📦 Package comparison tables
+- 🛠️ Development process visualization
+- 🔍 Breadcrumb navigation for better UX
+
+### Services Offered
+1. **Web Development** - Custom responsive websites with modern frameworks
+2. **Hosting & Deployment** - Cloud hosting with 99.9% uptime
+3. **Performance Optimization** - Core Web Vitals and speed improvements
+4. **SEO Consulting** - Comprehensive SEO strategy and implementation
+5. **Migration & Modernization** - Platform upgrades and data migration
+6. **Security & Compliance** - OWASP, WCAG, GDPR/CCPA compliance
+7. **Maintenance & Support** - Ongoing updates and technical support
+8. **AI Integration** - Chatbots, NLP, and AI-powered features
+9. **3D & Interactive Web** - Three.js, WebGL, and WebXR experiences
+10. **Website Audit** - Performance, SEO, accessibility, and security audits
+11. **B2B Consulting** - Frontend development, Scrum Master, Product Owner services
+
+### Maintenance & Support Plans
+- 📊 Comparison table with 3 tiers (Essential, Professional, Premium)
+- ✅ 11 feature categories with detailed comparisons
+- 💼 Flexible pricing options
+- 🔄 Fully translated in English and Croatian
+
+### Additional Features
+- 📧 Contact form with email integration and notifications
+- ❓ FAQ section with accordions
+- 📊 Animated statistics counter
+- 🔍 Structured data for search engines
+- 🍪 Cookie consent banner with GDPR compliance
+- 🔒 Privacy policy page with comprehensive data protection information
 
 ## Tech Stack
 
@@ -61,43 +91,57 @@ npm start
 ```
 src/
 ├── app/
-│   ├── [locale]/                # Dynamic locale routing (hr/en)
-│   │   ├── layout.tsx          # Root layout with SEO metadata
-│   │   ├── page.tsx            # Home page with summaries
-│   │   ├── about-us/           # About page with full content
-│   │   ├── services/           # Services page with pricing
-│   │   ├── faq/                # FAQ page
-│   │   ├── contact/            # Contact page with form
-│   │   ├── not-found.tsx       # 404 page
-│   │   └── [...catchAll]/      # Catch-all for invalid routes
-│   └── api/
-│       └── contact/            # Contact form API endpoint
+│   ├── [locale]/                      # Dynamic locale routing (hr/en)
+│   │   ├── layout.tsx                # Root layout with SEO metadata
+│   │   ├── page.tsx                  # Home page with summaries
+│   │   ├── about-us/                 # About page with full content
+│   │   ├── services/                 # Services overview page
+│   │   │   ├── [slug]/              # Individual service detail pages
+│   │   │   │   ├── layout.tsx       # Service layout with breadcrumbs
+│   │   │   │   └── page.tsx         # Service detail page
+│   │   │   └── page.tsx             # Services listing page
+│   │   ├── faq/                      # FAQ page
+│   │   ├── contact/                  # Contact page with form
+│   │   ├── privacy-policy/           # Privacy policy page
+│   │   ├── not-found.tsx             # 404 page
+│   │   └── [...catchAll]/            # Catch-all for invalid routes
+│   ├── api/
+│   │   └── contact/                  # Contact form API endpoint
+│   ├── opengraph-image.tsx           # Dynamic OG image generation
+│   ├── sitemap.ts                    # Dynamic sitemap generation
+│   └── globals.css                   # Global styles (minimal)
 ├── components/
 │   ├── system/
-│   │   └── ThemeRegistry.tsx   # Material-UI theme configuration
+│   │   └── ThemeRegistry.tsx         # Material-UI theme configuration
 │   └── ui/
-│       ├── Navigation.tsx      # Navigation with language dropdown
-│       ├── HeroSection.tsx     # Hero section with CTA link
-│       ├── AboutSection.tsx    # Full about section
-│       ├── AboutSectionSummary.tsx  # About summary for home
-│       ├── ServicesSection.tsx # Services with process steps
-│       ├── ServicesSectionSummary.tsx  # Services summary for home
-│       ├── PricingSection.tsx  # Pricing packages (reusable)
-│       ├── Counter.tsx         # Animated statistics counter
-│       ├── FAQSection.tsx      # FAQ accordion section
-│       ├── ContactSection.tsx  # Contact form and info
-│       ├── LoadingSpinner.tsx  # Loading spinner component
-│       └── Footer.tsx          # Footer with social links
+│       ├── Navigation.tsx            # Navigation with language dropdown
+│       ├── HeroSection.tsx           # Hero section with CTA link
+│       ├── AboutSection.tsx          # Full about section
+│       ├── AboutSectionSummary.tsx   # About summary for home
+│       ├── ServicesSectionSummary.tsx # Services summary for home
+│       ├── ServiceComparison.tsx     # Maintenance plans comparison table
+│       ├── ServiceDetailPackages.tsx # Package pricing for service pages
+│       ├── ProcessSection.tsx        # Development process display
+│       ├── PricingSection.tsx        # Pricing packages (reusable)
+│       ├── Counter.tsx               # Animated statistics counter
+│       ├── FAQSection.tsx            # FAQ accordion section
+│       ├── ContactSection.tsx        # Contact form and info
+│       ├── CookieConsent.tsx         # Cookie consent banner
+│       ├── LoadingSpinner.tsx        # Loading spinner component
+│       ├── RedirectToHome.tsx        # Shared redirect component
+│       └── Footer.tsx                # Footer with social links
+├── constants/
+│   ├── index.ts                      # Services, packages, FAQs, slug mappings
+│   └── colors.ts                     # Color palette constants
 ├── lib/
-│   └── metadata.ts             # SEO metadata helper functions
-├── contexts/
-│   └── LanguageContext.tsx     # Language switching context
+│   └── metadata.ts                   # SEO metadata helper functions
 ├── locales/
-│   └── translations.ts         # Translation strings (EN/HR)
+│   └── translations.ts               # Translation strings (EN/HR) - 950+ keys
 ├── utils/
-│   └── iconMapper.tsx          # Icon component mapper utility
-├── i18n.ts                     # next-intl configuration
-└── proxy.ts                    # URL rewriting for Croatian routes (Next.js 16)
+│   ├── iconMapper.tsx                # Icon component mapper utility
+│   └── serverTranslations.ts        # Server-side translation utility
+├── i18n.ts                           # next-intl configuration
+└── proxy.ts                          # URL rewriting for Croatian routes
 ```
 
 ## Color Palette
@@ -142,17 +186,61 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 
 ## SEO & Performance
 
-- Next.js App Router with optimized routing
+### SEO Features
+- Next.js App Router with optimized routing and Turbopack
 - Dynamic locale-based routing with middleware
-- Comprehensive meta tags with keywords for each page
-- Open Graph images (1200x630) for social media sharing
+- Comprehensive meta tags with location-specific keywords (Croatia, Istria, Pula)
+- Dynamic Open Graph images (1200x630) for social media sharing
 - Twitter Card metadata for enhanced social previews
-- Sitemap.xml with all 10 routes (5 Croatian + 5 English)
+- Sitemap.xml with 38 static pages (19 Croatian + 19 English)
+- Optimized sitemap priorities and change frequencies
 - robots.txt configuration for search engine crawlers
-- Optimized images with Next.js Image component
 - Semantic HTML structure with proper heading hierarchy
-- Mobile-first responsive design
 - hreflang tags for multilingual SEO
+- Breadcrumb navigation for better UX and SEO
+- Structured data for search engines
+
+### Performance Optimizations
+- Server-side rendering (SSR) with Next.js App Router
+- Static page generation for optimal performance
+- Optimized images with Next.js Image component
+- Code splitting and lazy loading
+- Minimal CSS (96% reduction in unused styles)
+- Mobile-first responsive design
+- Fast page transitions with instant feedback
+- Turbopack for faster builds and hot reload
+
+### Translation System
+- 950+ translation keys covering all content
+- Centralized translation management
+- Server-side and client-side translation utilities
+- Bilingual service slugs for SEO-friendly URLs
+- All service features and deliverables translated
+- Maintenance table fully translated (11 features x 3 tiers)
+
+## Code Quality
+
+### DRY Principles Applied
+- Centralized `serviceSlugMap` in constants/index.ts (eliminated 4 duplicates)
+- Shared `serverTranslations` utility for server-side translations
+- Shared `RedirectToHome` component for consistent redirects
+- Reusable components for pricing, services, and comparisons
+- Single source of truth for all service data and translations
+
+### Type Safety
+- Full TypeScript coverage
+- Strict type checking enabled
+- Type-safe translation keys
+- Type-safe routing with Next.js
+
+### Build Statistics
+- **Total Pages**: 38 (19 Croatian + 19 English)
+- **Translation Keys**: 950+
+- **Services**: 11 with individual detail pages
+- **Components**: 25+ reusable UI components
+- **CSS Reduction**: 96% (removed 425 lines of unused CSS)
+- **Build Time**: ~3-4 seconds with Turbopack
+- **Bundle Size**: Optimized with code splitting
 
 ## License
 

@@ -4,15 +4,15 @@ import { Box, Container, Typography, TextField, Button, Snackbar, Alert, MenuIte
 import SendIcon from '@mui/icons-material/Send';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { packages } from '@/constants';
+import { packages, services } from '@/constants';
 import { colors } from '@/constants/colors';
 
 interface ContactSectionProps {
-  selectedPackage?: string;
-  onPackageChange?: (packageName: string) => void;
+  selectedService?: string;
+  onServiceChange?: (serviceName: string) => void;
 }
 
-export default function ContactSection({ selectedPackage = '', onPackageChange = () => {} }: ContactSectionProps) {
+export default function ContactSection({ selectedService: selectedService = '', onServiceChange = () => {} }: ContactSectionProps) {
   const { language, translations } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
@@ -34,8 +34,8 @@ export default function ContactSection({ selectedPackage = '', onPackageChange =
     setLoading(true);
 
     try {
-      const subject = selectedPackage 
-        ? `${translations('inquiryAbout')} ${selectedPackage} ${translations('package')}`
+      const subject = selectedService 
+        ? `${translations('inquiryAbout')} ${selectedService} ${translations('service')}`
         : translations('generalInquiry');
 
       const response = await fetch('/api/contact', {
@@ -48,14 +48,14 @@ export default function ContactSection({ selectedPackage = '', onPackageChange =
           email: formData.email,
           subject: subject,
           message: formData.message,
-          package: selectedPackage || 'N/A',
+          service: selectedService || 'N/A',
         }),
       });
 
       if (response.ok) {
         setSnackbar({ open: true, message: translations('messageSent'), severity: 'success' });
         setFormData({ name: '', email: '', message: '' });
-        onPackageChange('');
+        onServiceChange('');
       } else {
         throw new Error('Failed to send');
       }
@@ -125,16 +125,25 @@ export default function ContactSection({ selectedPackage = '', onPackageChange =
           <TextField
             select
             fullWidth
-            id="package"
-            label={translations('desiredPackage')}
-            name="package"
-            value={selectedPackage}
-            onChange={(e) => onPackageChange(e.target.value)}
+            id="service"
+            label={translations('desiredService')}
+            name="service"
+            value={selectedService}
+            onChange={(e) => onServiceChange(e.target.value)}
           >
-            <MenuItem value="">{translations('selectPackage')}</MenuItem>
+            <MenuItem value="">{translations('selectService')}</MenuItem>
+
+            {/* Web Design Services with tier labels */}
             {packages.map((pkg) => (
-              <MenuItem key={pkg.name} value={pkg.name}>
-                {translations(pkg.displayNameKey)}
+              <MenuItem key={pkg.name} value={`Web Design [${pkg.name}]`}>
+                {`${translations('serviceWebDev')} [${translations(pkg.displayNameKey)}]`}
+              </MenuItem>
+            ))}
+
+            {/* Individual Services */}
+            {services.filter(s => s.slug).map((service) => (
+              <MenuItem key={service.slug} value={translations(service.name)}>
+                {translations(service.name)}
               </MenuItem>
             ))}
           </TextField>
