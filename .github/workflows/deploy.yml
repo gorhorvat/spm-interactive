@@ -32,11 +32,14 @@ jobs:
           npm install
           npm run build
 
+          echo "==== BUILT .next CONTENTS ===="
+          ls -l .next/static/chunks/
+
       - name: Archive build and dependencies
         run: |
           tar -czf deploy-package.tar.gz .next node_modules package.json package-lock.json ecosystem.config.js
-          ls -lh deploy-package.tar.gz
-          pwd
+          echo "==== TARBALL CONTENTS (chunks) ===="
+          tar -tf deploy-package.tar.gz | grep chunks
 
       - name: Confirm artifact before upload
         run: |
@@ -71,7 +74,6 @@ jobs:
 
           echo "=== Server dir after SCP ==="
           pwd
-          ls -lh
           ls -lh deploy-package.tar.gz
 
           if [ ! -f deploy-package.tar.gz ]; then
@@ -79,28 +81,21 @@ jobs:
             exit 2
           fi
 
-          # DO NOT REMOVE *.tar.gz HERE - Remove everything else, but not the tarball!
-          rm -rf .next \
-                node_modules \
-                package.json \
-                package-lock.json \
-                ecosystem.config.js \
-                .next/cache \
-                logs \
-                tmp \
-                *.bak \
-                *~ \
-                .npm/_logs \
-                old_builds
+          # REMOVE EVERYTHING: hidden and visible
+          rm -rf .next node_modules package.json package-lock.json ecosystem.config.js .next/cache logs tmp *.bak *~ .npm/_logs old_builds
 
-          find . -type f -mtime +30 -delete
-
-          # Now extract (the tarball still exists)
+          # Extract new build
           tar -xzf deploy-package.tar.gz
-          echo "=== Extraction complete ==="
 
-          # Now remove the archive
+          # Verify the chunk files exist
+          echo "==== Extracted .next/static/chunks content ===="
+          ls -lh .next/static/chunks/
+
+          # Clean up tarball
           rm -f deploy-package.tar.gz
+
+          # Fix permissions (optional but recommeded)
+          chmod -R 755 .next
 
           export SMTP_HOST="$SMTP_HOST"
           export SMTP_PORT="$SMTP_PORT"
