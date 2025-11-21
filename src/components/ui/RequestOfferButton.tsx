@@ -1,7 +1,7 @@
 'use client';
 
 import { Box, Link } from '@mui/material';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { colors } from '@/constants/colors';
 import { usePathname } from 'next/navigation';
 
@@ -50,7 +50,7 @@ export default function RequestOfferButton({ serviceName, buttonText }: RequestO
         }}
       >
         {buttonText}
-        <ArrowDownwardIcon />
+        <ArrowForwardIcon />
       </Box>
     </Link>
   );

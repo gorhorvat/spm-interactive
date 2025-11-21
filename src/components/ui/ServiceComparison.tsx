@@ -172,59 +172,83 @@ export default function ServiceComparison({ showDescriptions = false }: ServiceC
           <TableHead>
             <TableRow sx={{ bgcolor: colors.hoverPrimary }}>
               <TableCell />
-              <TableCell align="center" sx={{ py: 2 }}>
-                <Chip
-                  label="Essential"
-                  sx={{
-                    bgcolor: 'transparent',
-                    border: `2px solid ${getTierColor('Essential')}`,
-                    borderRadius: 0,
-                    color: getTierColor('Essential'),
-                    fontWeight: 700,
-                    fontSize: '0.9rem',
-                  }}
-                />
-                {showDescriptions && (
-                  <Typography variant="body2" sx={{ color: colors.textSecondary, mt: 1, fontSize: '0.75rem' }}>
-                    {translations('maintenanceEssentialDesc')}
-                  </Typography>
-                )}
+              <TableCell align="center" sx={{ py: 2, verticalAlign: 'top' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: { xs: '40px', md: '36px' } }}>
+                  <Chip
+                    label="Essential"
+                    sx={{
+                      bgcolor: 'transparent',
+                      border: `2px solid ${getTierColor('Essential')}`,
+                      borderRadius: 0,
+                      color: getTierColor('Essential'),
+                      fontWeight: 700,
+                      fontSize: { xs: '0.8rem', md: '0.9rem' },
+                      height: 'auto',
+                      py: 0.5,
+                      '& .MuiChip-label': {
+                        px: 1,
+                        whiteSpace: 'nowrap',
+                      },
+                    }}
+                  />
+                  {showDescriptions && (
+                    <Typography variant="body2" sx={{ color: colors.textSecondary, mt: 1, fontSize: '0.75rem' }}>
+                      {translations('maintenanceEssentialDesc')}
+                    </Typography>
+                  )}
+                </Box>
               </TableCell>
-              <TableCell align="center" sx={{ py: 2 }}>
-                <Chip
-                  label="Professional"
-                  sx={{
-                    bgcolor: 'transparent',
-                    border: `2px solid ${getTierColor('Professional')}`,
-                    borderRadius: 0,
-                    color: getTierColor('Professional'),
-                    fontWeight: 700,
-                    fontSize: '0.9rem',
-                  }}
-                />
-                {showDescriptions && (
-                  <Typography variant="body2" sx={{ color: colors.textSecondary, mt: 1, fontSize: '0.75rem' }}>
-                    {translations('maintenanceProfessionalDesc')}
-                  </Typography>
-                )}
+              <TableCell align="center" sx={{ py: 2, verticalAlign: 'top' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: { xs: '40px', md: '36px' } }}>
+                  <Chip
+                    label="Professional"
+                    sx={{
+                      bgcolor: 'transparent',
+                      border: `2px solid ${getTierColor('Professional')}`,
+                      borderRadius: 0,
+                      color: getTierColor('Professional'),
+                      fontWeight: 700,
+                      fontSize: { xs: '0.8rem', md: '0.9rem' },
+                      height: 'auto',
+                      py: 0.5,
+                      '& .MuiChip-label': {
+                        px: 1,
+                        whiteSpace: 'nowrap',
+                      },
+                    }}
+                  />
+                  {showDescriptions && (
+                    <Typography variant="body2" sx={{ color: colors.textSecondary, mt: 1, fontSize: '0.75rem' }}>
+                      {translations('maintenanceProfessionalDesc')}
+                    </Typography>
+                  )}
+                </Box>
               </TableCell>
-              <TableCell align="center" sx={{ py: 2 }}>
-                <Chip
-                  label="Premium"
-                  sx={{
-                    bgcolor: 'transparent',
-                    border: `2px solid ${getTierColor('Premium')}`,
-                    borderRadius: 0,
-                    color: getTierColor('Premium'),
-                    fontWeight: 700,
-                    fontSize: '0.9rem',
-                  }}
-                />
-                {showDescriptions && (
-                  <Typography variant="body2" sx={{ color: colors.textSecondary, mt: 1, fontSize: '0.75rem' }}>
-                    {translations('maintenancePremiumDesc')}
-                  </Typography>
-                )}
+              <TableCell align="center" sx={{ py: 2, verticalAlign: 'top' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: { xs: '40px', md: '36px' } }}>
+                  <Chip
+                    label="Premium"
+                    sx={{
+                      bgcolor: 'transparent',
+                      border: `2px solid ${getTierColor('Premium')}`,
+                      borderRadius: 0,
+                      color: getTierColor('Premium'),
+                      fontWeight: 700,
+                      fontSize: { xs: '0.8rem', md: '0.9rem' },
+                      height: 'auto',
+                      py: 0.5,
+                      '& .MuiChip-label': {
+                        px: 1,
+                        whiteSpace: 'nowrap',
+                      },
+                    }}
+                  />
+                  {showDescriptions && (
+                    <Typography variant="body2" sx={{ color: colors.textSecondary, mt: 1, fontSize: '0.75rem' }}>
+                      {translations('maintenancePremiumDesc')}
+                    </Typography>
+                  )}
+                </Box>
               </TableCell>
             </TableRow>
           </TableHead>

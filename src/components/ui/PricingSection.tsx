@@ -128,6 +128,8 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
                     display: 'flex',
                     justifyContent: 'center',
                     mb: 1,
+                    minHeight: { xs: '44px', md: '48px' },
+                    alignItems: 'center',
                   }}
                 >
                   <Chip
@@ -138,12 +140,13 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
                       borderRadius: 0,
                       color: getTierColor(pkg.tier),
                       fontWeight: 700,
-                      fontSize: '1.1rem',
+                      fontSize: { xs: '0.95rem', md: '1.1rem' },
                       height: 'auto',
                       py: 1,
                       px: 2,
                       '& .MuiChip-label': {
                         px: 1,
+                        whiteSpace: 'nowrap',
                       },
                     }}
                   />

@@ -48,7 +48,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
       >
         <Container maxWidth="lg">
           {/* Header Section */}
-          <Box sx={{ mb: 4, textAlign: 'center' }}>
+          <Box sx={{ mb: 8, textAlign: 'center' }}>
             {/* Icon and Title Row */}
             <Box
               sx={{
@@ -99,16 +99,6 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             >
               {getTranslation(service.description, locale)}
             </Typography>
-
-            {/* Request Offer Button */}
-            {service.name !== ServiceName.WEB_DEVELOPMENT && (
-              <Box sx={{ mb: 4 }}>
-                <RequestOfferButton
-                  serviceName={getTranslation(service.name, locale)}
-                  buttonText={getTranslation('requestOffer', locale)}
-                />
-              </Box>
-            )}
           </Box>
 
           {/* Description Section */}
@@ -117,7 +107,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             sx={{
               bgcolor: colors.background,
               borderRadius: 0,
-              mb: 4,
+              mb: 8,
             }}
           >
             <Typography
@@ -156,27 +146,26 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
               sx={{
                 display: 'flex',
                 justifyContent: 'center',
-                mb: 4,
+                mb: 6,
+                px: { xs: 2, md: 0 },
               }}
             >
               <Box
                 sx={{
-                  display: 'grid',
-                  gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+                  display: 'flex',
+                  flexDirection: { xs: 'column', md: 'row' },
                   gap: 4,
-                  maxWidth: '1200px',
+                  maxWidth: '900px',
                   width: '100%',
                 }}
               >
                 {/* Features */}
                 {service.features && service.features.length > 0 && (
-                  <Paper
-                    elevation={0}
+                  <Box
                     sx={{
-                      bgcolor: colors.background,
-                      borderRadius: 0,
-                      p: { xs: 3, md: 4 },
-                      height: 'fit-content',
+                      flex: 1,
+                      display: 'flex',
+                      flexDirection: 'column',
                     }}
                   >
                     <Typography
@@ -190,10 +179,25 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
                     >
                       {getTranslation('features', locale)}
                     </Typography>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                       {service.features.map((feature, idx) => (
-                        <Box key={idx} sx={{ display: 'flex', alignSelf: 'anchor-center', gap: 1.5 }}>
-                          <CheckCircleIcon sx={{ color: colors.primary, fontSize: 24, mt: 0.2, flexShrink: 0 }} />
+                        <Box
+                          key={idx}
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'flex-start',
+                            gap: 2,
+                            p: 1.5,
+                            bgcolor: colors.background,
+                            border: `1px solid ${colors.borderLight}`,
+                            transition: 'all 0.3s ease',
+                            '&:hover': {
+                              borderColor: colors.primary,
+                              transform: 'translateX(4px)',
+                            },
+                          }}
+                        >
+                          <CheckCircleIcon sx={{ color: colors.primary, fontSize: 24, flexShrink: 0 }} />
                           <Typography
                             variant="body1"
                             sx={{
@@ -206,18 +210,16 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
                         </Box>
                       ))}
                     </Box>
-                  </Paper>
+                  </Box>
                 )}
 
                 {/* Deliverables */}
                 {service.deliverables && service.deliverables.length > 0 && (
-                  <Paper
-                    elevation={0}
+                  <Box
                     sx={{
-                      bgcolor: colors.background,
-                      borderRadius: 0,
-                      p: { xs: 3, md: 4 },
-                      height: 'fit-content',
+                      flex: 1,
+                      display: 'flex',
+                      flexDirection: 'column',
                     }}
                   >
                     <Typography
@@ -231,10 +233,25 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
                     >
                       {getTranslation('deliverables', locale)}
                     </Typography>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                       {service.deliverables.map((deliverable, idx) => (
-                        <Box key={idx} sx={{ display: 'flex', alignSelf: 'anchor-center', gap: 1.5 }}>
-                          <CheckCircleIcon sx={{ color: colors.primary, fontSize: 24, mt: 0.2, flexShrink: 0 }} />
+                        <Box
+                          key={idx}
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'flex-start',
+                            gap: 2,
+                            p: 1.5,
+                            bgcolor: colors.background,
+                            border: `1px solid ${colors.borderLight}`,
+                            transition: 'all 0.3s ease',
+                            '&:hover': {
+                              borderColor: colors.primary,
+                              transform: 'translateX(4px)',
+                            },
+                          }}
+                        >
+                          <CheckCircleIcon sx={{ color: colors.primary, fontSize: 24, flexShrink: 0 }} />
                           <Typography
                             variant="body1"
                             sx={{
@@ -247,7 +264,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
                         </Box>
                       ))}
                     </Box>
-                  </Paper>
+                  </Box>
                 )}
               </Box>
             </Box>
@@ -259,6 +276,16 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
 
         {/* Packages Section - For Web Development and Maintenance Support */}
         <ServiceDetailPackages slug={service.slug || ''} />
+
+        {/* Request Offer Button */}
+          {service.name !== ServiceName.WEB_DEVELOPMENT && (
+            <Box textAlign='center' sx={{ mt: 8, py: 8 }}>
+              <RequestOfferButton
+                serviceName={getTranslation(service.name, locale)}
+                buttonText={getTranslation('requestOffer', locale)}
+              />
+            </Box>
+          )}
       </Box>
       <Footer />
     </>

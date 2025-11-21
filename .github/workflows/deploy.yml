@@ -82,7 +82,7 @@ jobs:
           fi
 
           # REMOVE EVERYTHING: hidden and visible
-          rm -rf .next node_modules package.json package-lock.json ecosystem.config.js .next/cache logs tmp *.bak *~ .npm/_logs old_builds
+          rm -rf .next node_modules node_modules/.cache package.json package-lock.json ecosystem.config.js .next/cache logs tmp *.bak *~ .npm/_logs old_builds
 
           # Extract new build
           tar -xzf deploy-package.tar.gz
