@@ -138,6 +138,7 @@ export const packages = [
       'essentialFeature9',
       'essentialFeature10',
       'essentialFeature11',
+      'essentialFeature12',
     ],
     highlight: false,
   },
