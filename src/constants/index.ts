@@ -132,6 +132,7 @@ export const pricings = [
   { name: 'pricingItem11Name', price: 'pricingItem11Price' },
   { name: 'pricingItem12Name', price: 'pricingItem12Price' },
   { name: 'pricingItem13Name', price: 'pricingItem13Price' },
+  { name: 'pricingItem14Name', price: 'pricingItem14Price' },
 ];
 
 // Pricing packages
