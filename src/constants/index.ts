@@ -117,6 +117,23 @@ export const faqs = [
   { question: 'faqQ14', answer: 'faqA14' },
 ];
 
+// Pricing
+export const pricings = [
+  { name: 'pricingItem1Name', price: 'pricingItem1Price' },
+  { name: 'pricingItem2Name', price: 'pricingItem2Price' },
+  { name: 'pricingItem3Name', price: 'pricingItem3Price' },
+  { name: 'pricingItem4Name', price: 'pricingItem4Price' },
+  { name: 'pricingItem5Name', price: 'pricingItem5Price' },
+  { name: 'pricingItem6Name', price: 'pricingItem6Price' },
+  { name: 'pricingItem7Name', price: 'pricingItem7Price' },
+  { name: 'pricingItem8Name', price: 'pricingItem8Price' },
+  { name: 'pricingItem9Name', price: 'pricingItem9Price' },
+  { name: 'pricingItem10Name', price: 'pricingItem10Price' },
+  { name: 'pricingItem11Name', price: 'pricingItem11Price' },
+  { name: 'pricingItem12Name', price: 'pricingItem12Price' },
+  { name: 'pricingItem13Name', price: 'pricingItem13Price' },
+];
+
 // Pricing packages
 export const packages = [
   {
@@ -139,6 +156,8 @@ export const packages = [
       'essentialFeature10',
       'essentialFeature11',
       'essentialFeature12',
+      'essentialFeature13',
+      'essentialFeature14',
     ],
     highlight: false,
   },
@@ -165,6 +184,8 @@ export const packages = [
       'professionalFeature13',
       'professionalFeature14',
       'professionalFeature15',
+      'professionalFeature16',
+      'professionalFeature17',
     ],
     highlight: false,
   },
@@ -193,6 +214,8 @@ export const packages = [
       'premiumFeature15',
       'premiumFeature16',
       'premiumFeature17',
+      'premiumFeature18',
+      'premiumFeature19',
     ],
     highlight: false,
   },

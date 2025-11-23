@@ -60,6 +60,20 @@ const pagesMetadata: Record<string, PageMetadata> = {
       en: '/en/faq',
     },
   },
+  pricing: {
+    title: {
+      hr: 'Cjenik - FRACTALBYTE | Profesionalni Web Razvoj Zagreb, Hrvatska',
+      en: 'Pricing - FRACTALBYTE | FRACTALBYTE | Professional Web Development Croatia',
+    },
+    description: {
+      hr: 'Cjenik osnovnih i dodatnih usluga FRACTALBYTE-a.',
+      en: 'Pricing of basic and additional services of FRACTALBYTE.',
+    },
+    path: {
+      hr: '/cjenik',
+      en: '/en/pricing',
+    },
+  },
   contact: {
     title: {
       hr: 'Kontakt - FRACTALBYTE | Zatražite Besplatnu Ponudu Zagreb',
@@ -102,6 +116,10 @@ const pageKeywords: Record<string, { hr: string[]; en: string[] }> = {
   faq: {
     hr: ['česta pitanja', 'FAQ', 'web development pitanja', 'cijena web stranice', 'vrijeme izrade', 'kako funkcionira', 'koliko košta web stranica', 'web razvoj proces', 'održavanje web stranice'],
     en: ['FAQ', 'frequently asked questions', 'web development questions', 'website pricing', 'development time', 'how it works', 'website cost', 'web development process', 'website maintenance'],
+  },
+  pricing: {
+    hr: ['Cijenik', 'koliko košta web stranica', 'cijena izrade web stranice', 'troškovi održavanja web stranice', 'trošak hostinga', 'trošak domene'],
+    en: ['pricing', 'how much does a website cost', 'website creation pricing', 'maintenance costs', 'hosting cost', 'domain cost'],
   },
   contact: {
     hr: ['kontakt', 'zatražite ponudu', 'besplatna ponuda', 'kontaktirajte nas', 'web projekt', 'email', 'web razvoj zagreb', 'ponuda za web stranicu', 'kontakt fractalbyte'],

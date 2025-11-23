@@ -6,6 +6,7 @@ const routeMap: Record<string, string> = {
   '/o-nama': '/about-us',
   '/usluge': '/services',
   '/cesta-pitanja': '/faq',
+  '/cjenik': '/pricing',
   '/kontakt': '/contact',
   '/politika-privatnosti': '/privacy-policy',
 };

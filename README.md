@@ -101,6 +101,7 @@ src/
 │   │   │   │   └── page.tsx         # Service detail page
 │   │   │   └── page.tsx             # Services listing page
 │   │   ├── faq/                      # FAQ page
+│   │   ├── pricing/                  # Pricing page
 │   │   ├── contact/                  # Contact page with form
 │   │   ├── privacy-policy/           # Privacy policy page
 │   │   ├── not-found.tsx             # 404 page
@@ -125,6 +126,7 @@ src/
 │       ├── PricingSection.tsx        # Pricing packages (reusable)
 │       ├── Counter.tsx               # Animated statistics counter
 │       ├── FAQSection.tsx            # FAQ accordion section
+│       ├── PriceListSection.tsx      # Pricing section
 │       ├── ContactSection.tsx        # Contact form and info
 │       ├── CookieConsent.tsx         # Cookie consent banner
 │       ├── LoadingSpinner.tsx        # Loading spinner component

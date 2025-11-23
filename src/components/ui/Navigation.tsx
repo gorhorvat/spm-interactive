@@ -76,12 +76,14 @@ export default function Navigation() {
     { label: translations('about'), path: '/o-nama', id: 'about' },
     { label: translations('services'), path: '/usluge', id: 'services' },
     { label: translations('faq'), path: '/cesta-pitanja', id: 'faq' },
+    { label: translations('pricing'), path: '/cjenik', id: 'pricing' },
     { label: translations('contact'), path: '/kontakt', id: 'contact' },
   ] : [
     { label: translations('home'), path: '/en', id: 'home' },
     { label: translations('about'), path: '/en/about-us', id: 'about' },
     { label: translations('services'), path: '/en/services', id: 'services' },
     { label: translations('faq'), path: '/en/faq', id: 'faq' },
+    { label: translations('pricing'), path: '/en/pricing', id: 'pricing' },
     { label: translations('contact'), path: '/en/contact', id: 'contact' },
   ];
 
@@ -265,7 +267,7 @@ export default function Navigation() {
             </Link>
 
             {/* Desktop Navigation */}
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
+            <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', gap: 0.5 }}>
               {navItems.map((item) => {
                 // Special handling for services dropdown
                 if (item.id === 'services') {
@@ -282,10 +284,10 @@ export default function Navigation() {
                         sx={{
                           color: isServicesActive || Boolean(servicesAnchorEl) ? colors.primary : colors.textPrimary,
                           fontWeight: isServicesActive ? 600 : 500,
-                          fontSize: '0.875rem',
+                          fontSize: { md: '0.8rem', lg: '0.875rem' },
                           textTransform: 'uppercase',
                           letterSpacing: '0.5px',
-                          px: 2,
+                          px: { md: 1, lg: 2 },
                           py: 1,
                           borderRadius: 0,
                           transition: 'all 0.2s ease',
@@ -358,10 +360,10 @@ export default function Navigation() {
                       color: pathname === item.path ? colors.primary : colors.textPrimary,
                       '&:hover': { color: colors.primary },
                       fontWeight: pathname === item.path ? 600 : 500,
-                      fontSize: '0.875rem',
+                      fontSize: { md: '0.8rem', lg: '0.875rem' },
                       textTransform: 'uppercase',
                       letterSpacing: '0.5px',
-                      px: 2,
+                      px: { md: 1, lg: 2 },
                       py: 1,
                       borderRadius: 0,
                       transition: 'all 0.2s ease',
@@ -383,10 +385,10 @@ export default function Navigation() {
                   </Box>
                 );
               })}
-              <Box sx={{ ml: 2, display: 'flex', gap: 2, alignItems: 'center' }}>
+              <Box sx={{ ml: { md: 1, lg: 2 }, display: 'flex', gap: { md: 1, lg: 2 }, alignItems: 'center' }}>
                 <Link href="mailto:info@fractalbyte.studio" style={{ textDecoration: 'none' }}>
-                  <Box sx={{ 
-                    display: 'flex',
+                  <Box sx={{
+                    display: { md: 'none', lg: 'flex' },
                     alignItems: 'center',
                     gap: 0.5,
                     color: colors.primary,
@@ -399,8 +401,8 @@ export default function Navigation() {
                   </Box>
                 </Link>
                 <Link href="tel:+385998446978" style={{ textDecoration: 'none' }}>
-                  <Box sx={{ 
-                    display: 'flex',
+                  <Box sx={{
+                    display: { md: 'none', lg: 'flex' },
                     alignItems: 'center',
                     gap: 0.5,
                     color: colors.primary,
@@ -473,7 +475,7 @@ export default function Navigation() {
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ display: { md: 'none' } }}
+              sx={{ display: { lg: 'none' } }}
             >
               <MenuIcon />
             </IconButton>
@@ -493,7 +495,7 @@ export default function Navigation() {
           keepMounted: true,
         }}
         sx={{
-          display: { xs: 'block', md: 'none' },
+          display: { xs: 'block', lg: 'none' },
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
             width: 240,
