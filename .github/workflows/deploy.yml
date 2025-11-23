@@ -133,10 +133,11 @@ jobs:
           export SMTP_FROM="$SMTP_FROM"
           export REVALIDATE_SECRET="$REVALIDATE_SECRET"
 
-          npm install -g pm2
+          # ... after the file cleanup and extraction
+          echo "=== Starting Node.js app with Node.js Selector ==="
+          cloudlinux-selector start --json --interpreter nodejs --user goranhorvat --app-root fractalbyte.studio/fractalbyte-website
 
-          echo "=== Starting fresh PM2 process ==="
+          # (Optionally) Start with PM2 as well for process management/fallback
+          npm install -g pm2
           pm2 start npm --name "fractalbyte-website" -- run start
           pm2 save
-
-          EOF
