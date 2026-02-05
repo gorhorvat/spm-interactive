@@ -15,7 +15,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.10",
-    "next": "^16.0.3",
+    "next": "16.0.10",
     "next-intl": "^4.5.3",
     "nodemailer": "^7.0.10",
     "react": "^18.2.0",
