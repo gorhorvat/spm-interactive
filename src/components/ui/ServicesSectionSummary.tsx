@@ -1,12 +1,23 @@
 'use client';
 
-import { Box, Container, Typography, Grid, Paper, Button } from '@mui/material';
+import { Box, Container, Typography, Button } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { services, serviceSlugMap } from '@/constants';
-import { getIconComponent, serviceIcons } from '@/utils/iconMapper';
 import { colors } from '@/constants/colors';
+
+// Service background images mapped by service slug
+const serviceBackgroundImages: { [key: string]: string } = {
+  'web-development': '/background-web-development.jpg',
+  'hosting': '/background-hosting.jpg',
+  'performance-optimization': '/background-performance-optimization.jpg',
+  'seo-consulting': '/background-seo-consulting.jpg',
+  'migration-modernization': '/background-migration-modernization.jpg',
+  'security-compliance': '/background-security-compliance.jpeg',
+  'ai-integration': '/background-ai-integration.jpeg',
+  'b2b-consulting': '/background-b2b-consulting.jpeg',
+};
 
 export default function ServicesSectionSummary() {
   const { language, translations } = useLanguage();
@@ -20,6 +31,11 @@ export default function ServicesSectionSummary() {
     }
 
     return `/en/services/${serviceSlug}`;
+  };
+
+  const getBackgroundImage = (slug?: string) => {
+    if (!slug) return serviceBackgroundImages['web-development'];
+    return serviceBackgroundImages[slug] || serviceBackgroundImages['web-development'];
   };
 
   return (
@@ -58,46 +74,72 @@ export default function ServicesSectionSummary() {
           {translations('servicesSummary')}
         </Typography>
 
-        <Grid container spacing={3} sx={{ mb: 4 }}>
-          {services.map((service, index) => {
-            const icon = serviceIcons[service.name] || 'CodeIcon';
-            return (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                <Paper
-                  elevation={0}
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+          {services.map((service, index) => (
+            <Box
+              key={index}
+              className="service-card"
+              sx={{
+                position: 'relative',
+                width: '100%',
+                minHeight: { xs: '300px', md: '400px' },
+                backgroundImage: `url(${getBackgroundImage(service.slug)})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                borderRadius: 0,
+                overflow: 'hidden',
+                transition: 'all 0.3s ease',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: 'linear-gradient(135deg, rgba(4, 4, 4, 0.7) 0%, rgba(4, 4, 4, 0.5) 100%)',
+                  zIndex: 1,
+                  transition: 'all 0.3s ease',
+                },
+                '&:hover::before': {
+                  background: 'linear-gradient(135deg, rgba(4, 4, 4, 0.85) 0%, rgba(4, 4, 4, 0.7) 100%)',
+                },
+
+              }}
+            >
+              <Box
+                sx={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  zIndex: 2,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-end',
+                  p: { xs: 3, md: 4 },
+                }}
+              >
+                {/* Title - Always visible */}
+                <Typography
+                  variant="h4"
                   sx={{
-                    p: 3,
-                    textAlign: 'center',
-                    height: '100%',
-                    bgcolor: colors.background,
-                    border: `1px solid ${colors.borderLight}`,
-                    borderRadius: 0,
-                    transition: 'all 0.3s ease',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    '&:hover': {
-                      borderColor: colors.primary,
-                      boxShadow: `0 4px 12px ${colors.shadowPrimary}`,
-                    },
+                    mb: { xs: 2, md: 3 },
+                    fontWeight: 700,
+                    color: colors.textPrimary,
+                    fontSize: { xs: '1.5rem', md: '2rem' },
                   }}
                 >
-                  <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }} aria-label={`${translations(service.name)} icon`}>
-                    {getIconComponent(icon, {
-                      sx: { fontSize: 48, color: colors.primary }
-                    })}
-                  </Box>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      mb: 1.5,
-                      fontWeight: 600,
-                      color: colors.textPrimary,
-                      fontSize: { xs: '1.1rem', md: '1.25rem' },
-                    }}
-                  >
-                    {translations(service.name)}
-                  </Typography>
+                  {translations(service.name)}
+                </Typography>
+
+                {/* Description - Always visible */}
+                <Box
+                  className="service-description"
+                  sx={{
+                    mb: 2,
+                  }}
+                >
                   <Typography
                     variant="body2"
                     sx={{
@@ -105,44 +147,46 @@ export default function ServicesSectionSummary() {
                       lineHeight: 1.6,
                       fontSize: { xs: '0.875rem', md: '0.95rem' },
                       mb: 2,
-                      flexGrow: 1,
                     }}
                   >
                     {translations(service.description)}
                   </Typography>
+                </Box>
 
-                  {/* Learn More button for each service */}
-                  {service.slug && (
-                    <Link href={getServiceUrl(service.slug)} passHref style={{ textDecoration: 'none' }}>
-                      <Button
-                        variant="outlined"
-                        endIcon={<ArrowForwardIcon />}
-                        fullWidth
-                        sx={{
+                {/* Learn More button for each service */}
+                {service.slug && (
+                  <Link href={getServiceUrl(service.slug)} passHref style={{ textDecoration: 'none' }}>
+                    <Button
+                      variant="outlined"
+                      endIcon={<ArrowForwardIcon />}
+                      sx={{
+                        alignSelf: 'flex-start',
+                        borderColor: colors.primary,
+                        color: colors.primary,
+                        fontWeight: 600,
+                        py: 1,
+                        px: 3,
+                        borderRadius: 0,
+                        textTransform: 'none',
+                        fontSize: '0.9rem',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
                           borderColor: colors.primary,
-                          color: colors.primary,
-                          fontWeight: 600,
-                          py: 1,
-                          borderRadius: 0,
-                          textTransform: 'none',
-                          fontSize: '0.9rem',
-                          '&:hover': {
-                            borderColor: colors.primary,
-                            bgcolor: colors.primary,
-                            color: '#fff',
-                          },
-                        }}
-                      >
-                        {translations('learnMore')}
-                      </Button>
-                    </Link>
-                  )}
-                </Paper>
-              </Grid>
-            );
-          })}
-        </Grid>
+                          bgcolor: colors.primary,
+                          color: '#fff',
+                        },
+                      }}
+                    >
+                      {translations('learnMore')}
+                    </Button>
+                  </Link>
+                )}
+              </Box>
+            </Box>
+          ))}
+        </Box>
       </Container>
     </Box>
   );
 }
+

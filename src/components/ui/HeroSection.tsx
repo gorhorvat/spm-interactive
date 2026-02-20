@@ -1,14 +1,20 @@
 'use client';
 
-import { Box, Container, Typography, Link as MuiLink } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { colors } from '@/constants/colors';
 
 export default function HeroSection() {
-  const { language, translations } = useLanguage();
+  const { translations } = useLanguage();
+
+  const handleCheckOffersClick = () => {
+    const tiersSection = document.getElementById('website-tiers');
+    if (tiersSection) {
+      tiersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <Box
@@ -18,7 +24,7 @@ export default function HeroSection() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: `linear-gradient(135deg, ${colors.background} 0%, ${colors.backgroundPaper} 50%, ${colors.background} 100%)`,
+        background: `linear-gradient(135deg, ${colors.background} 0%, rgba(57, 213, 211, 0.08) 50%, ${colors.background} 100%)`,
         position: 'relative',
         pt: { xs: 12, md: 15 },
         pb: { xs: 8, md: 10 },
@@ -29,7 +35,7 @@ export default function HeroSection() {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'radial-gradient(circle at 50% 50%, rgba(115, 1, 62, 0.1) 0%, transparent 50%)',
+          background: 'radial-gradient(circle at 50% 50%, rgba(57, 213, 211, 0.12) 0%, transparent 50%)',
           pointerEvents: 'none',
         },
       }}
@@ -73,37 +79,44 @@ export default function HeroSection() {
             {translations('heroDescription')}
           </Typography>
 
-          <Link
-            href={language === 'hr' ? '/kontakt' : '/en/contact'}
-            style={{ textDecoration: 'none' }}
-          >
-            <Box
-              sx={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 1,
-                px: 4,
-                py: 1.5,
-                fontSize: '1.1rem',
-                fontWeight: 600,
-                borderRadius: 0,
-                textTransform: 'none',
-                bgcolor: colors.primaryDark,
-                color: colors.textPrimary,
-                boxShadow: `0 4px 12px ${colors.shadowPrimary}`,
-                cursor: 'pointer',
-                '&:hover': {
-                  bgcolor: colors.primary,
-                  boxShadow: `0 6px 20px ${colors.shadowPrimaryHover}`,
-                  transform: 'translateY(-2px)',
+          <Box
+            onClick={handleCheckOffersClick}
+            sx={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 1,
+              px: 4,
+              py: 1.5,
+              fontSize: '1.1rem',
+              fontWeight: 600,
+              borderRadius: 0,
+              textTransform: 'none',
+              bgcolor: colors.primaryDark,
+              color: colors.textPrimary,
+              boxShadow: `0 4px 12px ${colors.shadowPrimary}`,
+              animation: 'checkOffersPulse 2.1s ease-in-out infinite',
+              '@keyframes checkOffersPulse': {
+                '0%, 100%': {
+                  boxShadow: `0 4px 12px ${colors.shadowPrimary}`,
+                  transform: 'scale(1)',
                 },
-                transition: 'all 0.3s ease',
-              }}
-            >
-              {translations('getStarted')}
-              <ArrowDownwardIcon />
-            </Box>
-          </Link>
+                '50%': {
+                  boxShadow: `0 12px 30px ${colors.shadowPrimaryHover}`,
+                  transform: 'scale(1.04)',
+                },
+              },
+              cursor: 'pointer',
+              '&:hover': {
+                bgcolor: colors.primary,
+                boxShadow: `0 6px 20px ${colors.shadowPrimaryHover}`,
+                transform: 'translateY(-2px)',
+              },
+              transition: 'all 0.3s ease',
+            }}
+          >
+            {translations('getStarted')}
+            <ArrowDownwardIcon />
+          </Box>
         </Box>
       </Container>
     </Box>

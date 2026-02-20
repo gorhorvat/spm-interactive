@@ -29,7 +29,7 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
       case 'Essential':
         return colors.textSecondary;
       case 'Professional':
-        return colors.primary;
+        return colors.successDark;
       case 'Premium':
         return '#FFD700'; // Gold color
       case 'Custom':
@@ -41,6 +41,7 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
 
   return (
     <Box
+      id="website-tiers"
       sx={{
         py: { xs: 8, md: 12 },
         bgcolor: colors.background,
@@ -122,13 +123,12 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
                     />
                   </Box>
                 )}
-
                 <Box
                   sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     mb: 1,
-                    minHeight: { xs: '44px', md: '48px' },
+                    minHeight: { xs: '36px', md: '48px' },
                     alignItems: 'center',
                   }}
                 >
@@ -154,11 +154,11 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
 
                 <Box
                   sx={{
-                    minHeight: { xs: '48px', md: '52px' },
+                    height: { xs: '120px', sm: '140px', md: '130px', lg: '120px' },
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    mb: 2,
+                    mb: { xs: 1.5, md: 2 },
                   }}
                 >
                   {pkg.descriptionKey && (
@@ -169,6 +169,7 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
                         color: colors.textSecondary,
                         fontStyle: 'italic',
                         fontSize: { xs: '0.875rem', md: '0.95rem' },
+                        lineHeight: 1.35,
                       }}
                     >
                       {translations(pkg.descriptionKey)}
@@ -178,7 +179,7 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
 
                 <Box
                   sx={{
-                    minHeight: { xs: '60px', md: '70px' },
+                    minHeight: { xs: '52px', md: '70px' },
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',

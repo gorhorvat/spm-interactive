@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Navigation from '@/components/ui/Navigation';
 import HeroSection from '@/components/ui/HeroSection';
-import AboutSectionSummary from '@/components/ui/AboutSectionSummary';
 import ServicesSectionSummary from '@/components/ui/ServicesSectionSummary';
 import PricingSection from '@/components/ui/PricingSection';
 import Counter from '@/components/ui/Counter';
@@ -34,7 +33,6 @@ export default function Home() {
     <main>
       <Navigation />
       <HeroSection />
-      <AboutSectionSummary />
       <ServicesSectionSummary />
       <PricingSection onServiceSelect={handleServiceSelect} />
       <Counter />

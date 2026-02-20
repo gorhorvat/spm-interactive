@@ -46,6 +46,35 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
           pb: 8,
         }}
       >
+        {/* Service Hero Image */}
+        <Box
+          sx={{
+            width: '100%',
+            height: { xs: 300, md: 400 },
+            backgroundImage: `url(${slug === 'web-development' ? '/background-web-development.jpg' : 
+              slug === 'hosting' ? '/background-hosting.jpg' : 
+              slug === 'performance-optimization' ? '/background-performance-optimization.jpg' : 
+              slug === 'seo-consulting' ? '/background-seo-consulting.jpg' : 
+              slug === 'migration-modernization' ? '/background-migration-modernization.jpg' : 
+              slug === 'security-compliance' ? '/background-security-compliance.jpeg' : 
+              slug === 'ai-integration' ? '/background-ai-integration.jpeg' : 
+              slug === 'b2b-consulting' ? '/background-b2b-consulting.jpeg' : '/fractalbyte-logo.png'})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed',
+            mb: 6,
+            position: 'relative',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              bgcolor: 'rgba(4, 4, 4, 0.5)',
+            },
+          }}
+        />
         <Container maxWidth="lg">
           {/* Header Section */}
           <Box sx={{ mb: 8, textAlign: 'center' }}>

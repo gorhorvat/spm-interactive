@@ -109,7 +109,6 @@ src/
 │       ├── Navigation.tsx            # Navigation with language dropdown
 │       ├── HeroSection.tsx           # Hero section with CTA link
 │       ├── AboutSection.tsx          # Full about section
-│       ├── AboutSectionSummary.tsx   # About summary for home
 │       ├── ServicesSectionSummary.tsx # Services summary for home
 
 │       ├── ServiceDetailPackages.tsx # Package pricing for service pages
