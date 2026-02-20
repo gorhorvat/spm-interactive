@@ -82,6 +82,7 @@ export default function ServicesSectionSummary() {
               sx={{
                 position: 'relative',
                 width: '100%',
+                marginBottom: 4,
                 minHeight: { xs: '300px', md: '400px' },
                 backgroundImage: `url(${getBackgroundImage(service.slug)})`,
                 backgroundSize: 'cover',
@@ -120,7 +121,6 @@ export default function ServicesSectionSummary() {
                   p: { xs: 3, md: 4 },
                 }}
               >
-                {/* Title - Always visible */}
                 <Typography
                   variant="h4"
                   sx={{
@@ -132,8 +132,6 @@ export default function ServicesSectionSummary() {
                 >
                   {translations(service.name)}
                 </Typography>
-
-                {/* Description - Always visible */}
                 <Box
                   className="service-description"
                   sx={{

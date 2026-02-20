@@ -322,6 +322,7 @@ export default function Navigation() {
                             onMouseLeave: handleServicesMenuClose,
                           },
                         }}
+                        disableEnforceFocus
                         sx={{
                           '& .MuiPaper-root': {
                             bgcolor: 'transparent',

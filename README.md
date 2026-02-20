@@ -16,6 +16,7 @@ A modern, high-performant multilingual website built with Next.js, React, and Ma
 - 🚩 Language selector with country flag icons
 - ⏳ Loading spinners with instant navigation feedback
 - 🔗 Social media integration (Instagram, Facebook)
+- 🤖 AI chatbot overlay with site-aware answers (Groq + Vercel AI SDK)
 
 ### Service Pages
 - 📄 Individual service detail pages with dynamic routing (/services/[slug])
@@ -43,16 +44,19 @@ A modern, high-performant multilingual website built with Next.js, React, and Ma
 - 🔍 Structured data for search engines
 - 🍪 Cookie consent banner with GDPR compliance
 - 🔒 Privacy policy page with comprehensive data protection information
+- 💬 Markdown-formatted chatbot responses (tables, lists, links)
 
 ## Tech Stack
 
-- **Framework**: Next.js 16.0.3 (App Router with Turbopack)
+- **Framework**: Next.js 16.0.10 (App Router with Turbopack)
 - **UI Library**: Material-UI (MUI) v5
 - **Language**: TypeScript
 - **Styling**: Emotion CSS-in-JS
 - **Icons**: Material Icons
 - **Email**: Nodemailer
 - **Internationalization**: next-intl v4.5.3
+- **AI**: Vercel AI SDK + Groq
+- **Markdown**: react-markdown + remark-gfm
 
 ## Getting Started
 
@@ -83,6 +87,7 @@ npm start
 src/
 ├── app/
 │   ├── [locale]/                      # Dynamic locale routing (hr/en)
+│   └── chat/                      # AI chatbot API endpoint
 │   │   ├── layout.tsx                # Root layout with SEO metadata
 │   │   ├── page.tsx                  # Home page with summaries
 │   │   ├── about-us/                 # About page with full content
@@ -119,6 +124,7 @@ src/
 │       ├── PriceListSection.tsx      # Pricing section
 │       ├── ContactSection.tsx        # Contact form and info
 │       ├── CookieConsent.tsx         # Cookie consent banner
+│       ├── ChatBot.tsx               # AI chatbot overlay
 │       ├── LoadingSpinner.tsx        # Loading spinner component
 │       ├── RedirectToHome.tsx        # Shared redirect component
 │       └── Footer.tsx                # Footer with social links
@@ -126,6 +132,7 @@ src/
 │   ├── index.ts                      # Services, packages, FAQs, slug mappings
 │   └── colors.ts                     # Color palette constants
 ├── lib/
+│   ├── chatbotKnowledge.ts           # Chatbot knowledge builder
 │   └── metadata.ts                   # SEO metadata helper functions
 ├── locales/
 │   └── translations.ts               # Translation strings (EN/HR) - 950+ keys
@@ -172,6 +179,9 @@ SMTP_PASSWORD=your-email-password
 
 # Google Analytics
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+
+# Groq (AI Chatbot)
+GROQ_API_KEY=your-groq-api-key
 ```
 
 **Note**: The `.env` file is excluded from version control. Never commit sensitive credentials.

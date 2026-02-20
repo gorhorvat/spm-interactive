@@ -6,6 +6,7 @@ import Script from "next/script";
 import ThemeRegistry from "@/components/system/ThemeRegistry";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import CookieConsent from "@/components/ui/CookieConsent";
+import ChatBot from "@/components/ui/ChatBot";
 import { locales } from '@/i18n';
 import "../globals.css";
 import { colors } from "@/constants/colors";
@@ -158,6 +159,7 @@ export default async function LocaleLayout({
             <ThemeRegistry>
               {children}
               <CookieConsent />
+              <ChatBot />
             </ThemeRegistry>
           </LanguageProvider>
         </NextIntlClientProvider>

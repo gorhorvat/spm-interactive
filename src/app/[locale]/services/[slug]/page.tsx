@@ -61,7 +61,6 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
               slug === 'b2b-consulting' ? '/background-b2b-consulting.jpeg' : '/fractalbyte-logo.png'})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundAttachment: 'fixed',
             mb: 6,
             position: 'relative',
             '&::before': {
@@ -96,7 +95,6 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  bgcolor: colors.hoverPrimary,
                   borderRadius: 0,
                   flexShrink: 0,
                 }}
