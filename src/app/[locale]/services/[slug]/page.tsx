@@ -251,7 +251,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
                             },
                           }}
                         >
-                          <CheckCircleIcon sx={{ color: colors.primary, fontSize: 24, flexShrink: 0 }} />
+                          <CheckCircleIcon sx={{ color: colors.primary, fontSize: 24, flexShrink: 0 }} aria-label="deliverable included" />
                           <Typography
                             variant="body1"
                             sx={{
@@ -274,7 +274,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
           {service.slug === ServiceSlug.WEB_DEVELOPMENT && <ProcessSection />}
         </Container>
 
-        {/* Packages Section - For Web Development and Maintenance Support */}
+        {/* Packages Section - For Web Development */}
         <ServiceDetailPackages slug={service.slug || ''} />
 
         {/* Request Offer Button */}

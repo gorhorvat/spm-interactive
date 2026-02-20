@@ -7,10 +7,7 @@ export const serviceSlugMap: Record<string, string> = {
   'seo-consulting': 'seo-savjetovanje',
   'migration-modernization': 'migracija-modernizacija',
   'security-compliance': 'sigurnost-uskladenost',
-  'maintenance-support': 'odrzavanje-podrska',
   'ai-integration': 'ai-integracija',
-  'website-audit': 'revizija-web-stranice',
-  '3d-interactive': '3d-interaktivno',
 };
 
 export enum ServiceName {
@@ -21,10 +18,7 @@ export enum ServiceName {
   SEO_CONSULTING = 'serviceSEOConsulting',
   MIGRATION_MODERNIZATION = 'serviceMigration',
   SECURITY_COMPLIANCE = 'serviceSecurity',
-  MAINTENANCE_SUPPORT = 'serviceMaintenance',
   AI_INTEGRATION = 'serviceAI',
-  WEBSITE_AUDIT = 'serviceAudit',
-  INTERACTIVE_EXPERIENCES = 'service3D',
 }
 
 export enum ServiceSlug {
@@ -35,10 +29,7 @@ export enum ServiceSlug {
   SEO_CONSULTING = 'seo-consulting',
   MIGRATION_MODERNIZATION = 'migration-modernization',
   SECURITY_COMPLIANCE = 'security-compliance',
-  MAINTENANCE_SUPPORT = 'maintenance-support',
   AI_INTEGRATION = 'ai-integration',
-  WEBSITE_AUDIT = 'website-audit',
-  INTERACTIVE_EXPERIENCES = '3d-interactive',
 }
 
 // Reverse mapping (Croatian to English) for proxy
@@ -73,12 +64,10 @@ export const serviceIcons: { [key: string]: string } = {
   'SEO Audit & Strategy Consulting': 'TrendingUpIcon',
   'Migration & Modernization Services': 'SyncIcon',
   'Web Security & Compliance Services': 'SecurityIcon',
-  'Maintenance & Support Plans': 'SettingsIcon',
+
   'Analytics & Conversion Optimization': 'AnalyticsIcon',
-  '3D & Interactive Web Experiences': 'ViewInArIcon',
   'AI Integration and Consultation': 'PsychologyIcon',
   'Interactive & Gamified Experiences': 'SportsEsportsIcon',
-  'Comprehensive Website Audit & Consulting': 'AssessmentIcon',
   'B2B contracting & consulting': 'BusinessIcon',
   // Croatian services
   'Web razvoj': 'CodeIcon',
@@ -90,12 +79,10 @@ export const serviceIcons: { [key: string]: string } = {
   'SEO revizija i strateško savjetovanje': 'TrendingUpIcon',
   'Usluge migracije i modernizacije': 'SyncIcon',
   'Usluge web sigurnosti i usklađenosti': 'SecurityIcon',
-  'Planovi održavanja i podrške': 'SettingsIcon',
+
   'Analitika i optimizacija konverzije': 'AnalyticsIcon',
-  '3D i interaktivna web iskustva': 'ViewInArIcon',
   'AI integracija i savjetovanje': 'PsychologyIcon',
   'Interaktivna i gamificirana iskustva': 'SportsEsportsIcon',
-  'Sveobuhvatna revizija web stranice i savjetovanje': 'AssessmentIcon',
   'B2B suradnja i savjetovanje': 'BusinessIcon',
 };
 
@@ -325,36 +312,12 @@ export const services = [
     deliverables: ['securityDeliverable1', 'securityDeliverable2', 'securityDeliverable3', 'securityDeliverable4'],
   },
   {
-    name: ServiceName.MAINTENANCE_SUPPORT,
-    description: 'serviceMaintenanceDesc',
-    expandedContent: 'serviceMaintenanceExpanded',
-    slug: ServiceSlug.MAINTENANCE_SUPPORT,
-    features: ['maintenanceFeatureItem1', 'maintenanceFeatureItem2', 'maintenanceFeatureItem3', 'maintenanceFeatureItem4', 'maintenanceFeatureItem5', 'maintenanceFeatureItem6'],
-    deliverables: ['maintenanceDeliverable1', 'maintenanceDeliverable2', 'maintenanceDeliverable3', 'maintenanceDeliverable4'],
-  },
-  {
     name: ServiceName.AI_INTEGRATION,
     description: 'serviceAIDesc',
     expandedContent: 'serviceAIExpanded',
     slug: ServiceSlug.AI_INTEGRATION,
     features: ['aiFeature1', 'aiFeature2', 'aiFeature3', 'aiFeature4', 'aiFeature5', 'aiFeature6'],
     deliverables: ['aiDeliverable1', 'aiDeliverable2', 'aiDeliverable3', 'aiDeliverable4'],
-  },
-  {
-    name: ServiceName.INTERACTIVE_EXPERIENCES,
-    description: 'service3DDesc',
-    expandedContent: 'service3DExpanded',
-    slug: ServiceSlug.INTERACTIVE_EXPERIENCES,
-    features: ['threeDFeature1', 'threeDFeature2', 'threeDFeature3', 'threeDFeature4', 'threeDFeature5'],
-    deliverables: ['threeDDeliverable1', 'threeDDeliverable2', 'threeDDeliverable3', 'threeDDeliverable4'],
-  },
-  {
-    name: ServiceName.WEBSITE_AUDIT,
-    description: 'serviceAuditDesc',
-    expandedContent: 'serviceAuditExpanded',
-    slug: ServiceSlug.WEBSITE_AUDIT,
-    features: ['auditFeature1', 'auditFeature2', 'auditFeature3', 'auditFeature4', 'auditFeature5', 'auditFeature6'],
-    deliverables: ['auditDeliverable1', 'auditDeliverable2', 'auditDeliverable3', 'auditDeliverable4'],
   },
   {
     name: ServiceName.B2B_CONSULTING,

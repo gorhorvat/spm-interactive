@@ -17,9 +17,7 @@ import {
   Sync as SyncIcon,
   Security as SecurityIcon,
   Analytics as AnalyticsIcon,
-  ViewInAr as ViewInArIcon,
   SportsEsports as SportsEsportsIcon,
-  Assessment as AssessmentIcon,
 } from '@mui/icons-material';
 
 export function getIconComponent(iconName: string, props?: any) {
@@ -60,12 +58,8 @@ export function getIconComponent(iconName: string, props?: any) {
     SecurityIcon: SecurityIcon,
     Analytics: AnalyticsIcon,
     AnalyticsIcon: AnalyticsIcon,
-    ViewInAr: ViewInArIcon,
-    ViewInArIcon: ViewInArIcon,
     SportsEsports: SportsEsportsIcon,
     SportsEsportsIcon: SportsEsportsIcon,
-    Assessment: AssessmentIcon,
-    AssessmentIcon: AssessmentIcon,
   };
 
   const IconComponent = iconMap[iconName];
@@ -83,8 +77,5 @@ export const serviceIcons: { [key: string]: string } = {
   serviceSEOConsulting: 'TrendingUpIcon',
   serviceMigration: 'SyncIcon',
   serviceSecurity: 'SecurityIcon',
-  serviceMaintenance: 'SettingsIcon',
-  service3D: 'ViewInArIcon',
   serviceAI: 'PsychologyIcon',
-  serviceAudit: 'AssessmentIcon',
 };

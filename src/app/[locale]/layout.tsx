@@ -109,6 +109,32 @@ export async function generateMetadata({
         'max-snippet': -1,
       },
     },
+    other: {
+      'json-ld': JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        'name': 'FRACTALBYTE',
+        'url': 'https://fractalbyte.studio',
+        'logo': 'https://fractalbyte.studio/fractalbyte-avatar.jpg',
+        'description': isHr
+          ? 'FRACTALBYTE je specijaliziran za stvaranje zadivljujućih web stranica i aplikacija visokih performansi. Profesionalni web dizajn, razvoj, SEO optimizacija i digitalna rješenja u Hrvatskoj.'
+          : 'FRACTALBYTE specializes in creating stunning, high-performant websites and web applications. Professional web design, development, SEO optimization, and digital solutions in Croatia.',
+        'sameAs': [
+          'https://www.instagram.com/fractalbyte',
+          'https://www.facebook.com/fractalbyte',
+        ],
+        'contactPoint': {
+          '@type': 'ContactPoint',
+          'contactType': 'Customer Service',
+          'email': 'info@fractalbyte.studio',
+        },
+        'address': {
+          '@type': 'PostalAddress',
+          'addressCountry': 'HR',
+          'addressLocality': 'Zagreb',
+        },
+      }),
+    },
   };
 }
 

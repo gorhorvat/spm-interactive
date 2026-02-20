@@ -1,6 +1,36 @@
-# Allow all crawlers
+# Robots.txt for FRACTALBYTE
+# Allow all crawlers full access to website content
+
 User-agent: *
 Allow: /
+Allow: /en/
+Allow: /usluge/
+Allow: /en/services/
+Allow: /o-nama/
+Allow: /en/about-us/
+Allow: /cesta-pitanja/
+Allow: /en/faq/
+Allow: /kontakt/
+Allow: /en/contact/
+Allow: /cjenik/
+Allow: /en/pricing/
+Allow: /politika-privatnosti/
+Allow: /en/privacy-policy/
+
+# Disallow unnecessary pages and parameters
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*?*
+Disallow: /*&*
+
+# Crawl-delay: Allow crawlers to access pages (in seconds)
+Crawl-delay: 1
+
+# Request-rate: 1 request per 2 seconds
+Request-rate: 1/2
 
 # Sitemap location
 Sitemap: https://fractalbyte.studio/sitemap.xml
+
+# Secondary sitemap if needed
+Sitemap: https://fractalbyte.studio/sitemap-services.xml

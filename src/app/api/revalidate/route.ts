@@ -78,9 +78,7 @@ export async function POST(request: NextRequest) {
       'seo-consulting',
       'migration-modernization',
       'security-compliance',
-      'maintenance-support',
       'ai-integration',
-      '3d-interactive',
       'website-audit',
       'b2b-consulting',
     ];
@@ -92,9 +90,7 @@ export async function POST(request: NextRequest) {
       'seo-consulting': 'seo-konzultacije',
       'migration-modernization': 'migracija-modernizacija',
       'security-compliance': 'sigurnost-uskladjenost',
-      'maintenance-support': 'odrzavanje-podrska',
       'ai-integration': 'ai-integracija',
-      '3d-interactive': '3d-interaktivno',
       'website-audit': 'audit-web-stranice',
       'b2b-consulting': 'b2b-konzultacije',
     };

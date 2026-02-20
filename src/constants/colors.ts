@@ -1,17 +1,17 @@
 // FRACTALBYTE Color Palette
 export const colors = {
   // Primary colors
-  primary: '#73013e',          // Deep magenta
-  primaryLight: '#8a2050',     // Lighter magenta
-  primaryDark: '#5a012f',      // Darker magenta
+  primary: '#39d5d3',          // Teal cyan
+  primaryLight: '#5ce7e5',     // Lighter teal
+  primaryDark: '#1fb3b1',      // Darker teal
   
-  secondary: '#6c2049',        // Rich burgundy
-  secondaryLight: '#853860',   // Lighter burgundy
-  secondaryDark: '#531539',    // Darker burgundy
+  secondary: '#2db8b6',        // Secondary teal
+  secondaryLight: '#55cac9',   // Lighter secondary
+  secondaryDark: '#1a9492',    // Darker secondary
   
-  accent: '#664054',           // Muted mauve
-  accentLight: '#7d5868',      // Lighter mauve
-  accentDark: '#4d2f40',       // Darker mauve
+  accent: '#17928f',           // Accent teal
+  accentLight: '#3fa9a7',      // Lighter accent
+  accentDark: '#0d6b68',       // Darker accent
   
   // Backgrounds
   background: '#040404',       // Near black
@@ -42,16 +42,16 @@ export const colors = {
   gold: '#FFD700',
   
   // UI elements
-  divider: 'rgba(95, 95, 95, 0.3)',
-  borderLight: 'rgba(95, 95, 95, 0.2)',
-  borderPrimary: 'rgba(115, 1, 62, 0.3)',
-  borderPrimaryLight: 'rgba(115, 1, 62, 0.4)',
+  divider: 'rgba(57, 213, 211, 0.2)',
+  borderLight: 'rgba(57, 213, 211, 0.15)',
+  borderPrimary: 'rgba(57, 213, 211, 0.3)',
+  borderPrimaryLight: 'rgba(92, 231, 229, 0.4)',
   
   // Overlays and effects
-  hoverPrimary: 'rgba(115, 1, 62, 0.08)',
-  selectedPrimary: 'rgba(115, 1, 62, 0.16)',
-  shadowPrimary: 'rgba(115, 1, 62, 0.2)',
-  shadowPrimaryHover: 'rgba(115, 1, 62, 0.4)',
+  hoverPrimary: 'rgba(57, 213, 211, 0.12)',
+  selectedPrimary: 'rgba(57, 213, 211, 0.24)',
+  shadowPrimary: 'rgba(57, 213, 211, 0.15)',
+  shadowPrimaryHover: 'rgba(57, 213, 211, 0.35)',
 } as const;
 
 export type ColorKey = keyof typeof colors;

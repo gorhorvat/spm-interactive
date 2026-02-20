@@ -94,8 +94,8 @@ export default function Counter() {
     <Box
       sx={{
         py: { xs: 6, md: 8 },
-        background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-        boxShadow: `0 8px 30px ${colors.borderPrimary}`,
+        background: `linear-gradient(135deg, ${colors.primaryDark}, ${colors.secondaryDark})`,
+        boxShadow: `0 8px 30px ${colors.shadowPrimary}`,
         my: { xs: 8, md: 12 },
       }}
     >

@@ -15,7 +15,7 @@ A modern, high-performant multilingual website built with Next.js, React, and Ma
 - 🏠 Home page with content summaries and "Learn More" links
 - 🚩 Language selector with country flag icons
 - ⏳ Loading spinners with instant navigation feedback
-- 🔗 Social media integration (LinkedIn, Instagram, Facebook)
+- 🔗 Social media integration (Instagram, Facebook)
 
 ### Service Pages
 - 📄 Individual service detail pages with dynamic routing (/services/[slug])
@@ -33,17 +33,8 @@ A modern, high-performant multilingual website built with Next.js, React, and Ma
 4. **SEO Consulting** - Comprehensive SEO strategy and implementation
 5. **Migration & Modernization** - Platform upgrades and data migration
 6. **Security & Compliance** - OWASP, WCAG, GDPR/CCPA compliance
-7. **Maintenance & Support** - Ongoing updates and technical support
-8. **AI Integration** - Chatbots, NLP, and AI-powered features
-9. **3D & Interactive Web** - Three.js, WebGL, and WebXR experiences
-10. **Website Audit** - Performance, SEO, accessibility, and security audits
-11. **B2B Consulting** - Frontend development, Scrum Master, Product Owner services
-
-### Maintenance & Support Plans
-- 📊 Comparison table with 3 tiers (Essential, Professional, Premium)
-- ✅ 11 feature categories with detailed comparisons
-- 💼 Flexible pricing options
-- 🔄 Fully translated in English and Croatian
+7. **AI Integration** - Chatbots, NLP, and AI-powered features
+8. **B2B Consulting** - Frontend development, Scrum Master, Product Owner services
 
 ### Additional Features
 - 📧 Contact form with email integration and notifications
@@ -120,7 +111,7 @@ src/
 │       ├── AboutSection.tsx          # Full about section
 │       ├── AboutSectionSummary.tsx   # About summary for home
 │       ├── ServicesSectionSummary.tsx # Services summary for home
-│       ├── ServiceComparison.tsx     # Maintenance plans comparison table
+
 │       ├── ServiceDetailPackages.tsx # Package pricing for service pages
 │       ├── ProcessSection.tsx        # Development process display
 │       ├── PricingSection.tsx        # Pricing packages (reusable)
@@ -149,13 +140,13 @@ src/
 ## Color Palette
 
 ### Primary Colors
-- **Primary**: #73013e (Deep magenta)
-- **Primary Light**: #8a2050
-- **Primary Dark**: #5a012f
+- **Primary**: #39d5d3 (Teal)
+- **Primary Light**: #5ce7e5
+- **Primary Dark**: #1fb3b1
 
 ### Secondary Colors
-- **Secondary**: #6c2049 (Rich burgundy)
-- **Accent**: #664054 (Muted mauve)
+- **Secondary**: #004d4b (Dark teal)
+- **Accent**: #2a9b99 (Medium teal)
 
 ### Backgrounds
 - **Background**: #040404 (Near black)

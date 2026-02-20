@@ -128,10 +128,10 @@ const theme = createTheme({
           textTransform: 'none',
         },
         contained: {
-          backgroundColor: colors.primary,
+          backgroundColor: colors.primaryDark,
           color: colors.textPrimary,
           '&:hover': {
-            backgroundColor: colors.primaryLight,
+            backgroundColor: colors.primary,
             boxShadow: `0 4px 12px ${colors.shadowPrimaryHover}`,
           },
         },

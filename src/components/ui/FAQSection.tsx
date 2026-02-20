@@ -54,7 +54,7 @@ export default function FAQSection() {
                 mb: 2,
                 '&:before': { display: 'none' },
                 '&:hover': {
-                  borderColor: 'rgba(115, 1, 62, 0.4)',
+                  borderColor: colors.borderPrimaryLight,
                 },
               }}
             >

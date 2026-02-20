@@ -32,20 +32,7 @@ const pagesMetadata: Record<string, PageMetadata> = {
       en: '/en/about-us',
     },
   },
-  services: {
-    title: {
-      hr: 'Naše Usluge - FRACTALBYTE | Web Razvoj, SEO, Hosting & Digitalne Usluge',
-      en: 'Our Services - FRACTALBYTE | Web Development, SEO, Hosting & Digital Services',
-    },
-    description: {
-      hr: 'Istražite našu paletu web razvoja usluga: izrada web stranica, web aplikacije, e-commerce, SEO optimizacija, cloud hosting, održavanje i podrška. Prilagođena rješenja za vaše potrebe.',
-      en: 'Explore our range of web development services: website creation, web applications, e-commerce, SEO optimization, cloud hosting, maintenance and support. Custom solutions for your needs.',
-    },
-    path: {
-      hr: '/usluge',
-      en: '/en/services',
-    },
-  },
+
   faq: {
     title: {
       hr: 'Česta Pitanja - FRACTALBYTE | Web Razvoj FAQ Zagreb',
@@ -108,10 +95,6 @@ const pageKeywords: Record<string, { hr: string[]; en: string[] }> = {
   about: {
     hr: ['o nama', 'fractalbyte tim', 'web development team', 'stručnjaci za web', 'digitalna agencija', 'web razvoj zagreb', 'web developer hrvatska', 'react developer', 'next.js developer', 'frontend developer', 'full stack developer'],
     en: ['about us', 'fractalbyte team', 'web development team', 'web experts', 'digital agency', 'croatia web development', 'zagreb web developer', 'react developer', 'next.js developer', 'frontend developer', 'full stack developer'],
-  },
-  services: {
-    hr: ['web usluge', 'izrada web stranica', 'web aplikacije', 'e-commerce', 'SEO optimizacija', 'web dizajn', 'hosting', 'UI/UX', 'responsive design', 'cijena web stranice', 'web shop', 'cloud hosting', 'održavanje web stranica', 'web sigurnost', 'AI integracija', '3D web', 'web audit'],
-    en: ['web services', 'website creation', 'web applications', 'e-commerce', 'SEO optimization', 'web design', 'hosting', 'UI/UX', 'responsive design', 'website pricing', 'web shop', 'cloud hosting', 'website maintenance', 'web security', 'AI integration', '3D web', 'website audit'],
   },
   faq: {
     hr: ['česta pitanja', 'FAQ', 'web development pitanja', 'cijena web stranice', 'vrijeme izrade', 'kako funkcionira', 'koliko košta web stranica', 'web razvoj proces', 'održavanje web stranice'],

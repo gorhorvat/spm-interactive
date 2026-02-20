@@ -148,6 +148,7 @@ export default function Footer() {
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 3 }}>
               <IconButton
                 href="mailto:info@fractalbyte.studio"
+                aria-label="Email FRACTALBYTE"
                 sx={{
                   color: colors.primary,
                   '&:hover': { color: colors.primaryLight, borderRadius: 0 },
@@ -156,20 +157,10 @@ export default function Footer() {
                 <EmailIcon fontSize="large" />
               </IconButton>
               <IconButton
-                href="https://www.linkedin.com/company/fractalbyte-studio/"
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  color: colors.primary,
-                  '&:hover': { color: colors.primaryLight, borderRadius: 0 },
-                }}
-              >
-                <LinkedInIcon fontSize="large" />
-              </IconButton>
-              <IconButton
                 href="https://www.instagram.com/fractalbyte.studio/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="FRACTALBYTE Instagram"
                 sx={{
                   color: colors.primary,
                   '&:hover': { color: colors.primaryLight, borderRadius: 0 },
@@ -181,6 +172,7 @@ export default function Footer() {
                 href="https://www.facebook.com/profile.php?id=61583592732443"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="FRACTALBYTE Facebook"
                 sx={{
                   color: colors.primary,
                   '&:hover': { color: colors.primaryLight, borderRadius: 0 },

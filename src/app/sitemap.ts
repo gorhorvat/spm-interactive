@@ -44,12 +44,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/usluge`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.95,
-    },
-    {
       url: `${baseUrl}/cesta-pitanja`,
       lastModified,
       changeFrequency: 'monthly',
@@ -85,12 +79,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.65,
-    },
-    {
-      url: `${baseUrl}/en/services`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.9,
     },
     {
       url: `${baseUrl}/en/faq`,

@@ -82,7 +82,7 @@ export default function ServicesSectionSummary() {
                     },
                   }}
                 >
-                  <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
+                  <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }} aria-label={`${translations(service.name)} icon`}>
                     {getIconComponent(icon, {
                       sx: { fontSize: 48, color: colors.primary }
                     })}

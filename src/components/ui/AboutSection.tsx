@@ -61,8 +61,8 @@ export default function AboutSection() {
                   transition: 'all 0.3s ease',
                   '&:hover': {
                     transform: 'translateY(-8px)',
-                    borderColor: 'rgba(115, 1, 62, 0.4)',
-                    boxShadow: '0 8px 20px rgba(115, 1, 62, 0.2)',
+                    borderColor: colors.borderPrimaryLight,
+                    boxShadow: `0 8px 20px ${colors.shadowPrimary}`,
                   },
                 }}
               >
