@@ -75,26 +75,6 @@ export async function generateMetadata({ params }: ServiceLayoutProps): Promise<
       description: serviceDesc,
       images: ['https://fractalbyte.studio/fractalbyte-avatar.jpg'],
     },
-    other: {
-      'json-ld': JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        'itemListElement': [
-          {
-            '@type': 'ListItem',
-            'position': 1,
-            'name': locale === 'hr' ? 'Početna' : 'Home',
-            'item': locale === 'hr' ? `${baseUrl}` : `${baseUrl}/en`,
-          },
-          {
-            '@type': 'ListItem',
-            'position': 2,
-            'name': serviceName,
-            'item': currentUrl,
-          },
-        ],
-      }),
-    },
   };
 }
 
