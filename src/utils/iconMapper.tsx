@@ -74,8 +74,6 @@ export const serviceIcons: { [key: string]: string } = {
   serviceHosting: 'CloudIcon',
   serviceB2B: 'BusinessIcon',
   servicePerformance: 'SpeedIcon',
-  serviceSEOConsulting: 'TrendingUpIcon',
-  serviceMigration: 'SyncIcon',
   serviceSecurity: 'SecurityIcon',
   serviceAI: 'PsychologyIcon',
 };

@@ -31,11 +31,9 @@ A modern, high-performant multilingual website built with Next.js, React, and Ma
 1. **Web Development** - Custom responsive websites with modern frameworks
 2. **Hosting & Deployment** - Cloud hosting with 99.9% uptime
 3. **Performance Optimization** - Core Web Vitals and speed improvements
-4. **SEO Consulting** - Comprehensive SEO strategy and implementation
-5. **Migration & Modernization** - Platform upgrades and data migration
-6. **Security & Compliance** - OWASP, WCAG, GDPR/CCPA compliance
-7. **AI Integration** - Chatbots, NLP, and AI-powered features
-8. **B2B Consulting** - Frontend development, Scrum Master, Product Owner services
+4. **Security & Compliance** - OWASP, WCAG, GDPR/CCPA compliance
+5. **AI Integration** - Chatbots, NLP, and AI-powered features
+6. **B2B Consulting** - Frontend development, Scrum Master, Product Owner services
 
 ### Additional Features
 - 📧 Contact form with email integration and notifications

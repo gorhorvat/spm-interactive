@@ -12,8 +12,6 @@ const serviceBackgroundImages: { [key: string]: string } = {
   'web-development': '/background-web-development.jpg',
   'hosting': '/background-hosting.jpg',
   'performance-optimization': '/background-performance-optimization.jpg',
-  'seo-consulting': '/background-seo-consulting.jpg',
-  'migration-modernization': '/background-migration-modernization.jpg',
   'security-compliance': '/background-security-compliance.jpeg',
   'ai-integration': '/background-ai-integration.jpeg',
   'b2b-consulting': '/background-b2b-consulting.jpeg',

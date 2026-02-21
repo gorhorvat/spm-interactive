@@ -94,15 +94,19 @@ export default function HeroSection() {
               bgcolor: colors.primaryDark,
               color: colors.textPrimary,
               boxShadow: `0 4px 12px ${colors.shadowPrimary}`,
-              animation: 'checkOffersPulse 2.1s ease-in-out infinite',
+              animation: 'checkOffersPulse 2.2s ease-in-out infinite',
               '@keyframes checkOffersPulse': {
-                '0%, 100%': {
-                  boxShadow: `0 4px 12px ${colors.shadowPrimary}`,
+                '0%': {
+                  boxShadow: '0 0 0 0 rgba(57, 213, 211, 0.45)',
                   transform: 'scale(1)',
                 },
-                '50%': {
-                  boxShadow: `0 12px 30px ${colors.shadowPrimaryHover}`,
-                  transform: 'scale(1.04)',
+                '70%': {
+                  boxShadow: '0 0 0 14px rgba(57, 213, 211, 0)',
+                  transform: 'scale(1.03)',
+                },
+                '100%': {
+                  boxShadow: '0 0 0 0 rgba(57, 213, 211, 0)',
+                  transform: 'scale(1)',
                 },
               },
               cursor: 'pointer',
@@ -110,6 +114,7 @@ export default function HeroSection() {
                 bgcolor: colors.primary,
                 boxShadow: `0 6px 20px ${colors.shadowPrimaryHover}`,
                 transform: 'translateY(-2px)',
+                animationPlayState: 'paused',
               },
               transition: 'all 0.3s ease',
             }}

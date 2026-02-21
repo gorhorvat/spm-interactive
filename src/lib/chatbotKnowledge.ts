@@ -45,14 +45,16 @@ function scoreDoc(queryTokens: Set<string>, doc: KnowledgeDoc): number {
 export function buildKnowledge(locale: Locale): KnowledgeDoc[] {
   const docs: KnowledgeDoc[] = [];
 
+  // CRITICAL CONTACT INFO - hardcoded to ensure accuracy
   const contactText = [
     t(locale, 'contactTitle'),
     t(locale, 'contactDescription'),
-    t(locale, 'privacyContactEmail'),
-    t(locale, 'privacyContactPhone'),
-    t(locale, 'privacyContactAddress'),
-    `${t(locale, 'emailAddress')}: info@fractalbyte.studio`,
-    `${t(locale, 'phone')}: +385 99 844 6978`,
+    'CONTACT INFORMATION:',
+    'Email: info@fractalbyte.studio',
+    'Phone: +385 99 844 6978',
+    'Address: Korenići 28B, Korenići, Croatia',
+    'Instagram: https://www.instagram.com/fractalbyte.studio/',
+    'Facebook: https://www.facebook.com/profile.php?id=61583592732443',
     `${t(locale, 'privacyPolicy')}: ${locale === 'hr' ? '/politika-privatnosti' : '/en/privacy-policy'}`,
     `${t(locale, 'contact')}: ${locale === 'hr' ? '/kontakt' : '/en/contact'}`,
   ].filter(Boolean).join('\n');
@@ -130,6 +132,30 @@ export function buildKnowledge(locale: Locale): KnowledgeDoc[] {
     const price = t(locale, pricing.price);
     docs.push({ id: `pricing:${pricing.name}`, text: `${name} - ${price}` });
   }
+
+  // COMPREHENSIVE PRICING SUMMARY - dynamically generated from translations
+  const pricingSummaryItems = [
+    { name: t(locale, 'pricingItem1Name'), price: t(locale, 'pricingItem1Price') },
+    { name: t(locale, 'pricingItem2Name'), price: t(locale, 'pricingItem2Price') },
+    { name: t(locale, 'pricingItem3Name'), price: t(locale, 'pricingItem3Price') },
+    { name: t(locale, 'pricingItem4Name'), price: t(locale, 'pricingItem4Price') },
+    { name: t(locale, 'pricingItem5Name'), price: t(locale, 'pricingItem5Price') },
+    { name: t(locale, 'pricingItem6Name'), price: t(locale, 'pricingItem6Price') },
+    { name: t(locale, 'pricingItem7Name'), price: t(locale, 'pricingItem7Price') },
+    { name: t(locale, 'pricingItem8Name'), price: t(locale, 'pricingItem8Price') },
+    { name: t(locale, 'pricingItem9Name'), price: t(locale, 'pricingItem9Price') },
+    { name: t(locale, 'pricingItem10Name'), price: t(locale, 'pricingItem10Price') },
+    { name: t(locale, 'pricingItem11Name'), price: t(locale, 'pricingItem11Price') },
+    { name: t(locale, 'pricingItem12Name'), price: t(locale, 'pricingItem12Price') },
+    { name: t(locale, 'pricingItem13Name'), price: t(locale, 'pricingItem13Price') },
+    { name: t(locale, 'pricingItem14Name'), price: t(locale, 'pricingItem14Price') },
+  ];
+
+  const pricingSummaryText = locale === 'hr'
+    ? `SVE CIJENE - INFORMATIVNI PREGLED (SAMO OKVIRNE CIJENE)\n\n${pricingSummaryItems.map(item => `${item.name}: ${item.price}`).join('\n')}\n\n⚠️ VAŽNO: Sve cijene su samo informativne i okvirne. Stvarna cijena projekta ovisi o:\n- Složenosti projekta\n- Specifičnim zahtjevima\n- Vremenskoj liniji\n- Razini prilagodbe\n- Dodatnim uslugama\n\nZA TOČNU PONUDU KONTAKTIRAJTE NAS DIREKTNO:\nEmail: info@fractalbyte.studio\nTelefon: +385 99 844 6978`
+    : `ALL PRICING - INFORMATIONAL OVERVIEW (ESTIMATED PRICES ONLY)\n\n${pricingSummaryItems.map(item => `${item.name}: ${item.price}`).join('\n')}\n\n⚠️ IMPORTANT: All prices are informational and estimated. Actual project costs depend on:\n- Project complexity\n- Specific requirements\n- Timeline\n- Level of customization\n- Additional services\n\nFOR AN ACCURATE QUOTE CONTACT US DIRECTLY:\nEmail: info@fractalbyte.studio\nPhone: +385 99 844 6978`;
+
+  docs.push({ id: 'pricing:summary', text: pricingSummaryText });
 
   for (const pkg of packages) {
     const name = t(locale, pkg.displayNameKey);

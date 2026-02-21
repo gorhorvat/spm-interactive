@@ -9,6 +9,7 @@ import {
   Typography,
   Fab,
   CircularProgress,
+  Button,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import SendIcon from '@mui/icons-material/Send';
@@ -24,35 +25,98 @@ interface Message {
   content: string;
 }
 
+interface QuickReply {
+  id: string;
+  label: string;
+  value: string;
+}
+
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [quickReplies, setQuickReplies] = useState<QuickReply[]>([]);
+  const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [conversationPhase, setConversationPhase] = useState<'initial' | 'service-selected' | 'ongoing'>('initial');
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
+
+  // Initialize greeting message with service options
+  useEffect(() => {
+    if (isOpen && messages.length === 0) {
+      const serviceOptions: QuickReply[] = language === 'hr' 
+        ? [
+            { id: '1', label: '🌐 Web razvoj', value: 'web-development' },
+            { id: '2', label: '☁️ Hosting', value: 'hosting' },
+            { id: '3', label: '⚡ Optimizacija performansi', value: 'performance-optimization' },
+            { id: '4', label: '� Sigurnost & Usklađenost', value: 'security-compliance' },
+            { id: '5', label: '🤖 AI integracija', value: 'ai-integration' },
+            { id: '6', label: '💼 B2B savjetovanje', value: 'b2b-consulting' },
+          ]
+        : [
+            { id: '1', label: '🌐 Web Development', value: 'web-development' },
+            { id: '2', label: '☁️ Hosting', value: 'hosting' },
+            { id: '3', label: '⚡ Performance Optimization', value: 'performance-optimization' },
+            { id: '4', label: '🔒 Security & Compliance', value: 'security-compliance' },
+            { id: '5', label: '🤖 AI Integration', value: 'ai-integration' },
+            { id: '6', label: '💼 B2B Consulting', value: 'b2b-consulting' },
+          ];
+
+      const greetingMsg: Message = {
+        id: Date.now().toString(),
+        role: 'assistant',
+        content: language === 'hr'
+          ? 'Zdravo! 👋 Koje usluge vas zanimaju?'
+          : 'Hello! 👋 Which services interest you?',
+      };
+
+      setMessages([greetingMsg]);
+      setQuickReplies(serviceOptions);
+      setConversationPhase('initial');
+    }
+  }, [isOpen, language, messages.length]);
 
   // Auto-scroll to latest message
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
-  }, [messages]);
+  }, [messages, quickReplies]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
-
-    // Add user message
+  const handleQuickReply = async (reply: QuickReply) => {
     const userMessage: Message = {
       id: Date.now().toString(),
       role: 'user',
-      content: input,
+      content: reply.label,
     };
 
     setMessages((prev) => [...prev, userMessage]);
-    setInput('');
+    setQuickReplies([]);
+    setSelectedService(reply.value);
     setIsLoading(true);
+    setConversationPhase('service-selected');
+
+    // Get service name in user's language
+    const serviceNames = language === 'hr'
+      ? {
+          'web-development': 'Web razvoj',
+          'hosting': 'Hosting',
+          'performance-optimization': 'Optimizacija performansi',
+          'security-compliance': 'Sigurnost & Usklađenost',
+          'ai-integration': 'AI integracija',
+          'b2b-consulting': 'B2B savjetovanje',
+        }
+      : {
+          'web-development': 'Web Development',
+          'hosting': 'Hosting',
+          'performance-optimization': 'Performance Optimization',
+          'security-compliance': 'Security & Compliance',
+          'ai-integration': 'AI Integration',
+          'b2b-consulting': 'B2B Consulting',
+        };
+
+    const serviceName = serviceNames[reply.value as keyof typeof serviceNames];
 
     try {
       const response = await fetch('/api/chat', {
@@ -69,6 +133,113 @@ export default function ChatBot() {
             content: msg.content,
           })),
           language,
+          selectedService: reply.value,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || `HTTP ${response.status}`);
+      }
+
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+      let assistantMessage = '';
+      const assistantId = (Date.now() + 1).toString();
+
+      if (reader) {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          const chunk = decoder.decode(value);
+          assistantMessage += chunk;
+
+          setMessages((prev) => {
+            const lastMsg = prev[prev.length - 1];
+            if (lastMsg && lastMsg.role === 'assistant' && lastMsg.id === assistantId) {
+              return [
+                ...prev.slice(0, -1),
+                { ...lastMsg, content: assistantMessage },
+              ];
+            } else {
+              return [
+                ...prev,
+                {
+                  id: assistantId,
+                  role: 'assistant',
+                  content: assistantMessage,
+                },
+              ];
+            }
+          });
+        }
+      }
+
+      // Show next steps after service suggestion
+      setTimeout(() => {
+        const nextStepsMsg: Message = {
+          id: (Date.now() + 2).toString(),
+          role: 'assistant',
+          content: language === 'hr'
+            ? `\n\n**Sljedeći koraci:**\n1. Odgovori na pitanja o tvojim potrebama\n2. Pogledaj naše pakete i cijene\n3. Kontaktiraj nas za ponudu\n\nKako mogu više pomoći s ${serviceName}?`
+            : `\n\n**Next Steps:**\n1. Tell us more about your needs\n2. Review our packages and pricing\n3. Contact us for a custom quote\n\nHow can I help you more with ${serviceName}?`,
+        };
+        setMessages((prev) => [...prev, nextStepsMsg]);
+        setConversationPhase('ongoing');
+      }, 500);
+    } catch (error) {
+      console.error('Chat error:', error);
+      const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          role: 'assistant',
+          content: language === 'hr'
+            ? `Ispričavamo se, došlo je do greške: ${errorMsg}`
+            : `Sorry, there was an error: ${errorMsg}`,
+        },
+      ]);
+      setConversationPhase('ongoing');
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
+
+    // Add user message
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      role: 'user',
+      content: input,
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setInput('');
+    setQuickReplies([]);
+    setIsLoading(true);
+    setConversationPhase('ongoing');
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: [
+            ...messages,
+            userMessage,
+          ].map((msg) => ({
+            role: msg.role,
+            content: msg.content,
+          })),
+          language,
+          selectedService: selectedService || undefined,
         }),
       });
 
@@ -373,6 +544,46 @@ export default function ChatBot() {
                 </Paper>
               </Box>
             ))}
+
+            {/* Quick Reply Buttons */}
+            {quickReplies.length > 0 && (
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 1,
+                  mt: 1,
+                }}
+              >
+                {quickReplies.map((reply) => (
+                  <Button
+                    key={reply.id}
+                    onClick={() => handleQuickReply(reply)}
+                    disabled={isLoading}
+                    sx={{
+                      textAlign: 'left',
+                      justifyContent: 'flex-start',
+                      bgcolor: colors.backgroundPaper,
+                      color: colors.textPrimary,
+                      border: `1px solid ${colors.borderLight}`,
+                      p: 1.5,
+                      borderRadius: 1,
+                      transition: 'all 0.2s ease',
+                      '&:hover': {
+                        bgcolor: colors.primary,
+                        color: 'white',
+                        borderColor: colors.primary,
+                      },
+                      '&:disabled': {
+                        opacity: 0.6,
+                      },
+                    }}
+                  >
+                    {reply.label}
+                  </Button>
+                ))}
+              </Box>
+            )}
 
             {isLoading && (
               <Box

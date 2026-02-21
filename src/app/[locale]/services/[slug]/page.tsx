@@ -54,8 +54,6 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             backgroundImage: `url(${slug === 'web-development' ? '/background-web-development.jpg' : 
               slug === 'hosting' ? '/background-hosting.jpg' : 
               slug === 'performance-optimization' ? '/background-performance-optimization.jpg' : 
-              slug === 'seo-consulting' ? '/background-seo-consulting.jpg' : 
-              slug === 'migration-modernization' ? '/background-migration-modernization.jpg' : 
               slug === 'security-compliance' ? '/background-security-compliance.jpeg' : 
               slug === 'ai-integration' ? '/background-ai-integration.jpeg' : 
               slug === 'b2b-consulting' ? '/background-b2b-consulting.jpeg' : '/fractalbyte-logo.png'})`,

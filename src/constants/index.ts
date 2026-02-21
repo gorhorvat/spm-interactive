@@ -4,8 +4,6 @@ export const serviceSlugMap: Record<string, string> = {
   'hosting': 'hosting',
   'b2b-consulting': 'b2b-savjetovanje',
   'performance-optimization': 'optimizacija-performansi',
-  'seo-consulting': 'seo-savjetovanje',
-  'migration-modernization': 'migracija-modernizacija',
   'security-compliance': 'sigurnost-uskladenost',
   'ai-integration': 'ai-integracija',
 };
@@ -15,8 +13,6 @@ export enum ServiceName {
   HOSTING = 'serviceHosting',
   B2B_CONSULTING = 'serviceB2B',
   PERFORMANCE_OPTIMIZATION = 'servicePerformance',
-  SEO_CONSULTING = 'serviceSEOConsulting',
-  MIGRATION_MODERNIZATION = 'serviceMigration',
   SECURITY_COMPLIANCE = 'serviceSecurity',
   AI_INTEGRATION = 'serviceAI',
 }
@@ -26,8 +22,6 @@ export enum ServiceSlug {
   HOSTING = 'hosting',
   B2B_CONSULTING = 'b2b-consulting',
   PERFORMANCE_OPTIMIZATION = 'performance-optimization',
-  SEO_CONSULTING = 'seo-consulting',
-  MIGRATION_MODERNIZATION = 'migration-modernization',
   SECURITY_COMPLIANCE = 'security-compliance',
   AI_INTEGRATION = 'ai-integration',
 }
@@ -61,8 +55,6 @@ export const serviceIcons: { [key: string]: string } = {
   'SEO and AI SEO optimization': 'SearchIcon',
   'Domain & Cloud hosting': 'CloudIcon',
   'Performance Audits & Optimization': 'SpeedIcon',
-  'SEO Audit & Strategy Consulting': 'TrendingUpIcon',
-  'Migration & Modernization Services': 'SyncIcon',
   'Web Security & Compliance Services': 'SecurityIcon',
 
   'Analytics & Conversion Optimization': 'AnalyticsIcon',
@@ -76,8 +68,6 @@ export const serviceIcons: { [key: string]: string } = {
   'SEO i AI SEO optimizacija': 'SearchIcon',
   'Domena i Cloud hosting': 'CloudIcon',
   'Revizija i optimizacija performansi': 'SpeedIcon',
-  'SEO revizija i strateško savjetovanje': 'TrendingUpIcon',
-  'Usluge migracije i modernizacije': 'SyncIcon',
   'Usluge web sigurnosti i usklađenosti': 'SecurityIcon',
 
   'Analitika i optimizacija konverzije': 'AnalyticsIcon',
@@ -98,9 +88,7 @@ export const faqs = [
   { question: 'faqQ8', answer: 'faqA8' },
   { question: 'faqQ9', answer: 'faqA9' },
   { question: 'faqQ10', answer: 'faqA10' },
-  { question: 'faqQ11', answer: 'faqA11' },
   { question: 'faqQ12', answer: 'faqA12' },
-  { question: 'faqQ13', answer: 'faqA13' },
   { question: 'faqQ14', answer: 'faqA14' },
 ];
 
@@ -120,6 +108,7 @@ export const pricings = [
   { name: 'pricingItem12Name', price: 'pricingItem12Price' },
   { name: 'pricingItem13Name', price: 'pricingItem13Price' },
   { name: 'pricingItem14Name', price: 'pricingItem14Price' },
+  { name: 'pricingItem15Name', price: 'pricingItem15Price' },
 ];
 
 // Pricing packages
@@ -272,7 +261,7 @@ export const services = [
     expandedContent: 'serviceWebDevExpanded',
     slug: ServiceSlug.WEB_DEVELOPMENT,
     features: ['webDevFeature1', 'webDevFeature2', 'webDevFeature3', 'webDevFeature4', 'webDevFeature5', 'webDevFeature6'],
-    deliverables: ['webDevDeliverable1', 'webDevDeliverable2', 'webDevDeliverable3', 'webDevDeliverable4'],
+    deliverables: ['webDevDeliverable1', 'webDevDeliverable2', 'webDevDeliverable3'],
   },
   {
     name: ServiceName.HOSTING,
@@ -289,22 +278,6 @@ export const services = [
     slug: ServiceSlug.PERFORMANCE_OPTIMIZATION,
     features: ['performanceFeature1', 'performanceFeature2', 'performanceFeature3', 'performanceFeature4', 'performanceFeature5', 'performanceFeature6'],
     deliverables: ['performanceDeliverable1', 'performanceDeliverable2', 'performanceDeliverable3', 'performanceDeliverable4'],
-  },
-  {
-    name: ServiceName.SEO_CONSULTING,
-    description: 'serviceSEOConsultingDesc',
-    expandedContent: 'serviceSEOConsultingExpanded',
-    slug: ServiceSlug.SEO_CONSULTING,
-    features: ['seoFeature1', 'seoFeature2', 'seoFeature3', 'seoFeature4', 'seoFeature5', 'seoFeature6', 'seoFeature7'],
-    deliverables: ['seoDeliverable1', 'seoDeliverable2', 'seoDeliverable3', 'seoDeliverable4', 'seoDeliverable5'],
-  },
-  {
-    name: ServiceName.MIGRATION_MODERNIZATION,
-    description: 'serviceMigrationDesc',
-    expandedContent: 'serviceMigrationExpanded',
-    slug: ServiceSlug.MIGRATION_MODERNIZATION,
-    features: ['migrationFeature1', 'migrationFeature2', 'migrationFeature3', 'migrationFeature4', 'migrationFeature5', 'migrationFeature6'],
-    deliverables: ['migrationDeliverable1', 'migrationDeliverable2', 'migrationDeliverable3', 'migrationDeliverable4'],
   },
   {
     name: ServiceName.SECURITY_COMPLIANCE,

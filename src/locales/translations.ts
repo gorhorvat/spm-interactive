@@ -130,12 +130,6 @@ export const translations = {
     servicePerformance: 'Performance audits & optimization',
     servicePerformanceDesc: 'Comprehensive performance analysis and optimization services, leveraging GA4, Google Search Console, and advanced profiling.',
     servicePerformanceExpanded: 'We conduct thorough performance audits using industry-leading tools like Google Analytics 4, Google Search Console, and custom profiling solutions. Our optimization services include: Core Web Vitals assessment and optimization, benefit cost analysis and code splitting recommendations, image and asset optimization strategy, performance monitoring and alerting setup, and detailed reporting with actionable insights. We help you achieve faster loading times, better user experience, and improved SEO rankings through data-driven optimization.',
-    serviceSEOConsulting: 'SEO audit & strategy consulting',
-    serviceSEOConsultingDesc: 'Comprehensive SEO audits, keyword research, link building, and competitor analysis to boost your search rankings.',
-    serviceSEOConsultingExpanded: 'Our SEO consulting services go beyond basic optimization. We provide: comprehensive technical SEO audits, in-depth keyword research and strategy, competitor analysis and benchmarking, content strategy and recommendations, link building and backlink analysis, SEO roadmap with actionable priorities, and ongoing monitoring and reporting. We use advanced tools and methodologies to identify opportunities and create a customized SEO strategy that drives organic traffic and improves your search engine visibility.',
-    serviceMigration: 'Migration & modernization services',
-    serviceMigrationDesc: 'Seamless migration from outdated platforms (WordPress, Joomla, legacy systems) to modern frameworks like Next.js, React, or Nuxt.js.',
-    serviceMigrationExpanded: 'We specialize in migrating websites and applications from legacy platforms to modern, high-performance frameworks. Our migration services include: compatibility and migration assessment, content and data migration planning, legacy system modernization and refactoring, SEO preservation during migration, zero-downtime deployment strategies, post-migration testing and validation, and comprehensive documentation. Whether you\'re moving from WordPress, Joomla, or custom legacy systems, we ensure a smooth transition with minimal disruption.',
     serviceSecurity: 'Web security & compliance services',
     serviceSecurityDesc: 'Security audits, compliances, vulnerability assessment, and ongoing security monitoring.',
     serviceSecurityExpanded: 'We provide comprehensive security services to protect your web applications and ensure compliance with industry standards. Our services include: vulnerability assessments, SSL/TLS configuration and certificate management, security headers and CSP implementation, regular security updates and patch management, penetration testing coordination, GDPR/CCPA compliance consulting, and ongoing security monitoring. We help you build and maintain secure, compliant web applications that protect your users and your business.',
@@ -173,7 +167,7 @@ export const translations = {
     faqQ1: 'What technologies do you use?',
     faqA1: 'We use modern web technologies including React, Next.js, TypeScript, Node.js, and various other frameworks and tools depending on project requirements. We always choose the best technology stack for your specific needs.',
     faqQ2: 'How long does it take to build a website?',
-    faqA2: 'Project timelines vary depending on complexity and requirements. A simple website can take 2-4 weeks, while more complex web applications may take 2-3 months or longer. We provide detailed timelines during the initial consultation.',
+    faqA2: 'Project timelines vary depending on complexity and requirements. A simple website can take a few days, while more complex web applications may take weeks or longer. We provide detailed timelines during the initial consultation.',
     faqQ3: 'Do you provide website maintenance?',
     faqA3: 'Yes! We offer ongoing maintenance and support packages to keep your website secure, updated, and running smoothly. This includes regular updates, security monitoring, backups, and technical support.',
     faqQ4: 'Will my website be mobile-friendly?',
@@ -190,12 +184,8 @@ export const translations = {
     faqA9: 'Our performance optimization includes comprehensive audits, code optimization, image compression, caching strategies, CDN setup, database optimization, and ongoing monitoring. We aim to achieve the best possible Core Web Vitals scores and loading times.',
     faqQ10: 'Do you offer ongoing maintenance and support?',
     faqA10: 'Yes! We offer ongoing maintenance and support packages that include regular updates, security monitoring, performance optimization, content updates, and priority support tailored to your specific needs.',
-    faqQ11: 'Can you help migrate my website to a new platform?',
-    faqA11: 'Absolutely! We specialize in website migrations and modernization. Whether you\'re moving from WordPress to a modern framework, upgrading your tech stack, or consolidating multiple sites, we ensure a smooth transition with zero downtime and preserved SEO rankings.',
     faqQ12: 'What security measures do you implement?',
     faqA12: 'We implement comprehensive security measures including SSL certificates, regular security audits, vulnerability scanning, DDoS protection, secure authentication, data encryption, GDPR compliance, and continuous monitoring. Security is built into every project from the ground up.',
-    faqQ13: 'Do you provide SEO consulting services?',
-    faqA13: 'Yes! Our SEO consulting includes comprehensive audits, keyword research, technical SEO optimization, content strategy, link building recommendations, and ongoing performance tracking. We help improve your search rankings and organic traffic.',
     faqQ14: 'Can you integrate AI features into my website?',
     faqA14: 'Definitely! We offer AI integration services including chatbots, content generation, personalization engines, recommendation systems, and custom AI solutions. We work with leading AI platforms and can build custom solutions tailored to your specific needs.',
     // Pricing
@@ -227,6 +217,8 @@ export const translations = {
     pricingItem13Price: '30€',
     pricingItem14Name: 'Additional feature implementation after the initial website is built',
     pricingItem14Price: 'On request',
+    pricingItem15Name: 'AI chatbot implementation/integration',
+    pricingItem15Price: 'From 200€ (depends on complexity)',
     // Package names
     packageEssential: 'Essential',
     packageProfessional: 'Professional',
@@ -319,9 +311,8 @@ export const translations = {
 
     // Service Deliverables - Web Development
     webDevDeliverable1: 'Fully functional website',
-    webDevDeliverable2: 'Source code',
-    webDevDeliverable3: 'Documentation',
-    webDevDeliverable4: 'Customer support',
+    webDevDeliverable2: 'Documentation',
+    webDevDeliverable3: 'Customer support',
 
     // Service Features - Hosting
     hostingFeature1: 'Cloud hosting',
@@ -350,36 +341,6 @@ export const translations = {
     performanceDeliverable2: 'Optimization implementation',
     performanceDeliverable3: 'Monitoring setup',
     performanceDeliverable4: 'Best practices guide',
-
-    // Service Features - SEO Consulting
-    seoFeature1: 'Comprehensive SEO audit',
-    seoFeature2: 'Keyword research & strategy',
-    seoFeature3: 'Competitor analysis',
-    seoFeature4: 'AI-powered content optimization',
-    seoFeature5: 'Link building strategy',
-    seoFeature6: 'Technical SEO & schema markup',
-    seoFeature7: 'Ongoing monitoring & reporting',
-
-    // Service Deliverables - SEO Consulting
-    seoDeliverable1: 'SEO strategy document',
-    seoDeliverable2: 'Keyword research report',
-    seoDeliverable3: 'Competitor analysis',
-    seoDeliverable4: 'Technical SEO improvements',
-    seoDeliverable5: 'Monthly performance reports',
-
-    // Service Features - Migration
-    migrationFeature1: 'Platform assessment',
-    migrationFeature2: 'Data migration',
-    migrationFeature3: 'SEO preservation',
-    migrationFeature4: 'Zero-downtime deployment',
-    migrationFeature5: 'Testing & validation',
-    migrationFeature6: 'Documentation',
-
-    // Service Deliverables - Migration
-    migrationDeliverable1: 'Migration plan',
-    migrationDeliverable2: 'Modernized application',
-    migrationDeliverable3: 'Data migration report',
-    migrationDeliverable4: 'Post-migration support',
 
     // Service Features - Security
     securityFeature1: 'Vulnerability assessments',
@@ -554,12 +515,6 @@ export const translations = {
     servicePerformance: 'Revizija i optimizacija performansi',
     servicePerformanceDesc: 'Sveobuhvatna analiza performansi i usluge optimizacije, koristeći GA4, Google Search Console i napredne alate za profiliranje.',
     servicePerformanceExpanded: 'Provodimo temeljite revizije performansi koristeći vodeće alate industrije poput Google Analytics 4, Google Search Console i prilagođena rješenja za profiliranje. Naše usluge optimizacije uključuju: procjenu i optimizaciju Core Web Vitals, analizu troškova i koristi te preporuke za dijeljenje koda, strategiju optimizacije slika i resursa, postavljanje praćenja i upozorenja performansi, te detaljno izvješćivanje s konkretnim preporukama. Pomažemo vam postići brža vremena učitavanja, bolje korisničko iskustvo i poboljšane SEO rangove kroz optimizaciju temeljenu na podacima.',
-    serviceSEOConsulting: 'SEO revizija i strateško savjetovanje',
-    serviceSEOConsultingDesc: 'Sveobuhvatne SEO revizije, istraživanje ključnih riječi, izgradnja linkova i analiza konkurencije za poboljšanje rangiranja.',
-    serviceSEOConsultingExpanded: 'Naše SEO savjetodavne usluge nadilaze osnovnu optimizaciju. Pružamo: sveobuhvatne tehničke SEO revizije, dubinsko istraživanje ključnih riječi i strategiju, analizu konkurencije i usporedbu, strategiju sadržaja i preporuke, analizu izgradnje linkova i backlink-ova, SEO plan s prioritetnim akcijama, te kontinuirano praćenje i izvješćivanje. Koristimo napredne alate i metodologije za identificiranje prilika i stvaranje prilagođene SEO strategije koja povećava organski promet i poboljšava vašu vidljivost u tražilicama.',
-    serviceMigration: 'Usluge migracije i modernizacije',
-    serviceMigrationDesc: 'Besprijekorna migracija sa zastarjelih platformi (WordPress, Joomla, legacy sustavi) na moderne frameworke poput Next.js, React ili Nuxt.js.',
-    serviceMigrationExpanded: 'Specijalizirani smo za migraciju web stranica i aplikacija sa legacy platformi na moderne, visoko-performantne frameworke. Naše usluge migracije uključuju: procjenu kompatibilnosti i migracije, planiranje migracije sadržaja i podataka, modernizaciju i refaktoriranje legacy sustava, očuvanje SEO-a tijekom migracije, strategije implementacije bez prekida rada, testiranje i validaciju nakon migracije, te sveobuhvatnu dokumentaciju. Bilo da prelazite s WordPressa, Joomle ili prilagođenih legacy sustava, osiguravamo glatku tranziciju s minimalnim prekidima.',
     serviceSecurity: 'Usluge web sigurnosti i usklađenosti',
     serviceSecurityDesc: 'Sigurnosne revizije, usklađenost s standardima, procjena ranjivosti i kontinuirano praćenje sigurnosti.',
     serviceSecurityExpanded: 'Pružamo sveobuhvatne sigurnosne usluge za zaštitu vaših web aplikacija i osiguravanje usklađenosti s industrijskim standardima. Naše usluge uključuju: procjenu ranjivosti, konfiguraciju SSL/TLS i upravljanje certifikatima, implementaciju sigurnosnih zaglavlja i CSP-a, redovite sigurnosne ažuriranja i upravljanje zakrpama, koordinaciju penetracijskih testiranja, GDPR/CCPA savjetovanje o usklađenosti, te kontinuirano praćenje sigurnosti. Pomažemo vam graditi i održavati sigurne, usklađene web aplikacije koje štite vaše korisnike i vaše poslovanje.',
@@ -617,12 +572,8 @@ export const translations = {
     faqA9: 'Naša optimizacija performansi uključuje sveobuhvatne revizije, optimizaciju koda, kompresiju slika, strategije predmemoriranja, postavljanje CDN-a, optimizaciju baze podataka i kontinuirano praćenje. Cilj nam je postići najbolje moguće Core Web Vitals rezultate i vremena učitavanja.',
     faqQ10: 'Nudite li kontinuirano održavanje i podršku?',
     faqA10: 'Da! Nudimo pakete kontinuiranog održavanja i podrške koji uključuju redovite ažuriranja, sigurnosno praćenje, optimizaciju performansi, ažuriranja sadržaja i prioritetnu podršku prilagođenu vašim specifičnim potrebama.',
-    faqQ11: 'Možete li pomoći u migraciji moje web stranice na novu platformu?',
-    faqA11: 'Apsolutno! Specijalizirani smo za migracije i modernizaciju web stranica. Bilo da prelazite s WordPressa na moderni framework, nadograđujete tehnološki stack ili konsolidirate više stranica, osiguravamo glatku tranziciju bez zastoja i očuvanog SEO rangiranja.',
     faqQ12: 'Koje sigurnosne mjere implementirate?',
     faqA12: 'Implementiramo sveobuhvatne sigurnosne mjere uključujući SSL certifikate, redovite sigurnosne revizije, skeniranje ranjivosti, DDoS zaštitu, sigurnu autentifikaciju, enkripciju podataka, GDPR usklađenost i kontinuirano praćenje. Sigurnost je ugrađena u svaki projekt od samog početka.',
-    faqQ13: 'Pružate li SEO savjetodavne usluge?',
-    faqA13: 'Da! Naše SEO savjetovanje uključuje sveobuhvatne revizije, istraživanje ključnih riječi, tehničku SEO optimizaciju, strategiju sadržaja, preporuke za izgradnju linkova i kontinuirano praćenje performansi. Pomažemo poboljšati vaše rangiranje u pretraživačima i organski promet.',
     faqQ14: 'Možete li integrirati AI značajke u moju web stranicu?',
     faqA14: 'Svakako! Nudimo usluge AI integracije uključujući chatbotove, generiranje sadržaja, personalizacijske sustave, sustave preporuka i prilagođena AI rješenja. Radimo s vodećim AI platformama i možemo izgraditi prilagođena rješenja prema vašim specifičnim potrebama.',
     // Pricing
@@ -654,6 +605,8 @@ export const translations = {
     pricingItem13Price: '30€',
     pricingItem14Name: 'Naknadna implementacija dodatnih funkcionalnosti',
     pricingItem14Price: 'Na upit',
+    pricingItem15Name: 'Implementacija/integracija AI chatbota',
+    pricingItem15Price: 'Od 200€ (ovisi o složenosti)',
     
     // Package names
     packageEssential: 'Essential',
@@ -747,9 +700,8 @@ export const translations = {
 
     // Service Deliverables - Web Development
     webDevDeliverable1: 'Potpuno funkcionalna web stranica',
-    webDevDeliverable2: 'Izvorni kod',
-    webDevDeliverable3: 'Dokumentacija',
-    webDevDeliverable4: 'Korisnička podrška',
+    webDevDeliverable2: 'Dokumentacija',
+    webDevDeliverable3: 'Korisnička podrška',
 
     // Service Features - Hosting
     hostingFeature1: 'Cloud hosting',
@@ -760,7 +712,7 @@ export const translations = {
     hostingFeature6: '24/7 nadzor',
 
     // Service Deliverables - Hosting
-    hostingDeliverable1: 'Hostirana web stranica',
+    hostingDeliverable1: 'Online web stranica',
     hostingDeliverable2: 'Postavljanje domene',
     hostingDeliverable3: 'Konfiguracija e-maila',
     hostingDeliverable4: 'Sustav sigurnosnih kopija',
@@ -778,36 +730,6 @@ export const translations = {
     performanceDeliverable2: 'Implementacija optimizacija',
     performanceDeliverable3: 'Postavljanje praćenja',
     performanceDeliverable4: 'Vodič za najbolje prakse',
-
-    // Service Features - SEO Consulting
-    seoFeature1: 'Sveobuhvatna SEO revizija',
-    seoFeature2: 'Istraživanje ključnih riječi i strategija',
-    seoFeature3: 'Analiza konkurencije',
-    seoFeature4: 'AI optimizacija sadržaja',
-    seoFeature5: 'Strategija izgradnje linkova',
-    seoFeature6: 'Tehnički SEO i schema markup',
-    seoFeature7: 'Kontinuirano praćenje i izvještavanje',
-
-    // Service Deliverables - SEO Consulting
-    seoDeliverable1: 'Dokument SEO strategije',
-    seoDeliverable2: 'Izvještaj o ključnim riječima',
-    seoDeliverable3: 'Analiza konkurencije',
-    seoDeliverable4: 'Tehnička SEO poboljšanja',
-    seoDeliverable5: 'Mjesečni izvještaji o performansama',
-
-    // Service Features - Migration
-    migrationFeature1: 'Procjena platforme',
-    migrationFeature2: 'Migracija podataka',
-    migrationFeature3: 'Očuvanje SEO-a',
-    migrationFeature4: 'Implementacija bez prekida rada',
-    migrationFeature5: 'Testiranje i validacija',
-    migrationFeature6: 'Dokumentacija',
-
-    // Service Deliverables - Migration
-    migrationDeliverable1: 'Plan migracije',
-    migrationDeliverable2: 'Modernizirana aplikacija',
-    migrationDeliverable3: 'Izvještaj o migraciji podataka',
-    migrationDeliverable4: 'Podrška nakon migracije',
 
     // Service Features - Security
     securityFeature1: 'Procjene ranjivosti',
