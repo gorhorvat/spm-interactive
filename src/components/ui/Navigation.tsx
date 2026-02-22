@@ -101,7 +101,7 @@ export default function Navigation() {
   };
 
   const drawer = (
-    <Box sx={{ textAlign: 'left', bgcolor: colors.background, height: '100%' }}>
+    <Box sx={{ textAlign: 'center', bgcolor: colors.background, height: '100%' }}>
       <List>
         {navItems.map((item) => {
           // Special handling for services dropdown in mobile
@@ -111,10 +111,10 @@ export default function Navigation() {
                 <ListItem disablePadding>
                   <ListItemButton
                     component="div"
-                    sx={{ textAlign: 'left' }}
+                    sx={{ textAlign: 'center' }}
                     onClick={handleMobileServicesToggle}
                   >
-                    <ListItemText primary={item.label} sx={{ color: colors.textPrimary, textAlign: 'left' }} />
+                    <ListItemText primary={item.label} sx={{ color: colors.textPrimary }} />
                     <KeyboardArrowDownIcon
                       sx={{
                         fontSize: 18,
@@ -162,24 +162,24 @@ export default function Navigation() {
             <ListItem key={item.id} disablePadding>
               <ListItemButton
                 component="div"
-                sx={{ textAlign: 'left' }}
+                sx={{ textAlign: 'center' }}
                 onClick={(e) => handleNavClick(item, e)}
               >
-                <ListItemText primary={item.label} sx={{ color: colors.textPrimary, textAlign: 'left' }} />
+                <ListItemText primary={item.label} sx={{ color: colors.textPrimary }} />
               </ListItemButton>
             </ListItem>
           );
         })}
         <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: 'left' }} component="a" href="mailto:info@spm-interactive.com">
+          <ListItemButton sx={{ textAlign: 'center' }} component="a" href="mailto:info@spm-interactive.com">
             <EmailIcon sx={{ mr: 1, color: colors.primary }} />
-            <ListItemText primary="info@spm-interactive.com" sx={{ color: colors.primary, textAlign: 'left' }} />
+            <ListItemText primary="info@spm-interactive.com" sx={{ color: colors.primary }} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: 'left' }} component="a" href="tel:+385998446978">
+          <ListItemButton sx={{ textAlign: 'center' }} component="a" href="tel:+385998446978">
             <PhoneIcon sx={{ mr: 1, color: colors.primary }} />
-            <ListItemText primary="+385 99 844 6978" sx={{ color: colors.primary, textAlign: 'left' }} />
+            <ListItemText primary="+385 99 844 6978" sx={{ color: colors.primary }} />
           </ListItemButton>
         </ListItem>
         <ListItem sx={{ justifyContent: 'center', mt: 2 }}>
