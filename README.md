@@ -1,4 +1,4 @@
-# FRACTALBYTE Website
+# SPM Interactive website
 
 A modern, high-performant multilingual website built with Next.js, React, and Material-UI. It offers a range of services and features for web development, SEO, hosting, and maintenance.
 
