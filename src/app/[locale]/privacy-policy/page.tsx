@@ -134,7 +134,7 @@ export default function PrivacyPolicyPage() {
         sx={{
           minHeight: '100vh',
           bgcolor: colors.background,
-          pt: { xs: 12, md: 14 },
+          pt: { xs: 16, md: 18 },
           pb: 8,
         }}
       >

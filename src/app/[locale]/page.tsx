@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Box } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 import Navigation from '@/components/ui/Navigation';
 import HeroSection from '@/components/ui/HeroSection';
@@ -32,12 +33,14 @@ export default function Home() {
   return (
     <main>
       <Navigation />
-      <HeroSection />
-      <ServicesSectionSummary />
-      <PricingSection onServiceSelect={handleServiceSelect} />
-      <Counter />
-      <ContactSection selectedService={selectedService} onServiceChange={setSelectedService} />
-      <Footer />
+      <Box sx={{ pt: { xs: 12, md: 14 } }}>
+        <HeroSection />
+        <ServicesSectionSummary />
+        <PricingSection onServiceSelect={handleServiceSelect} />
+        <Counter />
+        <ContactSection selectedService={selectedService} onServiceChange={setSelectedService} />
+        <Footer />
+      </Box>
     </main>
   );
 }

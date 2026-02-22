@@ -57,10 +57,10 @@ export async function generateMetadata({
         { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
       ],
       other: [
-        { rel: 'manifest', url: '/site.webmanifest' },
+        { rel: 'manifest', url: '/manifest.json' },
       ],
     },
-    manifest: '/site.webmanifest',
+    manifest: '/manifest.json',
     alternates: {
       canonical: locale === 'hr' ? 'https://spm-interactive.com' : 'https://spm-interactive.com/en',
       languages: {
