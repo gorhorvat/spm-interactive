@@ -306,7 +306,7 @@ export default function ChatBot() {
       : 'Ask about our services...';
 
   const chatTitle =
-    language === 'hr' ? 'SPM Interactvie AI Asistent' : 'SPM Interactvie AI Assistant';
+    language === 'hr' ? 'SPM Interactive AI Asistent' : 'SPM Interactive AI Assistant';
 
   return (
     <>
