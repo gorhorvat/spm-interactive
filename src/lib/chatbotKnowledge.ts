@@ -50,10 +50,10 @@ export function buildKnowledge(locale: Locale): KnowledgeDoc[] {
     t(locale, 'contactTitle'),
     t(locale, 'contactDescription'),
     'CONTACT INFORMATION:',
-    'Email: info@fractalbyte.studio',
+    'Email: info@spm-interactive.com',
     'Phone: +385 99 844 6978',
     'Address: Korenići 28B, Korenići, Croatia',
-    'Instagram: https://www.instagram.com/fractalbyte.studio/',
+    'Instagram: https://www.instagram.com/spm-interactive.com/',
     'Facebook: https://www.facebook.com/profile.php?id=61583592732443',
     `${t(locale, 'privacyPolicy')}: ${locale === 'hr' ? '/politika-privatnosti' : '/en/privacy-policy'}`,
     `${t(locale, 'contact')}: ${locale === 'hr' ? '/kontakt' : '/en/contact'}`,
@@ -71,9 +71,9 @@ export function buildKnowledge(locale: Locale): KnowledgeDoc[] {
   docs.push({ id: 'company', text: companyText });
 
   const socialText = [
-    'Email: info@fractalbyte.studio',
+    'Email: info@spm-interactive.com',
     'Phone: +385 99 844 6978',
-    'Instagram: https://www.instagram.com/fractalbyte.studio/',
+    'Instagram: https://www.instagram.com/spm-interactive.com/',
     'Facebook: https://www.facebook.com/profile.php?id=61583592732443',
   ].join('\n');
 
@@ -152,8 +152,8 @@ export function buildKnowledge(locale: Locale): KnowledgeDoc[] {
   ];
 
   const pricingSummaryText = locale === 'hr'
-    ? `SVE CIJENE - INFORMATIVNI PREGLED (SAMO OKVIRNE CIJENE)\n\n${pricingSummaryItems.map(item => `${item.name}: ${item.price}`).join('\n')}\n\n⚠️ VAŽNO: Sve cijene su samo informativne i okvirne. Stvarna cijena projekta ovisi o:\n- Složenosti projekta\n- Specifičnim zahtjevima\n- Vremenskoj liniji\n- Razini prilagodbe\n- Dodatnim uslugama\n\nZA TOČNU PONUDU KONTAKTIRAJTE NAS DIREKTNO:\nEmail: info@fractalbyte.studio\nTelefon: +385 99 844 6978`
-    : `ALL PRICING - INFORMATIONAL OVERVIEW (ESTIMATED PRICES ONLY)\n\n${pricingSummaryItems.map(item => `${item.name}: ${item.price}`).join('\n')}\n\n⚠️ IMPORTANT: All prices are informational and estimated. Actual project costs depend on:\n- Project complexity\n- Specific requirements\n- Timeline\n- Level of customization\n- Additional services\n\nFOR AN ACCURATE QUOTE CONTACT US DIRECTLY:\nEmail: info@fractalbyte.studio\nPhone: +385 99 844 6978`;
+    ? `SVE CIJENE - INFORMATIVNI PREGLED (SAMO OKVIRNE CIJENE)\n\n${pricingSummaryItems.map(item => `${item.name}: ${item.price}`).join('\n')}\n\n⚠️ VAŽNO: Sve cijene su samo informativne i okvirne. Stvarna cijena projekta ovisi o:\n- Složenosti projekta\n- Specifičnim zahtjevima\n- Vremenskoj liniji\n- Razini prilagodbe\n- Dodatnim uslugama\n\nZA TOČNU PONUDU KONTAKTIRAJTE NAS DIREKTNO:\nEmail: info@spm-interactive.com\nTelefon: +385 99 844 6978`
+    : `ALL PRICING - INFORMATIONAL OVERVIEW (ESTIMATED PRICES ONLY)\n\n${pricingSummaryItems.map(item => `${item.name}: ${item.price}`).join('\n')}\n\n⚠️ IMPORTANT: All prices are informational and estimated. Actual project costs depend on:\n- Project complexity\n- Specific requirements\n- Timeline\n- Level of customization\n- Additional services\n\nFOR AN ACCURATE QUOTE CONTACT US DIRECTLY:\nEmail: info@spm-interactive.com\nPhone: +385 99 844 6978`;
 
   docs.push({ id: 'pricing:summary', text: pricingSummaryText });
 

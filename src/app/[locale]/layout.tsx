@@ -33,19 +33,19 @@ export async function generateMetadata({
   const isHr = locale === 'hr';
   
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://fractalbyte.studio'),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://spm-interactive.com'),
     title: isHr 
-      ? "FRACTALBYTE - Sinonim za digitalnu izvrsnost | Web Razvoj Hrvatska"
-      : "FRACTALBYTE - Synonym for digital excellence | Web Development Croatia",
+      ? "SPM Interactive - Sinonim za digitalnu izvrsnost | Web Razvoj Hrvatska"
+      : "SPM Interactive - Synonym for digital excellence | Web Development Croatia",
     description: isHr
-      ? "FRACTALBYTE je specijaliziran za stvaranje zadivljujućih web stranica i aplikacija visokih performansi. Profesionalni web dizajn, razvoj, SEO optimizacija i digitalna rješenja u Hrvatskoj."
-      : "FRACTALBYTE specializes in creating stunning, high-performant websites and web applications. Professional web design, development, SEO optimization, and digital solutions in Croatia.",
+      ? "SPM Interactive je specijaliziran za stvaranje zadivljujućih web stranica i aplikacija visokih performansi. Profesionalni web dizajn, razvoj, SEO optimizacija i digitalna rješenja u Hrvatskoj."
+      : "SPM Interactive specializes in creating stunning, high-performant websites and web applications. Professional web design, development, SEO optimization, and digital solutions in Croatia.",
     keywords: isHr
       ? ['web razvoj', 'izrada web stranica', 'web dizajn', 'SEO optimizacija', 'web aplikacije', 'e-commerce', 'cloud hosting', 'UI/UX dizajn', 'responsive design', 'React', 'Next.js', 'Hrvatska', 'Zagreb', 'digitalna rješenja', 'web shop', 'održavanje web stranica']
       : ['web development', 'website creation', 'web design', 'SEO optimization', 'web applications', 'e-commerce', 'cloud hosting', 'UI/UX design', 'responsive design', 'React', 'Next.js', 'Croatia', 'Zagreb', 'digital solutions', 'web shop', 'website maintenance'],
-    authors: [{ name: "FRACTALBYTE" }],
-    creator: 'FRACTALBYTE',
-    publisher: 'FRACTALBYTE',
+    authors: [{ name: "SPM Interactive" }],
+    creator: 'SPM Interactive',
+    publisher: 'SPM Interactive',
     icons: {
       icon: [
         { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -62,42 +62,42 @@ export async function generateMetadata({
     },
     manifest: '/site.webmanifest',
     alternates: {
-      canonical: locale === 'hr' ? 'https://fractalbyte.studio' : 'https://fractalbyte.studio/en',
+      canonical: locale === 'hr' ? 'https://spm-interactive.com' : 'https://spm-interactive.com/en',
       languages: {
-        'hr': 'https://fractalbyte.studio',
-        'en': 'https://fractalbyte.studio/en',
+        'hr': 'https://spm-interactive.com',
+        'en': 'https://spm-interactive.com/en',
       },
     },
     openGraph: {
       title: isHr
-        ? "FRACTALBYTE - Web razvoj & Digitalna rješenja"
-        : "FRACTALBYTE - Web development & Digital solutions",
+        ? "SPM Interactive - Web razvoj & Digitalna rješenja"
+        : "SPM Interactive - Web development & Digital solutions",
       description: isHr
         ? "Profesionalni web razvoj, dizajn i SEO usluge u Hrvatskoj"
         : "Professional web development, design, and SEO services in Croatia",
       type: "website",
       locale: locale === 'hr' ? 'hr_HR' : 'en_US',
       alternateLocale: locale === 'hr' ? ['en_US'] : ['hr_HR'],
-      url: locale === 'hr' ? 'https://fractalbyte.studio' : 'https://fractalbyte.studio/en',
-      siteName: 'FRACTALBYTE',
+      url: locale === 'hr' ? 'https://spm-interactive.com' : 'https://spm-interactive.com/en',
+      siteName: 'SPM Interactive',
       images: [
         {
-          url: 'https://fractalbyte.studio/fractalbyte-avatar.jpg',
+          url: 'https://spm-interactive.com/spm-avatar.png',
           width: 1200,
           height: 630,
-          alt: 'FRACTALBYTE Logo',
+          alt: 'SPM Interactive Logo',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
       title: isHr
-        ? "FRACTALBYTE - Web razvoj & Digitalna rješenja"
-        : "FRACTALBYTE - Web development & Digital solutions",
+        ? "SPM Interactive - Web razvoj & Digitalna rješenja"
+        : "SPM Interactive - Web development & Digital solutions",
       description: isHr
         ? "Profesionalni web razvoj, dizajn i SEO usluge u Hrvatskoj"
         : "Professional web development, design, and SEO services in Croatia",
-      images: ['https://fractalbyte.studio/fractalbyte-avatar.jpg'],
+      images: ['https://spm-interactive.com/spm-avatar.png'],
     },
     robots: {
       index: true,

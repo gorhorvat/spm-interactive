@@ -20,12 +20,12 @@ interface PageMetadata {
 const pagesMetadata: Record<string, PageMetadata> = {
   about: {
     title: {
-      hr: 'O Nama - FRACTALBYTE | Profesionalni Web Razvoj Zagreb, Hrvatska',
-      en: 'About Us - FRACTALBYTE | Professional Web Development Croatia',
+      hr: 'O Nama - SPM Interactive | Profesionalni Web Razvoj Zagreb, Hrvatska',
+      en: 'About Us - SPM Interactive | Professional Web Development Croatia',
     },
     description: {
-      hr: 'Upoznajte FRACTALBYTE tim stručnjaka za web razvoj iz Zagreba. Specijalizirani za kreiranje inovativnih digitalnih rješenja, modernih web stranica i aplikacija koje pokreću vaš poslovni uspjeh.',
-      en: 'Meet the FRACTALBYTE team of web development experts from Croatia. Specialized in creating innovative digital solutions, modern websites and applications that drive your business success.',
+      hr: 'Upoznajte SPM Interactive tim stručnjaka za web razvoj iz Zagreba. Specijalizirani za kreiranje inovativnih digitalnih rješenja, modernih web stranica i aplikacija koje pokreću vaš poslovni uspjeh.',
+      en: 'Meet the SPM Interactive team of web development experts from Croatia. Specialized in creating innovative digital solutions, modern websites and applications that drive your business success.',
     },
     path: {
       hr: '/o-nama',
@@ -35,8 +35,8 @@ const pagesMetadata: Record<string, PageMetadata> = {
 
   faq: {
     title: {
-      hr: 'Česta Pitanja - FRACTALBYTE | Web Razvoj FAQ Zagreb',
-      en: 'FAQ - FRACTALBYTE | Web Development Frequently Asked Questions',
+      hr: 'Česta Pitanja - SPM Interactive | Web Razvoj FAQ Zagreb',
+      en: 'FAQ - SPM Interactive | Web Development Frequently Asked Questions',
     },
     description: {
       hr: 'Odgovori na česta pitanja o web razvoju, dizajnu, cijeni, rokovima i procesu izrade web stranica. Saznajte više o našem načinu rada i uslugama web developmenta.',
@@ -49,12 +49,12 @@ const pagesMetadata: Record<string, PageMetadata> = {
   },
   pricing: {
     title: {
-      hr: 'Cjenik - FRACTALBYTE | Profesionalni Web Razvoj Zagreb, Hrvatska',
-      en: 'Pricing - FRACTALBYTE | FRACTALBYTE | Professional Web Development Croatia',
+      hr: 'Cjenik - SPM Interactive | Profesionalni Web Razvoj Zagreb, Hrvatska',
+      en: 'Pricing - SPM Interactive | SPM Interactive | Professional Web Development Croatia',
     },
     description: {
-      hr: 'Cjenik osnovnih i dodatnih usluga FRACTALBYTE-a.',
-      en: 'Pricing of basic and additional services of FRACTALBYTE.',
+      hr: 'Cjenik osnovnih i dodatnih usluga SPM Interactive-a.',
+      en: 'Pricing of basic and additional services of SPM Interactive.',
     },
     path: {
       hr: '/cjenik',
@@ -63,12 +63,12 @@ const pagesMetadata: Record<string, PageMetadata> = {
   },
   contact: {
     title: {
-      hr: 'Kontakt - FRACTALBYTE | Zatražite Besplatnu Ponudu Zagreb',
-      en: 'Contact - FRACTALBYTE | Request a Free Quote Croatia',
+      hr: 'Kontakt - SPM Interactive | Zatražite Besplatnu Ponudu Zagreb',
+      en: 'Contact - SPM Interactive | Request a Free Quote Croatia',
     },
     description: {
-      hr: 'Kontaktirajte FRACTALBYTE za profesionalni web razvoj u Zagrebu i Hrvatskoj. Zatražite besplatnu ponudu i razgovarajmo o vašem projektu. Započnite svoju digitalnu transformaciju danas.',
-      en: 'Contact FRACTALBYTE for professional web development in Croatia. Request a free quote and let\'s discuss your project. Start your digital transformation today.',
+      hr: 'Kontaktirajte SPM Interactive za profesionalni web razvoj u Zagrebu i Hrvatskoj. Zatražite besplatnu ponudu i razgovarajmo o vašem projektu. Započnite svoju digitalnu transformaciju danas.',
+      en: 'Contact SPM Interactive for professional web development in Croatia. Request a free quote and let\'s discuss your project. Start your digital transformation today.',
     },
     path: {
       hr: '/kontakt',
@@ -77,12 +77,12 @@ const pagesMetadata: Record<string, PageMetadata> = {
   },
   privacy: {
     title: {
-      hr: 'Politika Privatnosti - FRACTALBYTE | Zaštita Podataka',
-      en: 'Privacy Policy - FRACTALBYTE | Data Protection',
+      hr: 'Politika Privatnosti - SPM Interactive | Zaštita Podataka',
+      en: 'Privacy Policy - SPM Interactive | Data Protection',
     },
     description: {
-      hr: 'Pročitajte našu politiku privatnosti i saznajte kako FRACTALBYTE štiti vaše osobne podatke. GDPR usklađenost i transparentnost u obradi podataka.',
-      en: 'Read our privacy policy and learn how FRACTALBYTE protects your personal data. GDPR compliance and transparency in data processing.',
+      hr: 'Pročitajte našu politiku privatnosti i saznajte kako SPM Interactive štiti vaše osobne podatke. GDPR usklađenost i transparentnost u obradi podataka.',
+      en: 'Read our privacy policy and learn how SPM Interactive protects your personal data. GDPR compliance and transparency in data processing.',
     },
     path: {
       hr: '/politika-privatnosti',
@@ -93,8 +93,8 @@ const pagesMetadata: Record<string, PageMetadata> = {
 
 const pageKeywords: Record<string, { hr: string[]; en: string[] }> = {
   about: {
-    hr: ['o nama', 'fractalbyte tim', 'web development team', 'stručnjaci za web', 'digitalna agencija', 'web razvoj zagreb', 'web developer hrvatska', 'react developer', 'next.js developer', 'frontend developer', 'full stack developer'],
-    en: ['about us', 'fractalbyte team', 'web development team', 'web experts', 'digital agency', 'croatia web development', 'zagreb web developer', 'react developer', 'next.js developer', 'frontend developer', 'full stack developer'],
+    hr: ['o nama', 'SPM Interactive tim', 'web development team', 'stručnjaci za web', 'digitalna agencija', 'web razvoj zagreb', 'web developer hrvatska', 'react developer', 'next.js developer', 'frontend developer', 'full stack developer'],
+    en: ['about us', 'SPM Interactive team', 'web development team', 'web experts', 'digital agency', 'croatia web development', 'zagreb web developer', 'react developer', 'next.js developer', 'frontend developer', 'full stack developer'],
   },
   faq: {
     hr: ['česta pitanja', 'FAQ', 'web development pitanja', 'cijena web stranice', 'vrijeme izrade', 'kako funkcionira', 'koliko košta web stranica', 'web razvoj proces', 'održavanje web stranice'],
@@ -105,8 +105,8 @@ const pageKeywords: Record<string, { hr: string[]; en: string[] }> = {
     en: ['pricing', 'how much does a website cost', 'website creation pricing', 'maintenance costs', 'hosting cost', 'domain cost'],
   },
   contact: {
-    hr: ['kontakt', 'zatražite ponudu', 'besplatna ponuda', 'kontaktirajte nas', 'web projekt', 'email', 'web razvoj zagreb', 'ponuda za web stranicu', 'kontakt fractalbyte'],
-    en: ['contact', 'request quote', 'free quote', 'contact us', 'web project', 'email', 'web development croatia', 'website quote', 'contact fractalbyte'],
+    hr: ['kontakt', 'zatražite ponudu', 'besplatna ponuda', 'kontaktirajte nas', 'web projekt', 'email', 'web razvoj zagreb', 'ponuda za web stranicu', 'kontakt SPM Interactive'],
+    en: ['contact', 'request quote', 'free quote', 'contact us', 'web project', 'email', 'web development croatia', 'website quote', 'contact SPM Interactive'],
   },
   privacy: {
     hr: ['politika privatnosti', 'zaštita podataka', 'GDPR', 'privatnost', 'obrada podataka', 'kolačići', 'cookies', 'sigurnost podataka'],
@@ -117,7 +117,7 @@ const pageKeywords: Record<string, { hr: string[]; en: string[] }> = {
 export function generatePageMetadata(page: keyof typeof pagesMetadata, locale: Locale): Metadata {
   const metadata = pagesMetadata[page];
   const keywords = pageKeywords[page];
-  const baseUrl = 'https://fractalbyte.studio';
+  const baseUrl = 'https://spm-interactive.com';
   
   return {
     title: metadata.title[locale],
@@ -137,13 +137,13 @@ export function generatePageMetadata(page: keyof typeof pagesMetadata, locale: L
       locale: locale === 'hr' ? 'hr_HR' : 'en_US',
       alternateLocale: locale === 'hr' ? ['en_US'] : ['hr_HR'],
       url: `${baseUrl}${metadata.path[locale]}`,
-      siteName: 'FRACTALBYTE',
+      siteName: 'SPM Interactive',
       images: [
         {
-          url: 'https://fractalbyte.studio/fractalbyte-avatar.jpg',
+          url: 'https://spm-interactive.com/spm-avatar.png',
           width: 1200,
           height: 630,
-          alt: 'FRACTALBYTE Logo',
+          alt: 'SPM Interactive Logo',
         },
       ],
     },
@@ -151,7 +151,7 @@ export function generatePageMetadata(page: keyof typeof pagesMetadata, locale: L
       card: 'summary_large_image',
       title: metadata.title[locale],
       description: metadata.description[locale],
-      images: ['https://fractalbyte.studio/fractalbyte-avatar.jpg'],
+      images: ['https://spm-interactive.com/spm-avatar.png'],
     },
     robots: {
       index: true,

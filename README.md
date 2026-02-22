@@ -1,4 +1,4 @@
-# FRACTALBYTE Website
+# SPM Interactive Website
 
 A modern, high-performant multilingual website built with Next.js, React, and Material-UI. It offers a range of services and features for web development, SEO, hosting, and maintenance.
 
@@ -276,21 +276,21 @@ The website includes an API endpoint for manually revalidating cached pages when
 
 1. **Revalidate all pages**:
 ```bash
-curl -X POST https://fractalbyte.com/api/revalidate \
+curl -X POST https://spm-interactive.com/api/revalidate \
   -H "Content-Type: application/json" \
   -d '{"secret":"your-secret-token"}'
 ```
 
 2. **Revalidate specific path**:
 ```bash
-curl -X POST https://fractalbyte.com/api/revalidate \
+curl -X POST https://spm-interactive.com/api/revalidate \
   -H "Content-Type: application/json" \
   -d '{"secret":"your-secret-token","path":"/en/services/web-development"}'
 ```
 
 3. **Revalidate by tag**:
 ```bash
-curl -X POST https://fractalbyte.com/api/revalidate \
+curl -X POST https://spm-interactive.com/api/revalidate \
   -H "Content-Type: application/json" \
   -d '{"secret":"your-secret-token","tag":"services"}'
 ```
@@ -313,4 +313,4 @@ curl -X POST https://fractalbyte.com/api/revalidate \
 
 ## License
 
-Copyright © 2025 FRACTALBYTE. All rights reserved.
+Copyright © 2025 SPM Interactive. All rights reserved.

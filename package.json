@@ -1,5 +1,5 @@
 {
-  "name": "fractalbyte-website",
+  "name": "spm-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,7 +17,7 @@
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.10",
     "ai": "^6.0.96",
-    "next": "16.0.10",
+    "next": "^16.1.6",
     "next-intl": "^4.5.3",
     "nodemailer": "^7.0.10",
     "react": "^18.2.0",
@@ -30,9 +30,8 @@
     "@types/nodemailer": "^7.0.3",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "baseline-browser-mapping": "^2.10.0",
     "eslint": "^10.0.0",
-    "eslint-config-next": "^16.1.6",
+    "eslint-config-next": "^0.2.4",
     "typescript": "^5"
   }
 }

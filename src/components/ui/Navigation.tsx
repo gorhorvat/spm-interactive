@@ -171,9 +171,9 @@ export default function Navigation() {
           );
         })}
         <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: 'center' }} component="a" href="mailto:info@fractalbyte.studio">
+          <ListItemButton sx={{ textAlign: 'center' }} component="a" href="mailto:info@spm-interactive.com">
             <EmailIcon sx={{ mr: 1, color: colors.primary }} />
-            <ListItemText primary="info@fractalbyte.studio" sx={{ color: colors.primary }} />
+            <ListItemText primary="info@spm-interactive.com" sx={{ color: colors.primary }} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -255,12 +255,12 @@ export default function Navigation() {
         <Container maxWidth="xl">
           <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
             <Link href={language === 'hr' ? '/' : '/en'} style={{ textDecoration: 'none' }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+              <Box sx={{ display: 'flex', padding: 2, alignItems: 'center', cursor: 'pointer' }}>
                 <Image
-                  src="/fractalbyte-logo.png"
-                  alt="FRACTALBYTE"
-                  width={200}
-                  height={50}
+                  src="/spm-logo.png"
+                  alt="SPM Interactive"
+                  width={144}
+                  height={62}
                   priority
                 />
               </Box>
@@ -387,7 +387,7 @@ export default function Navigation() {
                 );
               })}
               <Box sx={{ ml: { md: 1, lg: 2 }, display: 'flex', gap: { md: 1, lg: 2 }, alignItems: 'center' }}>
-                <Link href="mailto:info@fractalbyte.studio" style={{ textDecoration: 'none' }}>
+                <Link href="mailto:info@spm-interactive.com" style={{ textDecoration: 'none' }}>
                   <Box sx={{
                     display: { md: 'none', lg: 'flex' },
                     alignItems: 'center',
@@ -398,7 +398,7 @@ export default function Navigation() {
                     cursor: 'pointer',
                   }}>
                     <EmailIcon sx={{ fontSize: 18 }} />
-                    info@fractalbyte.studio
+                    info@spm-interactive.com
                   </Box>
                 </Link>
                 <Link href="tel:+385998446978" style={{ textDecoration: 'none' }}>

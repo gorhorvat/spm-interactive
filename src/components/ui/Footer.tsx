@@ -34,18 +34,18 @@ export default function Footer() {
               gap: { xs: 2, md: 3 },
             }}>
               <Box sx={{
-                height: 60,
-                width: 60,
+                height: 80,
+                width: 80,
                 flexShrink: 0,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
                 <Image
-                  src="/fractalbyte-avatar-grey.png"
-                  alt="FRACTALBYTE"
-                  width={60}
-                  height={60}
+                  src="/spm-avatar-grey.png"
+                  alt="SPM Interactive Consultants"
+                  width={80}
+                  height={80}
                 />
               </Box>
 
@@ -66,7 +66,7 @@ export default function Footer() {
                   <EmailIcon sx={{ color: colors.primary, fontSize: 20 }} />
                   <Typography
                     component="a"
-                    href="mailto:info@fractalbyte.studio"
+                    href="mailto:info@spm-interactive.com"
                     sx={{
                       color: colors.textSecondary,
                       textDecoration: 'none',
@@ -74,7 +74,7 @@ export default function Footer() {
                       '&:hover': { color: colors.primaryLight },
                     }}
                   >
-                    info@fractalbyte.studio
+                    info@spm-interactive.com
                   </Typography>
                 </Box>
 
@@ -147,8 +147,8 @@ export default function Footer() {
             {/* Social Media Icons */}
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 3 }}>
               <IconButton
-                href="mailto:info@fractalbyte.studio"
-                aria-label="Email FRACTALBYTE"
+                href="mailto:info@spm-interactive.com"
+                aria-label="Email SPM Interactive"
                 sx={{
                   color: colors.primary,
                   '&:hover': { color: colors.primaryLight, borderRadius: 0 },
@@ -157,10 +157,10 @@ export default function Footer() {
                 <EmailIcon fontSize="large" />
               </IconButton>
               <IconButton
-                href="https://www.instagram.com/fractalbyte.studio/"
+                href="https://www.instagram.com/spm-interactive.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="FRACTALBYTE Instagram"
+                aria-label="SPM Interactive Instagram"
                 sx={{
                   color: colors.primary,
                   '&:hover': { color: colors.primaryLight, borderRadius: 0 },
@@ -172,7 +172,7 @@ export default function Footer() {
                 href="https://www.facebook.com/profile.php?id=61583592732443"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="FRACTALBYTE Facebook"
+                aria-label="SPM Interactive Facebook"
                 sx={{
                   color: colors.primary,
                   '&:hover': { color: colors.primaryLight, borderRadius: 0 },
@@ -206,7 +206,7 @@ export default function Footer() {
                   textAlign: 'center',
                 }}
               >
-                © {new Date().getFullYear()} FRACTALBYTE. {translations('allRightsReserved')}.
+                © {new Date().getFullYear()} SPM Interactive. {translations('allRightsReserved')}.
               </Typography>
             </Box>
           </Grid>

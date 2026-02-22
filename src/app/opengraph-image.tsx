@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'FRACTALBYTE - Full-spectrum web solutions for modern businesses'
+export const alt = 'SPM Interactive - Full-spectrum web solutions for modern businesses'
 export const size = {
   width: 1200,
   height: 630,
@@ -57,7 +57,7 @@ export default async function Image() {
               textShadow: '0 4px 20px rgba(115, 1, 62, 0.4)',
             }}
           >
-            FRACTALBYTE
+            SPM Interactive
           </div>
           <div
             style={{
@@ -100,7 +100,7 @@ export default async function Image() {
           <span>🇭🇷</span>
           <span>Zagreb, Croatia</span>
           <span style={{ margin: '0 8px' }}>•</span>
-          <span>fractalbyte.studio</span>
+          <span>spm-interactive.com</span>
         </div>
       </div>
     ),

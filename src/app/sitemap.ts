@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { services, serviceSlugMap } from '@/constants';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://fractalbyte.studio';
+  const baseUrl = 'https://spm-interactive.com';
   const lastModified = new Date();
 
   // Generate service detail pages

@@ -56,7 +56,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
               slug === 'performance-optimization' ? '/background-performance-optimization.jpg' : 
               slug === 'security-compliance' ? '/background-security-compliance.jpeg' : 
               slug === 'ai-integration' ? '/background-ai-integration.jpeg' : 
-              slug === 'b2b-consulting' ? '/background-b2b-consulting.jpeg' : '/fractalbyte-logo.png'})`,
+              slug === 'b2b-consulting' ? '/background-b2b-consulting.jpeg' : '/spm-logo.png'})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             mb: 6,

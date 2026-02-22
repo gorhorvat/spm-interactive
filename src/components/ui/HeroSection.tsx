@@ -42,14 +42,13 @@ export default function HeroSection() {
     >
       <Container maxWidth="lg">
         <Box sx={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
-          <Box sx={{ maxWidth: 600, mx: 'auto', mb: 4 }}>
+          <Box sx={{ position: 'relative', width: '100%', maxWidth: 362, height: 156, mx: 'auto', mb: 4 }}>
             <Image
-              src="/fractalbyte-logo.png"
-              alt="FRACTALBYTE"
-              width={600}
-              height={150}
+              src="/spm-logo.png"
+              alt="SPM Interactive"
+              fill
               priority
-              style={{ width: '100%', height: 'auto' }}
+              style={{ objectFit: 'contain' }}
             />
           </Box>
 

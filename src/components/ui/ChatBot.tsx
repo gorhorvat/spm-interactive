@@ -13,9 +13,9 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import SendIcon from '@mui/icons-material/Send';
-import SmartToyIcon from '@mui/icons-material/SmartToy';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import Image from 'next/image';
 import { colors } from '@/constants/colors';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -306,7 +306,7 @@ export default function ChatBot() {
       : 'Ask about our services...';
 
   const chatTitle =
-    language === 'hr' ? 'FractalByte AI Asistent' : 'FractalByte AI Assistant';
+    language === 'hr' ? 'SPM Interactvie AI Asistent' : 'SPM Interactvie AI Assistant';
 
   return (
     <>
@@ -342,7 +342,12 @@ export default function ChatBot() {
         }}
         aria-label="open chat"
       >
-        <SmartToyIcon />
+        <Image
+          src="/spm-avatar-grey.png"
+          alt="Chat"
+          width={28}
+          height={28}
+        />
       </Fab>
 
       {/* Chat Overlay */}

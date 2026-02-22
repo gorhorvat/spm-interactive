@@ -27,8 +27,8 @@ export async function generateMetadata({ params }: ServiceLayoutProps): Promise<
 
   const serviceName = getTranslation(service.name, locale);
   const serviceDesc = getTranslation(service.description, locale);
-  const siteName = 'FRACTALBYTE';
-  const baseUrl = 'https://fractalbyte.studio';
+  const siteName = 'SPM Interactive';
+  const baseUrl = 'https://spm-interactive.com';
   
   // Get the Croatian slug for alternate language link
   const { serviceSlugMap } = await import('@/constants');
@@ -62,10 +62,10 @@ export async function generateMetadata({ params }: ServiceLayoutProps): Promise<
       siteName,
       images: [
         {
-          url: 'https://fractalbyte.studio/fractalbyte-avatar.jpg',
+          url: 'https://spm-interactive.com/spm-avatar.png',
           width: 1200,
           height: 630,
-          alt: `${serviceName} - FRACTALBYTE`,
+          alt: `${serviceName} - SPM Interactive`,
         },
       ],
     },
@@ -73,7 +73,7 @@ export async function generateMetadata({ params }: ServiceLayoutProps): Promise<
       card: 'summary_large_image',
       title: `${serviceName} | ${siteName}`,
       description: serviceDesc,
-      images: ['https://fractalbyte.studio/fractalbyte-avatar.jpg'],
+      images: ['https://spm-interactive.com/spm-avatar.png'],
     },
   };
 }

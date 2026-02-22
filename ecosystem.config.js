@@ -6,7 +6,7 @@
 module.exports = {
   apps: [
     {
-      name: 'fractalbyte-website',
+      name: 'spm-website',
       script: 'node_modules/next/dist/bin/next',
       args: 'start',
       instances: 1,

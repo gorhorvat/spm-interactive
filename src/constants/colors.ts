@@ -1,4 +1,4 @@
-// FRACTALBYTE Color Palette
+// SPM Interactive Color Palette
 export const colors = {
   // Primary colors
   primary: '#39d5d3',          // Teal cyan

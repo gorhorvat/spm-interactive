@@ -6,7 +6,7 @@ import CookieIcon from '@mui/icons-material/Cookie';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { colors } from '@/constants/colors';
 
-const COOKIE_CONSENT_KEY = 'fractalbyte-cookie-consent';
+const COOKIE_CONSENT_KEY = 'spm-cookie-consent';
 
 export default function CookieConsent() {
   const [open, setOpen] = useState(false);
