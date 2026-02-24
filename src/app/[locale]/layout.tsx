@@ -3,6 +3,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Analytics } from '@vercel/analytics/next';
 import ThemeRegistry from "@/components/system/ThemeRegistry";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import CookieConsent from "@/components/ui/CookieConsent";
@@ -163,6 +164,7 @@ export default async function LocaleLayout({
             </ThemeRegistry>
           </LanguageProvider>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );
