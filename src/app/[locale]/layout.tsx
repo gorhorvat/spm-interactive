@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import ThemeRegistry from "@/components/system/ThemeRegistry";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import CookieConsent from "@/components/ui/CookieConsent";
@@ -165,6 +166,7 @@ export default async function LocaleLayout({
           </LanguageProvider>
         </NextIntlClientProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
