@@ -3,7 +3,7 @@ export const translations = {
     home: 'Home',
     about: 'About us',
     services: 'Services',
-    inquiryService: 'service',
+    service: 'service',
     allServices: 'All Services',
     faq: 'FAQ',
     pricing: 'Pricing',
@@ -296,7 +296,7 @@ export const translations = {
     privacyContactPhone: 'Phone: +385 99 844 6978',
     privacyContactAddress: 'SPM Interactive, Croatia',
     // Company Info
-    companyName: 'SPM Interactive j.d.o.o.',
+    companyName: 'SPM Interactive',
     companyAddress: 'Nikole Pavića 19',
     companyCity: '1000 Zagreb',
     companyOIB: 'OIB: 12345678901',
@@ -430,7 +430,6 @@ export const translations = {
     messageSent: 'Poruka uspješno poslana!',
     messageError: 'Slanje poruke nije uspjelo. Molimo pokušajte ponovno.',
     inquiryAbout: 'Upit o',
-    inquiryService: 'usluzi',
     generalInquiry: 'Opći upit',
     // Package features
     essentialFeature1: 'Do 5 stranica, bez podstranica',
@@ -685,7 +684,7 @@ export const translations = {
     privacyContactPhone: 'Telefon: +385 99 844 6978',
     privacyContactAddress: 'SPM Interactive, Hrvatska',
     // Company Info
-    companyName: 'SPM Interactive j.d.o.o.',
+    companyName: 'SPM Interactive',
     companyAddress: 'Nikole Pavića 19',
     companyCity: '1000 Zagreb',
     companyOIB: 'OIB: 12345678901',
