@@ -53,7 +53,7 @@ export function buildKnowledge(locale: Locale): KnowledgeDoc[] {
     'Email: info@spm-interactive.com',
     'Phone: +385 99 844 6978',
     'Address: Korenići 28B, Korenići, Croatia',
-    'Instagram: https://www.instagram.com/spm-interactive.com/',
+    'Instagram: https://www.instagram.com/spm.interactive/',
     'Facebook: https://www.facebook.com/profile.php?id=61583592732443',
     `${t(locale, 'privacyPolicy')}: ${locale === 'hr' ? '/politika-privatnosti' : '/en/privacy-policy'}`,
     `${t(locale, 'contact')}: ${locale === 'hr' ? '/kontakt' : '/en/contact'}`,
@@ -73,7 +73,7 @@ export function buildKnowledge(locale: Locale): KnowledgeDoc[] {
   const socialText = [
     'Email: info@spm-interactive.com',
     'Phone: +385 99 844 6978',
-    'Instagram: https://www.instagram.com/spm-interactive.com/',
+    'Instagram: https://www.instagram.com/spm.interactive/',
     'Facebook: https://www.facebook.com/profile.php?id=61583592732443',
   ].join('\n');
 

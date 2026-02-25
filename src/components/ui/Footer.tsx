@@ -157,7 +157,7 @@ export default function Footer() {
                 <EmailIcon fontSize="large" />
               </IconButton>
               <IconButton
-                href="https://www.instagram.com/spm-interactive.com/"
+                href="https://www.instagram.com/spm.interactive/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="SPM Interactive Instagram"
