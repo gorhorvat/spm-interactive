@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { MailtrapClient } from "mailtrap";
+import { MailerooClient, EmailAddress, Attachment } from "maileroo-sdk";
 
-const client = new MailtrapClient({ token: process.env.MAILTRAP_TOKEN || '' });
+const client = new MailerooClient(process.env.MAILEROO_API_KEY!);
 
 export async function POST(request: NextRequest) {
   const { name, email, subject, message } = await request.json();
@@ -15,10 +15,10 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    // Send email using Mailtrap
-    await client.send({
-      from: { email: process.env.EMAIL_FROM || 'info@spm-interactive.com' },
-      to: [{ email: process.env.EMAIL_FROM || 'info@spm-interactive.com' }],
+    // Send email using Maileroo
+    await client.sendBasicEmail({
+      from: new EmailAddress(process.env.EMAIL_FROM!, 'noreply@spm-interactive.com'),
+      to: [new EmailAddress(process.env.EMAIL_TO!, 'info@spm-interactive.com')],
       subject: `Contact Form: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
         <p><strong>Message:</strong></p>
         <p>${message.replace(/\n/g, '<br>')}</p>
       `,
-      text: `
+      plain: `
         New Contact Form Submission
         
         Name: ${name}
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Mailtrap error:", error);
+    console.error("Maileroo error:", error);
     return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
   }
 }
