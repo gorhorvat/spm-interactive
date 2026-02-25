@@ -1,25 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import { MailtrapClient } from "mailtrap";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const client = new MailtrapClient({ token: process.env.MAILTRAP_TOKEN || '' });
 
 export async function POST(request: NextRequest) {
+  const { name, email, subject, message } = await request.json();
+
+  // Validate input
+  if (!name || !email || !subject || !message) {
+    return NextResponse.json(
+      { error: 'All fields are required' },
+      { status: 400 }
+    );
+  }
+
   try {
-    const { name, email, subject, message } = await request.json();
-
-    // Validate input
-    if (!name || !email || !subject || !message) {
-      return NextResponse.json(
-        { error: 'All fields are required' },
-        { status: 400 }
-      );
-    }
-
-    // Send email using Resend
-    const result = await resend.emails.send({
-      from: process.env.EMAIL_FROM || 'info@spm-interactive.com',
-      to: process.env.EMAIL_FROM || 'info@spm-interactive.com',
-      replyTo: email,
+    // Send email using Mailtrap
+    await client.send({
+      from: { email: process.env.EMAIL_FROM || 'info@spm-interactive.com' },
+      to: [{ email: process.env.EMAIL_FROM || 'info@spm-interactive.com' }],
       subject: `Contact Form: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -41,23 +40,12 @@ export async function POST(request: NextRequest) {
       `,
     });
 
-    if (result.error) {
-      console.error('Resend error:', result.error);
-      return NextResponse.json(
-        { error: 'Failed to send email' },
-        { status: 500 }
-      );
-    }
-
     return NextResponse.json(
       { message: 'Email sent successfully' },
       { status: 200 }
     );
   } catch (error) {
-    console.error('Error sending email:', error);
-    return NextResponse.json(
-      { error: 'Failed to send email' },
-      { status: 500 }
-    );
+    console.error("Mailtrap error:", error);
+    return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
   }
 }
