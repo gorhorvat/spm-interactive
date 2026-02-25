@@ -51,7 +51,7 @@ A modern, high-performant multilingual website built with Next.js, React, and Ma
 - **Language**: TypeScript
 - **Styling**: Emotion CSS-in-JS
 - **Icons**: Material Icons
-- **Email**: Nodemailer
+- **Email**: Resend
 - **Internationalization**: next-intl v4.5.3
 - **AI**: Vercel AI SDK + Groq
 - **Markdown**: react-markdown + remark-gfm
@@ -164,22 +164,14 @@ src/
 - **Foreground**: #5f5f5f
 
 ## Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-# SMTP Configuration
-SMTP_HOST=mail.privateemail.com
-SMTP_PORT=465
-SMTP_SECURE=true
-SMTP_USER=your-email@yourdomain.com
-SMTP_PASSWORD=your-email-password
-
 # Google Analytics
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 
 # Groq (AI Chatbot)
 GROQ_API_KEY=your-groq-api-key
+
+# Resend (API mailer)
+RESEND_API_KEY=your-resend-api-key
 ```
 
 **Note**: The `.env` file is excluded from version control. Never commit sensitive credentials.

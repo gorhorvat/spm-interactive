@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,24 +15,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create transporter using Roundcube SMTP with STARTTLS
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: false, // Use STARTTLS
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
-      },
-      tls: {
-        rejectUnauthorized: false,
-      },
-    });
-
-    // Send email
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM,
-      to: process.env.SMTP_FROM, // Send to your own email
+    // Send email using Resend
+    const result = await resend.emails.send({
+      from: process.env.EMAIL_FROM || 'info@spm-interactive.com',
+      to: process.env.EMAIL_FROM || 'info@spm-interactive.com',
       replyTo: email,
       subject: `Contact Form: ${subject}`,
       html: `
@@ -52,6 +40,14 @@ export async function POST(request: NextRequest) {
         ${message}
       `,
     });
+
+    if (result.error) {
+      console.error('Resend error:', result.error);
+      return NextResponse.json(
+        { error: 'Failed to send email' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json(
       { message: 'Email sent successfully' },

@@ -46,9 +46,8 @@ export default function ContactSection({ selectedService: selectedService = '', 
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          subject: subject,
-          message: formData.message,
-          service: selectedService || 'N/A',
+          subject,
+          message: formData.message
         }),
       });
 
