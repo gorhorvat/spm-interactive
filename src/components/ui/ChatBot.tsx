@@ -318,7 +318,7 @@ export default function ChatBot() {
           bottom: { xs: 20, md: 30 },
           right: { xs: 20, md: 30 },
           zIndex: 999,
-          bgcolor: colors.primary,
+          bgcolor: colors.secondaryDark,
           color: 'white',
           animation: 'chatPulse 2.2s ease-in-out infinite',
           '@keyframes chatPulse': {
@@ -336,7 +336,7 @@ export default function ChatBot() {
             },
           },
           '&:hover': {
-            bgcolor: colors.hoverPrimary,
+            bgcolor: colors.secondary,
             animationPlayState: 'paused',
           },
         }}

@@ -17,8 +17,8 @@ export async function POST(request: NextRequest) {
   try {
     // Send email using Maileroo
     await client.sendBasicEmail({
-      from: new EmailAddress(process.env.EMAIL_FROM!, 'noreply@spm-interactive.com'),
-      to: [new EmailAddress(process.env.EMAIL_TO!, 'info@spm-interactive.com')],
+      from: new EmailAddress(process.env.EMAIL_FROM!),
+      to: [new EmailAddress(process.env.EMAIL_TO!)],
       subject: `Contact Form: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>

@@ -65,7 +65,7 @@ export function buildKnowledge(locale: Locale): KnowledgeDoc[] {
     t(locale, 'companyName'),
     t(locale, 'companyAddress'),
     t(locale, 'companyCity'),
-    t(locale, 'companyOIB'),
+    // t(locale, 'companyOIB'),
   ].filter(Boolean).join('\n');
 
   docs.push({ id: 'company', text: companyText });

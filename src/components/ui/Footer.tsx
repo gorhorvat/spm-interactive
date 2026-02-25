@@ -133,14 +133,14 @@ export default function Footer() {
                 >
                   {translations('companyCity')}
                 </Typography>
-                <Typography
+                {/* <Typography
                   sx={{
                     color: colors.textSecondary,
                     fontSize: { xs: '0.8rem', md: '0.85rem' },
                   }}
                 >
                   {translations('companyOIB')}
-                </Typography>
+                </Typography> */}
               </Box>
             </Box>
 
