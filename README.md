@@ -170,8 +170,8 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 # Groq (AI Chatbot)
 GROQ_API_KEY=your-groq-api-key
 
-# Maileroo (API mailer)
-MAILEROO_API_KEY=your-api-key
+# Resend (API mailer)
+RESEND_API_KEY=your-api-key
 ```
 
 **Note**: The `.env` file is excluded from version control. Never commit sensitive credentials.

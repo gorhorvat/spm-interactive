@@ -1,6 +1,6 @@
 'use client';
 
-import { AppBar, Toolbar, Container, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Select, MenuItem, CircularProgress, Backdrop, Menu } from '@mui/material';
+import { AppBar, Toolbar, Container, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Select, MenuItem as MuiMenuItem, CircularProgress, Backdrop, Paper } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
@@ -16,19 +16,19 @@ import { services, serviceSlugMap } from '@/constants';
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
-  const [servicesAnchorEl, setServicesAnchorEl] = useState<null | HTMLElement>(null);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const { language, toggleLanguage, translations } = useLanguage();
   const pathname = usePathname();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  const handleServicesMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setServicesAnchorEl(event.currentTarget);
+  const handleServicesMenuOpen = () => {
+    setServicesOpen(true);
   };
 
   const handleServicesMenuClose = () => {
-    setServicesAnchorEl(null);
+    setServicesOpen(false);
   };
 
   const handleMobileServicesToggle = () => {
@@ -227,22 +227,22 @@ export default function Navigation() {
               },
             }}
           >
-            <MenuItem value="hr" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <MuiMenuItem value="hr" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <Image
                 src="/flag-hr.png"
                 alt="Croatian"
                 width={24}
                 height={24}
               />
-            </MenuItem>
-            <MenuItem value="en" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            </MuiMenuItem>
+            <MuiMenuItem value="en" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <Image
                 src="/flag-en.png"
                 alt="English"
                 width={24}
                 height={24}
               />
-            </MenuItem>
+            </MuiMenuItem>
           </Select>
         </ListItem>
       </List>
@@ -282,7 +282,7 @@ export default function Navigation() {
                         component="div"
                         className="services-link"
                         sx={{
-                          color: isServicesActive || Boolean(servicesAnchorEl) ? colors.primary : colors.textPrimary,
+                          color: isServicesActive || servicesOpen ? colors.primary : colors.textPrimary,
                           fontWeight: isServicesActive ? 600 : 500,
                           fontSize: { md: '0.8rem', lg: '0.875rem' },
                           textTransform: 'uppercase',
@@ -308,45 +308,46 @@ export default function Navigation() {
                         }}
                       >
                         {item.label}
-                        <KeyboardArrowDownIcon sx={{ fontSize: 18 }} />
                       </Box>
-                      <Menu
-                        anchorEl={servicesAnchorEl}
-                        open={Boolean(servicesAnchorEl)}
-                        onClose={handleServicesMenuClose}
-                        MenuListProps={{
-                          onMouseLeave: handleServicesMenuClose,
-                        }}
-                        slotProps={{
-                          paper: {
-                            onMouseLeave: handleServicesMenuClose,
-                          },
-                        }}
-                        disableEnforceFocus
-                        sx={{
-                          '& .MuiPaper-root': {
-                            bgcolor: 'transparent',
-                            backdropFilter: 'blur(10px)',
+                      {servicesOpen && (
+                        <Paper
+                          elevation={8}
+                          sx={{
+                            position: 'absolute',
+                            top: '100%',
+                            left: 0,
+                            minWidth: 280,
+                            bgcolor: colors.backgroundElevated,
                             border: `1px solid ${colors.borderLight}`,
-                            mt: 1,
-                          },
-                        }}
-                      >
-                        {services.filter(s => s.slug).map((service) => (
-                          <MenuItem
-                            key={service.slug}
-                            component={Link}
-                            href={getServiceUrl(service.slug!)}
-                            onClick={handleServicesMenuClose}
-                            sx={{
-                              color: colors.textPrimary,
-                              '&:hover': { bgcolor: colors.hoverPrimary, color: colors.primary },
-                            }}
-                          >
-                            {translations(service.name)}
-                          </MenuItem>
-                        ))}
-                      </Menu>
+                            zIndex: 9999,
+                            py: 1,
+                            // Invisible bridge to connect trigger to dropdown
+                            '&::before': {
+                              content: '""',
+                              position: 'absolute',
+                              top: -10,
+                              left: 0,
+                              right: 0,
+                              height: 10,
+                            },
+                          }}
+                        >
+                          {services.filter(s => s.slug).map((service) => (
+                            <MuiMenuItem
+                              key={service.slug}
+                              component={Link}
+                              href={getServiceUrl(service.slug!)}
+                              onClick={handleServicesMenuClose}
+                              sx={{
+                                color: colors.textPrimary,
+                                '&:hover': { bgcolor: colors.hoverPrimary, color: colors.primary },
+                              }}
+                            >
+                              {translations(service.name)}
+                            </MuiMenuItem>
+                          ))}
+                        </Paper>
+                      )}
                     </Box>
                   );
                 }
@@ -450,22 +451,22 @@ export default function Navigation() {
                     },
                   }}
                 >
-                  <MenuItem value="hr" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <MuiMenuItem value="hr" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <Image
                       src="/flag-hr.png"
                       alt="Croatian"
                       width={24}
                       height={24}
                     />
-                  </MenuItem>
-                  <MenuItem value="en" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  </MuiMenuItem>
+                  <MuiMenuItem value="en" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <Image
                       src="/flag-en.png"
                       alt="English"
                       width={24}
                       height={24}
                     />
-                  </MenuItem>
+                  </MuiMenuItem>
                 </Select>
               </Box>
             </Box>
