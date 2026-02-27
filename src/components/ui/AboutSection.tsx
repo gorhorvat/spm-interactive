@@ -54,7 +54,7 @@ export default function AboutSection() {
         <Grid container spacing={4}>
           {values.map((value, index) => (
             <Grid item xs={12} sm={6} md={2.4} key={index}>
-              <ScrollReveal variant="fade-up" delay={index * 100} threshold={0.1}>
+              <ScrollReveal variant="fade-up" delay={index * 100} threshold={0.1} sx={{ height: '100%' }}>
               <Paper
                 elevation={0}
                 sx={{
