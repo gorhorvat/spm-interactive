@@ -129,9 +129,28 @@ export default function Navigation() {
                   <List sx={{
                     pl: 2,
                     bgcolor: colors.backgroundElevated,
+                    animation: 'dropdownFadeIn 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    '@keyframes dropdownFadeIn': {
+                      '0%': {
+                        opacity: 0,
+                        transform: 'translateY(-8px)',
+                      },
+                      '100%': {
+                        opacity: 1,
+                        transform: 'translateY(0)',
+                      },
+                    },
                   }}>
-                    {services.filter(s => s.slug).map((service) => (
-                      <ListItem key={service.slug} disablePadding>
+                    {services.filter(s => s.slug).map((service, idx) => (
+                      <ListItem key={service.slug} disablePadding
+                        sx={{
+                          animation: `menuItemFadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${idx * 50}ms both`,
+                          '@keyframes menuItemFadeIn': {
+                            '0%': { opacity: 0, transform: 'translateX(-10px)' },
+                            '100%': { opacity: 1, transform: 'translateX(0)' },
+                          },
+                        }}
+                      >
                         <ListItemButton
                           component={Link}
                           href={getServiceUrl(service.slug!)}
@@ -223,6 +242,12 @@ export default function Navigation() {
                   bgcolor: 'transparent',
                   backdropFilter: 'blur(10px)',
                   border: `1px solid ${colors.borderLight}`,
+                  animation: 'selectFadeIn 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  '@keyframes selectFadeIn': {
+                    '0%': { opacity: 0, transform: 'translateY(-8px) scaleY(0.95)' },
+                    '100%': { opacity: 1, transform: 'translateY(0) scaleY(1)' },
+                  },
+                  transformOrigin: 'top center',
                 },
               },
             }}
@@ -321,6 +346,17 @@ export default function Navigation() {
                             border: `1px solid ${colors.borderLight}`,
                             zIndex: 9999,
                             py: 1,
+                            animation: 'dropdownFadeIn 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                            '@keyframes dropdownFadeIn': {
+                              '0%': {
+                                opacity: 0,
+                                transform: 'translateY(-8px)',
+                              },
+                              '100%': {
+                                opacity: 1,
+                                transform: 'translateY(0)',
+                              },
+                            },
                             // Invisible bridge to connect trigger to dropdown
                             '&::before': {
                               content: '""',
@@ -332,7 +368,7 @@ export default function Navigation() {
                             },
                           }}
                         >
-                          {services.filter(s => s.slug).map((service) => (
+                          {services.filter(s => s.slug).map((service, idx) => (
                             <MuiMenuItem
                               key={service.slug}
                               component={Link}
@@ -341,6 +377,11 @@ export default function Navigation() {
                               sx={{
                                 color: colors.textPrimary,
                                 '&:hover': { bgcolor: colors.hoverPrimary, color: colors.primary },
+                                animation: `menuItemFadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${idx * 50}ms both`,
+                                '@keyframes menuItemFadeIn': {
+                                  '0%': { opacity: 0, transform: 'translateX(-10px)' },
+                                  '100%': { opacity: 1, transform: 'translateX(0)' },
+                                },
                               }}
                             >
                               {translations(service.name)}
@@ -448,6 +489,18 @@ export default function Navigation() {
                     },
                     '& .MuiSvgIcon-root': {
                       color: colors.primary,
+                    },
+                  }}
+                  MenuProps={{
+                    PaperProps: {
+                      sx: {
+                        animation: 'selectFadeIn 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                        '@keyframes selectFadeIn': {
+                          '0%': { opacity: 0, transform: 'translateY(-8px) scaleY(0.95)' },
+                          '100%': { opacity: 1, transform: 'translateY(0) scaleY(1)' },
+                        },
+                        transformOrigin: 'top center',
+                      },
                     },
                   }}
                 >

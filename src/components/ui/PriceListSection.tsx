@@ -4,6 +4,7 @@ import { Box, Container, Typography, Table, TableBody, TableCell, TableContainer
 import { useLanguage } from '@/contexts/LanguageContext';
 import { pricings } from '@/constants';
 import { colors } from '@/constants/colors';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export default function PriceListSection() {
   const { translations } = useLanguage();
@@ -17,6 +18,7 @@ export default function PriceListSection() {
       }}
     >
       <Container maxWidth="lg">
+        <ScrollReveal variant="fade-up">
         <Typography
           variant="h2"
           sx={{
@@ -29,7 +31,9 @@ export default function PriceListSection() {
         >
           {translations('pricingTitle')}
         </Typography>
+        </ScrollReveal>
 
+        <ScrollReveal variant="fade-up" delay={150}>
         <Typography
           variant="body1"
           sx={{
@@ -41,7 +45,9 @@ export default function PriceListSection() {
         >
           {translations('pricingDescription')}
         </Typography>
+        </ScrollReveal>
 
+        <ScrollReveal variant="fade-up" delay={300}>
         <TableContainer
           component={Paper}
           elevation={0}
@@ -121,6 +127,7 @@ export default function PriceListSection() {
             </TableBody>
           </Table>
         </TableContainer>
+        </ScrollReveal>
       </Container>
     </Box>
   );

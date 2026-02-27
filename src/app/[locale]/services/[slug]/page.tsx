@@ -9,6 +9,7 @@ import Footer from '@/components/ui/Footer';
 import ProcessSection from '@/components/ui/ProcessSection';
 import ServiceDetailPackages from '@/components/ui/ServiceDetailPackages';
 import RequestOfferButton from '@/components/ui/RequestOfferButton';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 import { getTranslation } from '@/utils/serverTranslations';
 
 // Enable ISR with revalidation every 24 hours
@@ -74,6 +75,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
         />
         <Container maxWidth="lg">
           {/* Header Section */}
+          <ScrollReveal variant="fade-up">
           <Box sx={{ mb: 8, textAlign: 'center' }}>
             {/* Icon and Title Row */}
             <Box
@@ -125,8 +127,10 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
               {getTranslation(service.description, locale)}
             </Typography>
           </Box>
+          </ScrollReveal>
 
           {/* Description Section */}
+          <ScrollReveal variant="fade-up" delay={150}>
           <Paper
             elevation={0}
             sx={{
@@ -164,9 +168,11 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
                   getTranslation(service.expandedContent, locale)}
             </Typography>
           </Paper>
+          </ScrollReveal>
 
           {/* Features & Deliverables Grid */}
           {(service.features?.length > 0 || service.deliverables?.length > 0) && (
+            <ScrollReveal variant="fade-up" delay={200}>
             <Box
               sx={{
                 display: 'flex',
@@ -293,6 +299,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
                 )}
               </Box>
             </Box>
+            </ScrollReveal>
           )}
 
           {/* Process Section - Only for Web Development */}

@@ -9,6 +9,7 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { colors } from '@/constants/colors';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export default function Footer() {
   const { translations, language } = useLanguage();
@@ -23,6 +24,7 @@ export default function Footer() {
       }}
     >
       <Container maxWidth="lg">
+        <ScrollReveal variant="fade-up" threshold={0.1}>
         <Grid container spacing={4} justifyContent="center">
           <Grid item xs={12}>
             <Box sx={{
@@ -211,6 +213,7 @@ export default function Footer() {
             </Box>
           </Grid>
         </Grid>
+        </ScrollReveal>
       </Container>
     </Box>
   );

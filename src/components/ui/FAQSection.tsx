@@ -5,6 +5,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { faqs } from '@/constants';
 import { colors } from '@/constants/colors';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export default function FAQSection() {
   const { translations } = useLanguage();
@@ -18,6 +19,7 @@ export default function FAQSection() {
       }}
     >
       <Container maxWidth="md">
+        <ScrollReveal variant="fade-up">
         <Typography
           variant="h2"
           sx={{
@@ -30,7 +32,9 @@ export default function FAQSection() {
         >
           {translations('faqTitle')}
         </Typography>
+        </ScrollReveal>
 
+        <ScrollReveal variant="fade-up" delay={150}>
         <Typography
           variant="body1"
           sx={{
@@ -42,11 +46,12 @@ export default function FAQSection() {
         >
           {translations('faqDescription')}
         </Typography>
+        </ScrollReveal>
 
         <Box sx={{ mt: 4 }}>
           {faqs.map((faq, index) => (
+            <ScrollReveal key={index} variant="fade-up" delay={index * 80} threshold={0.05}>
             <Accordion
-              key={index}
               sx={{
                 bgcolor: colors.backgroundPaper,
                 border: '1px solid rgba(95, 95, 95, 0.2)',
@@ -89,6 +94,7 @@ export default function FAQSection() {
                 </Typography>
               </AccordionDetails>
             </Accordion>
+            </ScrollReveal>
           ))}
         </Box>
       </Container>

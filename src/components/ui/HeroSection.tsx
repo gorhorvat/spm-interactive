@@ -5,6 +5,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { colors } from '@/constants/colors';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export default function HeroSection() {
   const { translations } = useLanguage();
@@ -42,42 +43,49 @@ export default function HeroSection() {
     >
       <Container maxWidth="lg">
         <Box sx={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
-          <Box sx={{ position: 'relative', width: '100%', maxWidth: 362, height: 156, mx: 'auto', mb: 4 }}>
-            <Image
-              src="/spm-logo.png"
-              alt="SPM Interactive"
-              fill
-              priority
-              style={{ objectFit: 'contain' }}
-            />
-          </Box>
+          <ScrollReveal variant="fade" duration={800}>
+            <Box sx={{ position: 'relative', width: '100%', maxWidth: 362, height: 156, mx: 'auto', mb: 4 }}>
+              <Image
+                src="/spm-logo.png"
+                alt="SPM Interactive"
+                fill
+                priority
+                style={{ objectFit: 'contain' }}
+              />
+            </Box>
+          </ScrollReveal>
 
-          <Typography
-            variant="h4"
-            sx={{
-              mb: 3,
-              color: colors.textSecondary,
-              fontWeight: 300,
-              fontSize: { xs: '1.25rem', md: '1.5rem' },
-            }}
-          >
-            {translations('heroTagline')}
-          </Typography>
+          <ScrollReveal variant="fade-up" delay={200} duration={700}>
+            <Typography
+              variant="h4"
+              sx={{
+                mb: 3,
+                color: colors.textSecondary,
+                fontWeight: 300,
+                fontSize: { xs: '1.25rem', md: '1.5rem' },
+              }}
+            >
+              {translations('heroTagline')}
+            </Typography>
+          </ScrollReveal>
 
-          <Typography
-            variant="body1"
-            sx={{
-              mb: 5,
-              color: colors.textSecondary,
-              maxWidth: 800,
-              mx: 'auto',
-              fontSize: { xs: '1rem', md: '1.1rem' },
-              lineHeight: 1.7,
-            }}
-          >
-            {translations('heroDescription')}
-          </Typography>
+          <ScrollReveal variant="fade-up" delay={400} duration={700}>
+            <Typography
+              variant="body1"
+              sx={{
+                mb: 5,
+                color: colors.textSecondary,
+                maxWidth: 800,
+                mx: 'auto',
+                fontSize: { xs: '1rem', md: '1.1rem' },
+                lineHeight: 1.7,
+              }}
+            >
+              {translations('heroDescription')}
+            </Typography>
+          </ScrollReveal>
 
+          <ScrollReveal variant="fade-up" delay={600} duration={700}>
           <Box
             onClick={handleCheckOffersClick}
             sx={{
@@ -121,6 +129,7 @@ export default function HeroSection() {
             {translations('getStarted')}
             <ArrowDownwardIcon />
           </Box>
+          </ScrollReveal>
         </Box>
       </Container>
     </Box>

@@ -4,6 +4,7 @@ import { Box, Container, Typography, Grid } from '@mui/material';
 import { useEffect, useState, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { colors } from '@/constants/colors';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 interface CounterItemProps {
   end: number;
@@ -100,6 +101,7 @@ export default function Counter() {
       }}
     >
       <Container maxWidth="lg">
+        <ScrollReveal variant="fade" duration={800}>
         <Grid container spacing={4}>
           <Grid item xs={6} md={3}>
             <CounterItem end={25} label={translations('projectsCompleted')} suffix="+" />
@@ -114,6 +116,7 @@ export default function Counter() {
             <CounterItem end={100} label={translations('satisfactionRate')} suffix="%" />
           </Grid>
         </Grid>
+        </ScrollReveal>
       </Container>
     </Box>
   );

@@ -5,6 +5,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { colors } from '@/constants/colors';
 import Navigation from '@/components/ui/Navigation';
 import Footer from '@/components/ui/Footer';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 import { useState, useEffect } from 'react';
 
 export default function PrivacyPolicyPage() {
@@ -181,7 +182,8 @@ export default function PrivacyPolicyPage() {
           <Divider sx={{ mb: 6, borderColor: colors.borderPrimary }} />
 
           {sections.map((section, index) => (
-            <Box key={index} sx={{ mb: 5 }}>
+            <ScrollReveal key={index} variant="fade-up" delay={index * 60} threshold={0.05}>
+            <Box sx={{ mb: 5 }}>
               <Typography
                 variant="h5"
                 sx={{
@@ -221,6 +223,7 @@ export default function PrivacyPolicyPage() {
                 </List>
               )}
             </Box>
+            </ScrollReveal>
           ))}
         </Container>
       </Box>

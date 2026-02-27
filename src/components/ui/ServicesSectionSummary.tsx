@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { services, serviceSlugMap } from '@/constants';
 import { colors } from '@/constants/colors';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 // Service background images mapped by service slug
 const serviceBackgroundImages: { [key: string]: string } = {
@@ -45,6 +46,7 @@ export default function ServicesSectionSummary() {
       }}
     >
       <Container maxWidth="lg">
+        <ScrollReveal variant="fade-up">
         <Typography
           variant="h2"
           sx={{
@@ -57,7 +59,9 @@ export default function ServicesSectionSummary() {
         >
           {translations('servicesTitle')}
         </Typography>
+        </ScrollReveal>
 
+        <ScrollReveal variant="fade-up" delay={150}>
         <Typography
           variant="body1"
           sx={{
@@ -71,11 +75,12 @@ export default function ServicesSectionSummary() {
         >
           {translations('servicesSummary')}
         </Typography>
+        </ScrollReveal>
 
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
           {services.map((service, index) => (
+            <ScrollReveal key={index} variant={index % 2 === 0 ? 'fade-left' : 'fade-right'} delay={index * 100} threshold={0.1}>
             <Box
-              key={index}
               className="service-card"
               sx={{
                 position: 'relative',
@@ -179,6 +184,7 @@ export default function ServicesSectionSummary() {
                 )}
               </Box>
             </Box>
+            </ScrollReveal>
           ))}
         </Box>
       </Container>

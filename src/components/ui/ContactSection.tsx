@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { packages, services } from '@/constants';
 import { colors } from '@/constants/colors';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 interface ContactSectionProps {
   selectedService?: string;
@@ -74,6 +75,7 @@ export default function ContactSection({ selectedService: selectedService = '', 
       }}
     >
       <Container maxWidth="md">
+        <ScrollReveal variant="fade-up">
         <Typography
           variant="h2"
           sx={{
@@ -86,7 +88,9 @@ export default function ContactSection({ selectedService: selectedService = '', 
         >
           {translations('contactTitle')}
         </Typography>
+        </ScrollReveal>
 
+        <ScrollReveal variant="fade-up" delay={150}>
         <Typography
           variant="body1"
           sx={{
@@ -100,7 +104,9 @@ export default function ContactSection({ selectedService: selectedService = '', 
         >
           {translations('contactDescription')}
         </Typography>
+        </ScrollReveal>
 
+        <ScrollReveal variant="fade-up" delay={300}>
         <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
           <TextField
             fullWidth
@@ -173,6 +179,7 @@ export default function ContactSection({ selectedService: selectedService = '', 
             {loading ? translations('sending') : translations('sendMessage')}
           </Button>
         </Box>
+        </ScrollReveal>
 
         <Snackbar
           open={snackbar.open}

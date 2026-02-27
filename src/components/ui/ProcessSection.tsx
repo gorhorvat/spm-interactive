@@ -5,6 +5,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { processSteps, timelineIcons } from '@/constants';
 import { getIconComponent } from '@/utils/iconMapper';
 import { colors } from '@/constants/colors';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export default function ProcessSection() {
   const { translations } = useLanguage();
@@ -19,6 +20,7 @@ export default function ProcessSection() {
       }}
     >
       <Container maxWidth="lg">
+        <ScrollReveal variant="fade-up">
         <Typography
           variant="h3"
           sx={{
@@ -31,6 +33,7 @@ export default function ProcessSection() {
         >
           {translations('processTitle')}
         </Typography>
+        </ScrollReveal>
 
         <Box
           sx={{
@@ -40,8 +43,8 @@ export default function ProcessSection() {
           }}
         >
           {processSteps.map((step, index) => (
+            <ScrollReveal key={index} variant="fade-up" delay={index * 100} threshold={0.1}>
             <Paper
-              key={index}
               elevation={0}
               sx={{
                 bgcolor: colors.backgroundPaper,
@@ -130,6 +133,7 @@ export default function ProcessSection() {
                 </Typography>
               </Box>
             </Paper>
+            </ScrollReveal>
           ))}
         </Box>
       </Container>

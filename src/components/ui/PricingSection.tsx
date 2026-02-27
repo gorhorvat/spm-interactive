@@ -9,6 +9,7 @@ import TuneIcon from '@mui/icons-material/Tune';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { packages } from '@/constants';
 import { colors } from '@/constants/colors';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 const iconMap: { [key: string]: React.ElementType } = {
   WebIcon,
@@ -49,6 +50,7 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
       }}
     >
       <Container maxWidth="lg">
+        <ScrollReveal variant="fade-up">
         <Typography
           variant="h3"
           sx={{
@@ -61,7 +63,9 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
         >
           {translations('tierTitle')}
         </Typography>
+        </ScrollReveal>
 
+        <ScrollReveal variant="fade-up" delay={150}>
         <Typography
           variant="body1"
           sx={{
@@ -73,6 +77,7 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
         >
           {translations('tierDescription')}
         </Typography>
+        </ScrollReveal>
       </Container>
 
       <Container maxWidth={false} sx={{ px: { xs: 2, md: 4, lg: 6 } }}>
@@ -89,14 +94,15 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
             const PackageIcon = pkg.icon ? iconMap[pkg.icon] : null;
 
             return (
+              <ScrollReveal key={index} variant="fade-up" delay={index * 120} threshold={0.1} sx={{ height: '100%' }}>
               <Paper
-                key={index}
                 elevation={0}
                 sx={{
                   bgcolor: pkg.highlight ? colors.backgroundPaper : colors.background,
                   border: pkg.highlight ? `2px solid ${colors.primary}` : `1px solid ${colors.borderLight}`,
                   borderRadius: 0,
                   p: 3,
+                  height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
                   position: 'relative',
@@ -274,6 +280,7 @@ export default function PricingSection({ onServiceSelect: onServiceSelect }: Pri
                   {translations('requestOffer')}
                 </MuiLink>
               </Paper>
+              </ScrollReveal>
             );
           })}
         </Box>

@@ -13,3 +13,11 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Disable scroll-reveal animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

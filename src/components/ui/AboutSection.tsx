@@ -5,6 +5,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { values, valueIcons } from '@/constants';
 import { getIconComponent } from '@/utils/iconMapper';
 import { colors } from '@/constants/colors';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export default function AboutSection() {
   const { translations } = useLanguage();
@@ -18,6 +19,7 @@ export default function AboutSection() {
       }}
     >
       <Container maxWidth="lg">
+        <ScrollReveal variant="fade-up">
         <Typography
           variant="h2"
           sx={{
@@ -30,7 +32,9 @@ export default function AboutSection() {
         >
           {translations('aboutTitle')}
         </Typography>
+        </ScrollReveal>
 
+        <ScrollReveal variant="fade-up" delay={150}>
         <Typography
           variant="body1"
           sx={{
@@ -45,10 +49,12 @@ export default function AboutSection() {
         >
           {translations('aboutDescription')}
         </Typography>
+        </ScrollReveal>
 
         <Grid container spacing={4}>
           {values.map((value, index) => (
             <Grid item xs={12} sm={6} md={2.4} key={index}>
+              <ScrollReveal variant="fade-up" delay={index * 100} threshold={0.1}>
               <Paper
                 elevation={0}
                 sx={{
@@ -87,6 +93,7 @@ export default function AboutSection() {
                   {translations(value.description)}
                 </Typography>
               </Paper>
+              </ScrollReveal>
             </Grid>
           ))}
         </Grid>
