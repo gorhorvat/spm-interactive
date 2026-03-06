@@ -297,7 +297,7 @@ export const translations = {
     privacyContactAddress: 'SPM Interactive, Croatia',
     // Company Info
     companyName: 'SPM Interactive',
-    companyAddress: 'Nikole Pavića 19',
+    companyAddress: 'Company Address',
     companyCity: '10000 Zagreb',
     companyOIB: 'OIB: 12345678901',
 
@@ -685,7 +685,7 @@ export const translations = {
     privacyContactAddress: 'SPM Interactive, Hrvatska',
     // Company Info
     companyName: 'SPM Interactive',
-    companyAddress: 'Nikole Pavića 19',
+    companyAddress: 'Company Address',
     companyCity: '10000 Zagreb',
     companyOIB: 'OIB: 12345678901',
 

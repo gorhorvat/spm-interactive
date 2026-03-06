@@ -79,8 +79,7 @@ export default function Footer() {
                     info@spm-interactive.com
                   </Typography>
                 </Box>
-
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                {/* <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <PhoneIcon sx={{ color: colors.primary, fontSize: 20 }} />
                   <Typography
                     component="a"
@@ -94,7 +93,7 @@ export default function Footer() {
                   >
                     +385 99 844 6978
                   </Typography>
-                </Box>
+                </Box> */}
               </Box>
 
               <Divider

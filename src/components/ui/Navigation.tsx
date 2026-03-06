@@ -195,12 +195,12 @@ export default function Navigation() {
             <ListItemText primary="info@spm-interactive.com" sx={{ color: colors.primary }} />
           </ListItemButton>
         </ListItem>
-        <ListItem disablePadding>
+        {/* <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: 'center' }} component="a" href="tel:+385998446978">
             <PhoneIcon sx={{ mr: 1, color: colors.primary }} />
             <ListItemText primary="+385 99 844 6978" sx={{ color: colors.primary }} />
           </ListItemButton>
-        </ListItem>
+        </ListItem> */}
         <ListItem sx={{ justifyContent: 'center', mt: 2 }}>
           <Select
             value={language}
@@ -443,7 +443,7 @@ export default function Navigation() {
                     info@spm-interactive.com
                   </Box>
                 </Link>
-                <Link href="tel:+385998446978" style={{ textDecoration: 'none' }}>
+                {/* <Link href="tel:+385998446978" style={{ textDecoration: 'none' }}>
                   <Box sx={{
                     display: { md: 'none', lg: 'flex' },
                     alignItems: 'center',
@@ -456,7 +456,7 @@ export default function Navigation() {
                     <PhoneIcon sx={{ fontSize: 18 }} />
                     +385 99 844 6978
                   </Box>
-                </Link>
+                </Link> */}
                 <Select
                   value={language}
                   onChange={(e) => {
