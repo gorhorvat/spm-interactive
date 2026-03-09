@@ -51,7 +51,7 @@ export function buildKnowledge(locale: Locale): KnowledgeDoc[] {
     t(locale, 'contactDescription'),
     'CONTACT INFORMATION:',
     'Email: info@spm-interactive.com',
-    'Phone: +385 99 844 6978',
+    // 'Phone: +385 99 844 6978',
     'Address: Korenići 28B, Korenići, Croatia',
     'Instagram: https://www.instagram.com/spm.interactive/',
     'Facebook: https://www.facebook.com/profile.php?id=61583592732443',
@@ -72,7 +72,7 @@ export function buildKnowledge(locale: Locale): KnowledgeDoc[] {
 
   const socialText = [
     'Email: info@spm-interactive.com',
-    'Phone: +385 99 844 6978',
+    // 'Phone: +385 99 844 6978',
     'Instagram: https://www.instagram.com/spm.interactive/',
     'Facebook: https://www.facebook.com/profile.php?id=61583592732443',
   ].join('\n');

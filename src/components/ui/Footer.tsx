@@ -96,7 +96,7 @@ export default function Footer() {
                 </Box> */}
               </Box>
 
-              <Divider
+              {/* <Divider
                 orientation="vertical"
                 flexItem
                 sx={{
@@ -106,9 +106,9 @@ export default function Footer() {
                   alignSelf: 'center',
                   mx: 2,
                 }}
-              />
+              /> */}
 
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, pl: { xs: 0, md: 1 }, alignItems: { xs: 'center', md: 'flex-start' }, textAlign: { xs: 'center', md: 'left' } }}>
+              {/* <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, pl: { xs: 0, md: 1 }, alignItems: { xs: 'center', md: 'flex-start' }, textAlign: { xs: 'center', md: 'left' } }}>
                 <Typography
                   sx={{
                     color: colors.textSecondary,
@@ -134,15 +134,15 @@ export default function Footer() {
                 >
                   {translations('companyCity')}
                 </Typography>
-                {/* <Typography
+                <Typography
                   sx={{
                     color: colors.textSecondary,
                     fontSize: { xs: '0.8rem', md: '0.85rem' },
                   }}
                 >
                   {translations('companyOIB')}
-                </Typography> */}
-              </Box>
+                </Typography>
+              </Box> */}
             </Box>
 
             {/* Social Media Icons */}
